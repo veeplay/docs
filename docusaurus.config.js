@@ -5,13 +5,13 @@ const path = require('path');
 module.exports = {
   title: 'Veeplay Documentation',
   tagline: 'References and Guides for the Veeeplay Video SDKs and APIs',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.veeplay.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'veeplay',
-  projectName: 'docusaurus',
+  projectName: 'docs',
   themeConfig: {
     colorMode: {
       defaultMode: 'light',
