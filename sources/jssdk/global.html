@@ -1,0 +1,3351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      Your SDK Description - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link id="google-font" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Cutive+Mono|Roboto:300,400,700" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/highlight-themes/current.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  <link type="text/css" rel="stylesheet" href="styles/collapsible.css">
+  <link type="text/css" rel="stylesheet" href="styles/style-switcher.css">
+  <link type="text/css" rel="stylesheet" href="styles/selectric.css">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <script src="https://embed.runkit.com"></script>
+  <style id="style-switcher-styles">
+    nav {
+        background: #282c34;
+    }
+    .hljs {
+        background: #1d2027;
+    }
+    .nav-container > ul > li.active a {
+        color: #dcdcdc;
+    }
+    .nav-container > ul > li.active a:hover {
+        color: #009cdf;
+    }
+    .nav-container > ul > li.active ul {
+        border-color: #009cdf;
+    }
+    h4.name {
+        color: #009cdf;
+    }
+    .params > div > code, .params > div > em {
+        color: #009cdf;
+    }
+    a, a:active {
+        color: #009cdf;
+    }
+    .hljs-doctag, .hljs-keyword, .hljs-formula {
+        color: #009cdf;
+    }
+    nav ul a:hover, nav ul a:active {
+        color: #009cdf;
+    }
+    
+    .header-fixed { display: none }
+    nav { top: 0 }
+    #main { top: 0 }
+    
+  </style>
+</head>
+
+<body>
+  <header class="header-fixed">
+      <h1>
+        <a href="index.html" title="modernTemplate.title">
+            
+                <img alt="JavaScript SDK Docs" src="https://veeplay.github.io/video-api-docs/veeplay_logo.png" />
+            
+            JavaScript SDK Docs
+        </a>
+      </h1>
+      <div class="center-header">
+          <ul>
+            
+          </ul>
+      </div>
+      <div class="right-header">
+           
+      </div>
+  </header>
+
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <nav>
+    <div id="menu-container" class="scrollbar-inner">
+        <div class="nav-container">
+            <h3 id="home-nav">Guides</h3><ul><li>
+      <a href=".">Introduction</a>
+      <ul class="methods">
+        
+        <li data-type="method" id="home-installation-nav">
+          <a href="./#installation">Installation</a>
+        </li>
+        
+        <li data-type="method" id="home-basic-usage-nav">
+          <a href="./#basic-usage">Basic usage</a>
+        </li>
+        
+        <li data-type="method" id="home-classes-and-terminology-nav">
+          <a href="./#classes-and-terminology">Classes and terminology</a>
+        </li>
+        
+        <li data-type="method" id="home-event-tracking-nav">
+          <a href="./#event-tracking">Event tracking</a>
+        </li>
+        
+        <li data-type="method" id="home-interacting-with-the-player-object-nav">
+          <a href="./#interacting-with-the-player-object">Interacting with the player object</a>
+        </li>
+        
+        <li data-type="method" id="home-custom-overlays-nav">
+          <a href="./#custom-overlays">Custom overlays</a>
+        </li>
+        
+        <li data-type="method" id="home-adding-additional-headers-to-hls-http-requests-nav">
+          <a href="./#adding-additional-headers-to-hls-http-requests">Adding additional headers to HLS HTTP requests</a>
+        </li>
+        
+        <li data-type="method" id="home-google-ima-sdk-integration-nav">
+          <a href="./#google-ima-sdk-integration">Google IMA SDK integration</a>
+        </li>
+        
+        <li data-type="method" id="home-using-with-react-nav">
+          <a href="./#using-with-react">Using with React</a>
+        </li>
+        
+      </ul>
+    </li></ul><h3>Classes</h3><ul><li id="MediaBuilder-nav"><a href="MediaBuilder.html">MediaBuilder</a><ul class='methods'><li data-type="method" id="MediaBuilder-overlayFromJSON-nav"><a href="MediaBuilder.html#.overlayFromJSON">overlayFromJSON</a></li><li data-type="method" id="MediaBuilder-unitFromJSON-nav"><a href="MediaBuilder.html#.unitFromJSON">unitFromJSON</a></li><li data-type="method" id="MediaBuilder-configureFromJSON-nav"><a href="MediaBuilder.html#configureFromJSON">configureFromJSON</a></li><li data-type="method" id="MediaBuilder-configureFromURL-nav"><a href="MediaBuilder.html#configureFromURL">configureFromURL</a></li><li data-type="method" id="MediaBuilder-mediaUnits-nav"><a href="MediaBuilder.html#mediaUnits">mediaUnits</a></li></ul></li><li id="MediaEvent-nav"><a href="MediaEvent.html">MediaEvent</a><ul class='methods'><li data-type="method" id="MediaEvent-onPreload-nav"><a href="MediaEvent.html#onPreload">onPreload</a></li><li data-type="method" id="MediaEvent-onTrigger-nav"><a href="MediaEvent.html#onTrigger">onTrigger</a></li></ul></li><li id="MediaOverlay-nav"><a href="MediaOverlay.html">MediaOverlay</a></li><li id="MediaPlayer-nav"><a href="MediaPlayer.html">MediaPlayer</a><ul class='methods'><li data-type="method" id="MediaPlayer-addEvents-nav"><a href="MediaPlayer.html#addEvents">addEvents</a></li><li data-type="method" id="MediaPlayer-addOverlays-nav"><a href="MediaPlayer.html#addOverlays">addOverlays</a></li><li data-type="method" id="MediaPlayer-audioTracks-nav"><a href="MediaPlayer.html#audioTracks">audioTracks</a></li><li data-type="method" id="MediaPlayer-currentPlaybackTime-nav"><a href="MediaPlayer.html#currentPlaybackTime">currentPlaybackTime</a></li><li data-type="method" id="MediaPlayer-duration-nav"><a href="MediaPlayer.html#duration">duration</a></li><li data-type="method" id="MediaPlayer-enterFullscreen-nav"><a href="MediaPlayer.html#enterFullscreen">enterFullscreen</a></li><li data-type="method" id="MediaPlayer-exitFullscreen-nav"><a href="MediaPlayer.html#exitFullscreen">exitFullscreen</a></li><li data-type="method" id="MediaPlayer-getEventTracker-nav"><a href="MediaPlayer.html#getEventTracker">getEventTracker</a></li><li data-type="method" id="MediaPlayer-getMute-nav"><a href="MediaPlayer.html#getMute">getMute</a></li><li data-type="method" id="MediaPlayer-getVolume-nav"><a href="MediaPlayer.html#getVolume">getVolume</a></li><li data-type="method" id="MediaPlayer-hideActivityIndicator-nav"><a href="MediaPlayer.html#hideActivityIndicator">hideActivityIndicator</a></li><li data-type="method" id="MediaPlayer-insertMediaUnits-nav"><a href="MediaPlayer.html#insertMediaUnits">insertMediaUnits</a></li><li data-type="method" id="MediaPlayer-interrupt-nav"><a href="MediaPlayer.html#interrupt">interrupt</a></li><li data-type="method" id="MediaPlayer-isStreamingLive-nav"><a href="MediaPlayer.html#isStreamingLive">isStreamingLive</a></li><li data-type="method" id="MediaPlayer-next-nav"><a href="MediaPlayer.html#next">next</a></li><li data-type="method" id="MediaPlayer-pause-nav"><a href="MediaPlayer.html#pause">pause</a></li><li data-type="method" id="MediaPlayer-play-nav"><a href="MediaPlayer.html#play">play</a></li><li data-type="method" id="MediaPlayer-playableDuration-nav"><a href="MediaPlayer.html#playableDuration">playableDuration</a></li><li data-type="method" id="MediaPlayer-playbackState-nav"><a href="MediaPlayer.html#playbackState">playbackState</a></li><li data-type="method" id="MediaPlayer-playMediaUnits-nav"><a href="MediaPlayer.html#playMediaUnits">playMediaUnits</a></li><li data-type="method" id="MediaPlayer-previous-nav"><a href="MediaPlayer.html#previous">previous</a></li><li data-type="method" id="MediaPlayer-setCurrentPlaybackTime-nav"><a href="MediaPlayer.html#setCurrentPlaybackTime">setCurrentPlaybackTime</a></li><li data-type="method" id="MediaPlayer-setCurrentURL-nav"><a href="MediaPlayer.html#setCurrentURL">setCurrentURL</a></li><li data-type="method" id="MediaPlayer-setMediaUnits-nav"><a href="MediaPlayer.html#setMediaUnits">setMediaUnits</a></li><li data-type="method" id="MediaPlayer-setMute-nav"><a href="MediaPlayer.html#setMute">setMute</a></li><li data-type="method" id="MediaPlayer-setVolume-nav"><a href="MediaPlayer.html#setVolume">setVolume</a></li><li data-type="method" id="MediaPlayer-showActivityIndicator-nav"><a href="MediaPlayer.html#showActivityIndicator">showActivityIndicator</a></li><li data-type="method" id="MediaPlayer-skip-nav"><a href="MediaPlayer.html#skip">skip</a></li><li data-type="method" id="MediaPlayer-stop-nav"><a href="MediaPlayer.html#stop">stop</a></li><li data-type="method" id="MediaPlayer-toggleFullscreen-nav"><a href="MediaPlayer.html#toggleFullscreen">toggleFullscreen</a></li></ul></li><li id="MediaUnit-nav"><a href="MediaUnit.html">MediaUnit</a><ul class='methods'><li data-type="method" id="MediaUnit-addEvent-nav"><a href="MediaUnit.html#addEvent">addEvent</a></li><li data-type="method" id="MediaUnit-addEvents-nav"><a href="MediaUnit.html#addEvents">addEvents</a></li><li data-type="method" id="MediaUnit-addOverlay-nav"><a href="MediaUnit.html#addOverlay">addOverlay</a></li><li data-type="method" id="MediaUnit-addOverlays-nav"><a href="MediaUnit.html#addOverlays">addOverlays</a></li><li data-type="method" id="MediaUnit-clearEvents-nav"><a href="MediaUnit.html#clearEvents">clearEvents</a></li><li data-type="method" id="MediaUnit-clearOverlays-nav"><a href="MediaUnit.html#clearOverlays">clearOverlays</a></li></ul></li><li id="OverlayController-nav"><a href="OverlayController.html">OverlayController</a><ul class='methods'><li data-type="method" id="OverlayController-load-nav"><a href="OverlayController.html#load">load</a></li><li data-type="method" id="OverlayController-overlayWillBeRemoved-nav"><a href="OverlayController.html#overlayWillBeRemoved">overlayWillBeRemoved</a></li><li data-type="method" id="OverlayController-preload-nav"><a href="OverlayController.html#preload">preload</a></li><li data-type="method" id="OverlayController-update-nav"><a href="OverlayController.html#update">update</a></li></ul></li><li id="UnitManager-nav"><a href="UnitManager.html">UnitManager</a><ul class='methods'><li data-type="method" id="UnitManager-duration-nav"><a href="UnitManager.html#duration">duration</a></li><li data-type="method" id="UnitManager-end-nav"><a href="UnitManager.html#end">end</a></li><li data-type="method" id="UnitManager-run-nav"><a href="UnitManager.html#run">run</a></li><li data-type="method" id="UnitManager-update-nav"><a href="UnitManager.html#update">update</a></li></ul></li></ul><h3 id="global-nav">Global</h3><ul><li class="global-entity"><a href="global.html#CONTROLS_DISPLAY">CONTROLS_DISPLAY</a></li><li class="global-entity"><a href="global.html#EVENT_STATE">EVENT_STATE</a></li><li class="global-entity"><a href="global.html#EVENTS">EVENTS</a></li><li class="global-entity"><a href="global.html#FINISH_REASON">FINISH_REASON</a></li><li class="global-entity"><a href="global.html#NOTIFICATIONS">NOTIFICATIONS</a></li><li class="global-entity"><a href="global.html#OVERLAY_POSITION">OVERLAY_POSITION</a></li><li class="global-entity"><a href="global.html#OVERLAY_TYPE">OVERLAY_TYPE</a></li><li class="global-entity"><a href="global.html#PLAYBACK_STATE">PLAYBACK_STATE</a></li></ul>
+        </div>
+    </div>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        Global
+      </h1>
+    
+
+    
+
+<section id="section-container">
+  <article>
+    <div class="container-overview">
+      
+
+      
+        
+
+        
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+        
+      
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+
+<h4 class="name" id="CONTROLS_DISPLAY">
+  <span class="type-signature">(constant) </span>CONTROLS_DISPLAY<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Position and visibility for the player control bar.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>BOTTOM</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Display the control bar at the bottom of the player</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TOP</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Display the control bar at the top of the player</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>NONE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Don't display the control bar</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>unit.controlsDisplay = CONTROLS_DISPLAY.NONE;</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="EVENT_STATE">
+  <span class="type-signature">(constant) </span>EVENT_STATE<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Event lifecycle state.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>UNLOADED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Event hasn't yet been loaded</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PRELOADING</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Event is preloading</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PRELOADED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Event has successfully preloaded</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>FAILED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Event has failed rendering</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TRIGGERED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Event has started</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>FINISHED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Event has finished</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="EVENTS">
+  <span class="type-signature">(constant) </span>EVENTS<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Types of events that can be tracked to web services.
+Provide these as keys to the <code>MediaUnit.trackingURLs</code> object.
+Provide the URL to be retrieved as the corresponding value.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>LAUNCH</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked on unit startup</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>FINISH</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked on unit finish</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>EXIT_FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked when exiting fullscreen mode</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked when entering fullscreen mode</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>IMPRESSION</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit starts playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>IMPRESSION_VIEWABLE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked if the impression is viewable</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>IMPRESSION_NOT_VIEWABLE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked if the impression is not viewable</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>IMPRESSION_UNDETERMINED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked if the impression viewability is undetermined</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CREATIVE_VIEW</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit starts playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>START</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit starts playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>RESUME</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit resumes playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PAUSE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit pauses</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>REWIND</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit starts rewinding</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>FORWARD</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit starts seeking forward</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>MUTE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit gets muted</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>UNMUTE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit gets unmuted</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>ERROR</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked on error</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>COMPLETE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit finishes playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CLOSE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit finishes playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CLOSE_LINEAR</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit finishes playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SKIP</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit is skipped</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CLICK</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the unit is clicked/tapped</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>ICON_VIEW</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once the industry icon is displayed</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>EXPAND</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once an overlay ad is expanded</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>COLLAPSE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked once an overlay ad is collapsed</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>UPDATE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked every second, while the player is playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SEEKED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked after seek</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>POSITION</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked on SSAI ad quartile tracking</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SSAI_AD_STARTED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked on SSAI ad started</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SSAI_AD_ENDED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Invoked on SSAI ad ended</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>const unit = new MediaUnit(videoUrl);
+unit.trackingURLs = {
+   [EVENTS.LAUNCH]: 'https://analyticsservice.com/pixel',
+   [EVENTS.COMPLETE]: 'https://analyticsservice.com/pixel',
+};</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="FINISH_REASON">
+  <span class="type-signature">(constant) </span>FINISH_REASON<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Represents the reason for a <code>NOTIFICATIONS.UNIT_FINISHED</code> event.
+The value is set on the <code>reason</code> key of the event metadata object.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>PLAYBACK_ENDED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Playback stopped because the unit ended</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYBACK_ERROR</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Playback stopped because of an error</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>USER_EXITED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Playback was stopped by the user</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>const tracker = player.getEventTracker();
+tracker.emitter.on(NOTIFICATIONS.UNIT_FINISHED, ({ reason, unit }) => {
+   console.log(`Unit ${unit.url} finished with reason ${reason}`);
+   if (reason === FINISH_REASON.USER_EXITED) {
+     console.log('User exited');
+   }
+});</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="NOTIFICATIONS">
+  <span class="type-signature">(constant) </span>NOTIFICATIONS<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Types of notifications that are emitted by the player.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>TOGGLE_FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when fullscreen mode is toggled</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>ENTER_FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when fullscreen mode is entered</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>EXIT_FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when fullscreen mode is exited</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CONTROLS_DISPLAYED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when the control bar is displayed</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CONTROLS_HIDDEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when the control bar is hidden</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>UNIT_FINISHED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when a unit finishes playback</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>ERROR</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted on error</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TRACKED_EVENT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when an event is tracked</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>INVALID_LICENSE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when the player license is invalid</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYBACK_STATE_CHANGED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when playback state changes</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>LOAD_STATE_CHANGED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when unit load state changes</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>DURATION_AVAILABLE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when unit duration becomes available</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>VOLUME_CHANGED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when volume changes</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYLIST_FINISH</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when a playlist finishes playback</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYER_UPDATE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted every second while the player operates</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYER_MOUSE_MOVE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted once the mouse moves on top of the player area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYER_TAPPED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Emitted when the player area is clicked/tapped</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>const tracker = player.getEventTracker();
+tracker.emitter.on(NOTIFICATIONS.ENTER_FULLSCREEN, () => {
+   console.log('Fullscreen entered');
+});</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="OVERLAY_POSITION">
+  <span class="type-signature">(constant) </span>OVERLAY_POSITION<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Describes the position an overlay can take in the player view area.
+Use this to set or read <code>MediaOverlay.position</code>.
+When configuring from JSON, use readable string constants instead -
+see <a href="https://veeplay.github.io/json-docs/#/p/root.properties.content.items.properties.overlays.items.properties.position">the docs</a>.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be displayed in the center of the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>BOTTOM_LEFT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned bottom-left with the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>BOTTOM_RIGHT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned bottom-right with the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TOP_LEFT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned top-left with the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TOP_RIGHT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned top-right with the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TOP</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned with the top player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>BOTTOM</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned with the bottom player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>LEFT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned with the left of the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>RIGHT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay will be aligned with the right of the player view area</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>UNSPECIFIED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Overlay position is unspecified</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>const overlay = new MediaOverlay(type);
+overlay.position = OVERLAY_POSITION.BOTTOM_LEFT;</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="OVERLAY_TYPE">
+  <span class="type-signature">(constant) </span>OVERLAY_TYPE<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Built-in overlay types</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>IMAGE</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Image overlay</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>HTML</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Text overlay</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>BUTTON</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Button overlay</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>TEXT</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Text overlay</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SKIP</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Internal</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>FULLSCREEN</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Internal</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>CONTROLS</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Internal</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SUBTITLES</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Internal</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SSAI</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Internal</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>const overlay = new MediaOverlay(OVERLAY_TYPE.IMAGE)</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="PLAYBACK_STATE">
+  <span class="type-signature">(constant) </span>PLAYBACK_STATE<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>Represents the current playback state for a player instance.</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>STOPPED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Player is currently stopped</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PLAYING</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Player is currently playing</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>PAUSED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Player is currently paused</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>INTERRUPTED</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Player is currently interrupted</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>SEEKING</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Player is currently seeking</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>if (player.playbackState() === PLAYBACK_STATE.PAUSED) {
+   player.play();
+}</code></pre>
+
+
+
+
+          
+        
+    
+
+    
+
+    
+
+    
+  </article>
+</section>
+
+
+
+
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+  </footer>
+
+    
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+  <script src="scripts/scrollbar.js"></script>
+  <script src="scripts/collapsible.js"></script>
+  <script src="scripts/jquery.selectric.min.js"></script>
+  <script src="scripts/clipboard.min.js"></script>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  
+  <script>
+      $(function () {
+          $('#menu-container').scrollbar();
+
+          
+      });
+    </script>
+</body>
+</html>

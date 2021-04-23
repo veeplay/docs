@@ -1,0 +1,255 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #0095ff;
+  --ifm-color-primary-dark: #0076DC;
+  --ifm-color-primary-darker: #0059BA;
+  --ifm-color-primary-darkest: #003E99;
+  --ifm-color-primary-light: #00B8FF;
+  --ifm-color-primary-lighter: #00D3EB;
+  --ifm-color-primary-lightest: #CFEBE8;
+  --ifm-code-font-size: 95%;
+  --ifm-heading-color: #393939;
+  --ifm-font-color-base: #333;
+  --ifm-menu-color: #bebebe;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.navbar__brand:hover {
+  color: white;
+}
+
+.alert {
+  padding: 15px;
+  margin: 20px 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.alert .alert-link {
+  font-weight: bold;
+}
+
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+
+.alert > p + p {
+  margin-top: 5px;
+}
+
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 35px;
+}
+
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+
+.alert-success .alert-link {
+  color: #2b542c;
+}
+
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+}
+
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+
+.alert-info .alert-link {
+  color: #245269;
+}
+
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+
+.alert-warning .alert-link {
+  color: #66512c;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+
+.alert-danger .alert-link {
+  color: #843534;
+}
+
+.redocusaurus .menu-content {
+  width: 310px;
+  background: #282c34;
+  padding-left: var(--ifm-menu-link-padding-horizontal);
+  padding-top: 0.25rem;
+}
+
+.redocusaurus .menu-content li span {
+  color: #bebebe;
+}
+
+.redocusaurus .menu-content li span:hover {
+ color: var(--ifm-color-primary);
+}
+
+.redocusaurus .menu-content ul>li>label {
+  padding: calc(var(--ifm-menu-link-padding-vertical) + 0.25rem) calc(var(--ifm-menu-link-padding-horizontal) + 1.25rem) calc(var(--ifm-menu-link-padding-vertical) + 0.25rem) var(--ifm-menu-link-padding-horizontal);
+    position: relative;
+}
+
+.redocusaurus .menu-content ul>li>ul>li>label {
+  padding: 0.25rem 30px 0.25rem 50px;
+}
+
+.redocusaurus .menu-content li label:hover, .redocusaurus .menu-content li label.active {
+  background: #303846;
+}
+
+.redocusaurus .menu-content li label.active span {
+  color: var(--ifm-color-primary);
+}
+
+.redocusaurus .menu-content>div>div>a {
+  color: #888 !important;
+}
+
+.redocusaurus .scrollbar-container>div>a {
+  border-top: 0;
+}
+
+.redocusaurus .api-info h1 {
+  font-size: var(--ifm-h1-font-size);
+}
+
+div[class^="sidebar_"] .menu {
+  background: #282c34;
+}
+
+div[class^="sidebar_"] .menu .menu__link {
+  font-weight: normal;
+}
+
+#ios-sdk-content header, #ios-sdk-content .breadcrumbs {
+  display: none;
+}
+
+#ios-sdk-content .footer {
+  text-align: center;
+}
+
+#ios-sdk-content .footer p:first-child {
+  display: none;
+}
+
+#ios-sdk-content .navigation {
+  background-color: #282c34;
+}
+
+#ios-sdk-content .nav-group-name-link {
+  color: var(--ifm-menu-color);
+  padding: 20px 0;
+  display: block;
+}
+
+#ios-sdk-content .nav-group-tasks {
+  margin: 0;
+}
+
+#ios-sdk-content .nav-group-name {
+  padding-left: 30px;
+  border-bottom: 0;
+}
+
+#ios-sdk-content .nav-group-task-link {
+  font-family: 'bt_mono', monospace;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 9px;
+  color: var(--ifm-menu-color);
+  display: block;
+}
+
+#ios-sdk-content .navigation a {
+  text-decoration: none;
+}
+
+#ios-sdk-content .navigation a:hover {
+ color: var(--ifm-color-primary);
+}
+
+#ios-sdk-content .section {
+  padding: 0 50px;
+}
+
+#ios-sdk-content .item code {
+  background-color: white;
+  padding: 0;
+}
+
+#ios-sdk-content .height-container section {
+  padding-top: 20px;
+}
+
+#js-sdk-content #main section {
+  max-width: 834px;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
+#android-sdk-content {
+  height: calc(100vh - var(--ifm-navbar-height));
+}
+
+#android-sdk-content iframe {
+  width: 100%;
+  height: 100%;
+}

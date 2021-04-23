@@ -1,0 +1,196 @@
+.json-docs .detailsBar {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.json-docs .detailsHeaders {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 60px;
+}
+
+.json-docs .docsSmallHeader {
+  font: Regular 13px/16px Open Sans;
+  letter-spacing: 0.13px;
+  color: #7E7E7E;
+  text-transform: uppercase;
+}
+
+.json-docs .docsLargeHeader {
+  text-align: left;
+  font: Bold 28px/32px Open Sans;
+  letter-spacing: 0.28px;
+  color: #1D1D1D;
+  margin-top: 10px;
+}
+
+.json-docs .optionsLabel {
+  text-align: left;
+  font: Regular 13px/18px Open Sans;
+  letter-spacing: 0px;
+  color: #707070;
+  text-transform: uppercase;
+}
+
+.json-docs .docsPlatformButton {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.json-docs .docsPlatformHtml {
+  background: url(../../static/img/json-configuration/html.svg);
+  background-position-x: 60px;
+}
+
+.json-docs .docsPlatformHtml.selected {
+  border-color: #FA924D;
+  background-position-x: 0px;
+}
+
+.json-docs .docsPlatformIos {
+  background: url(../../static/img/json-configuration/ios.svg);
+  background-position-x: 60px;
+}
+
+.json-docs .docsPlatformIos.selected {
+  border-color: #8E8E8E;
+  background-position-x: 0px;
+}
+
+.json-docs .docsPlatformAndroid {
+  background: url(../../static/img/json-configuration/android.svg);
+  background-position-x: 60px;
+}
+
+.json-docs .docsPlatformAndroid.selected {
+  border-color: #A3D36D;
+  background-position-x: 0px;
+}
+
+.json-docs .jsonContainer {
+  padding: 40px;
+  width: 800px;
+  font: 400 14px/21px Source Code Pro;
+  letter-spacing: 0px;
+}
+
+.json-docs .dottedBorderLeft {
+  border-left: 1px dotted #CCCCCC;
+  padding: 15px 0 15px 20px;
+}
+
+.json-docs .separator {
+  border-bottom: 1px dotted #CCCCCC;
+  margin-bottom: 15px;
+}
+
+.json-docs .bold {
+  font-weight: 600;
+  color: #5B6064;
+}
+
+.json-docs .title {
+  cursor: pointer;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.json-docs .description {
+  color: #7E7E7E;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.json-docs .availability {
+  display: flex;
+}
+
+.json-docs .htmlIcon {
+  background: url(../../static/img/json-configuration/htmlSmall.svg);
+  width: 27px;
+  height: 36px;
+  margin-left: 15px;
+}
+
+.json-docs .iosIcon {
+  background: url(../../static/img/json-configuration/iosSmall.svg);
+  width: 27px;
+  height: 36px;
+  margin-left: 15px;
+}
+
+.json-docs .androidIcon {
+  background: url(../../static/img/json-configuration/androidSmall.svg);
+  width: 27px;
+  height: 36px;
+  margin-left: 15px;
+}
+
+.json-docs .purple {
+  color: #8721E1;
+}
+
+.json-docs .green {
+  color: #0A840B;
+}
+
+.json-docs .brown {
+  color: #AA6655;
+}
+
+.json-docs .blue {
+  color: #2027FF;
+}
+
+.json-docs .yellow {
+  color: #CDAC08;
+}
+
+.json-docs .highlighted {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000000F;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 15px 0;
+}
+
+.json-docs .anchor {
+  width: 21px;
+  height: 21px;
+  background: url(../../static/img/json-configuration/link.svg);
+  margin-left: 15px;
+  display: none;
+  position: relative;
+  top: 0;
+}
+
+.json-docs .anchor:hover {
+  background-position-x: 24px;
+}
+
+.json-docs .title:hover .anchor {
+  display: block;
+}
+
+.json-docs .copyConfirmation {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 134px;
+  height: 40px;
+  background: #0095FF 110px 13px no-repeat padding-box;
+  border-radius: 6px;
+  font: 40 14px/21px Open Sans;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  line-height: 40px;
+  padding-left: 15px;
+  background-image: url(../../static/img/json-configuration/check.svg);
+}

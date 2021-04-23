@@ -1,0 +1,524 @@
+---
+openapi: 3.0.0
+info:
+  title: Veeplay Video API Docs
+  x-logo:
+    url: veeplay_logo.png
+    altText: Veeplay Video API
+  description: |
+    # Introduction
+    The Veeplay Video API makes media transcoding and cross-device delivery easy for developers looking to integrate video into their apps.
+    Simply provide a mezzanine input of your video, and Veeplay will create HLS and DASH renderings ready to play on any device, delivered via a global CDN.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      All API calls in this document should be performed against our production endpoint: <strong><code>https://panel.veeplay.com/stream/</code></strong>
+    </div>
+
+    # Authentication
+    To access the API, first sign up for an account at [panel.veeplay.com](https://panel.veeplay.com). A trial license will be automatically attached to your account, under the "Licenses" menu. Attach a new API application to your trial license by pressing the blue plus button, then selecting the API option. An API key will be automatically generated - use that to submit trial calls to the API.
+
+    To use your API key, send it together with your request as the `X-Api-Key` header.
+
+    ```bash
+    curl --location --request POST 'https://panel.veeplay.com/stream/assets' \
+    --header 'X-Api-Key: YOUR_API_KEY' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "input_url": "https://ia800209.us.archive.org/20/items/ElephantsDream/ed_hd.mp4",
+        "normalize_audio": false,
+        "metadata": {
+            "title": "Elephant'\''s Dream"
+        },
+        "clip": {
+            "end": "00:00:30:00"
+        }
+    }'
+    ```
+  
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      Trial assets are clipped to the first 10 seconds of the original input video.
+    </div>
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      <a class="alert-link" href="mailto:office@veeplay.com">Get in touch</a> with us to get a production license and API key.
+    </div>
+
+    # Rate Limits
+
+    Getting a `403 Forbidden` response from the Veeplay API? That means you've exceeded the rate limits we enforce by default, and you should try again in a second.
+
+    - The create asset endpoint is limited to one request per second.
+    - Other endpoints are limited to five requests per second.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      <a class="alert-link" href="mailto:office@veeplay.com">Get in touch</a> if your app needs more requests per second.
+    </div>
+
+    # Webhooks
+    Use webhooks to have your application notified on events in the video asset lifecycle. We will `POST` a request to an endpoint of your choice, allowing you to track asset ingestion status for every created video asset.
+
+    To save the endpoint URL, go to your [Veeplay Admin Panel](https://panel.veeplay.com), under "License", then update and save the "Webhook" field under your streaming app, just below your API key.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      To acknowledge the webhook, respond with a 2XX status to the request. Failed requests will be re-attempted five times before being dropped.
+    </div>
+
+    ## Sample webhook body
+
+    ```json
+    {
+      "event_name": "asset_updated",
+      "status": "QUEUED",
+      "asset_id": "90971b23-08c5-4185-8f8e-4ab79587431e"
+    }
+    ```
+
+    **Structure**
+    - `event_name`: one of `asset_created`, `asset_updated`, or `asset_destroyed`
+    - `status`: one of `CREATED`, `QUEUED`, `SUBMITTED`, `PROGRESSING`, `COMPLETE`, `ERROR`
+    - `asset_id`: the asset id of the referenced video asset
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      Asset details are not included in the webhook body. To retrieve complete asset details, use the <a href="#tag/Video-Assets/paths/~1assets~1{assetId}/get">get asset by id endpoint</a>.
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      For some statuses, expect to receive multiple `asset_updated` events.
+    </div>
+  contact:
+    email: office@veeplay.com
+  license:
+    name: Commercial
+  version: 1.0.0
+servers:
+- url: https://panel.veeplay.com/stream
+  description: Production Server
+tags:
+- name: Video Assets
+  description: |
+    Use these endpoints to control media ingestion and manipulate assets.
+
+    An asset represents a media file input that has been ingested, processed and made ready for delivery by Veeplay.
+
+    ## Supported Inputs
+    The following video codecs are supported for input:
+    - No container: DV/DVCPRO, AVC (H.264), HEVC (H.265), MPEG-1, MPEG-2
+    - AVI: Uncompressed, Canopus HQ, DivX/Xvid, DV/DVCPRO
+    - Flash: AVC (H.264), Flash 9 File, H.263
+    - Matroska: AVC (H.264), PCM, MPEG-2, MPEG-4 part 2, VC-1
+    - MPEG-PS
+    - MPEG-TS: AVC (H.264), HEVC (H.265), MPEG-2, VC-1
+    - MPEG-1, MPEG-2
+    - MXF: Uncompressed, Apple ProRes (supported types), AVC Intra 50/100, VC-3, DV/DVCPRO, DV25, DV50, DVCPro HD, AVC (H.264), JPEG 2000 (J2K), MPEG-2, Panasonic P2, SonyXDCam, SonyXDCam MPEG-4 Proxy
+    - QuickTime: Uncompressed, Apple ProRes (supported types), AVC Intra 50/100, DivX/Xvid, DV/DVCPRO, H.261, H.262, H.263, AVC (H.264), HEVC (H.265), JPEG 2000 (J2K), MJPEG, MPEG-2, MPEG-4 part 2, QuickTime Animation (RLE)
+    - WebM: VP8, VP9
+    - WMV or ASF: VC-1
+
+    The following audio codecs are supported for input:
+    - PCM
+    - AVI: Dolby Digital (AC3), Dolby Digital Plus (EAC3), Dolby E frames carried in PCM streams, MP3, MPEG Audio, PCM
+    - Flash: AAC
+    - IMF: PCM
+    - Matroska: AAC, Dolby Digital (AC3), Dolby Digital Plus (EAC3), Opus, WMA, WMA2
+    - MPEG-PS: MPEG audio
+    - MPEG-TS: AAC, AIFF, Dolby Digital (AC3), Dolby Digital Plus (EAC3), Dolby E frames carried in PCM streams, MPEG Audio, PCM, WMA, WMA2
+    - MPEG-1: AAC, AIFF, Dolby Digital (AC3), Dolby Digital Plus (EAC3), MPEG, Audio PCM
+    - MP3
+    - MPEG-4: AAC, Dolby Digital (AC3), Dolby Digital Plus (EAC3), PCM, WMA, WMA2
+    - MXF: AAC, AIFF, Dolby E frames carried in PCM streams, MPEG Audio, PCM
+    - QuickTime: AAC, MP3, PCM
+    - WAV: PCM
+    - WebM: Opus, Vorbis
+    - WMV or ASF: WMA, WMA2
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      Output encoding quality and variants are constrained by the quality and dimensions of the input you provide.
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      Your master input will not be saved to Veeplay storage. After ingestion, we will not need to access your master input again.
+    </div>
+
+    ## Smart Adaptive Output
+    All assets ingested by the Veeplay API are made available to a wide range of devices for optimized playback. HLS and DASH playlists are generated for every ingested asset, enabling developers to support a plethora of devices and players with minimal effort.
+
+    HLS is more widely supported than DASH, and is compatible with:
+    - mobile iOS and Android devices
+    - Linux, Microsoft and macOS devices
+    - most web browsers, like Chrome, Safari, Firefox, and Edge
+    - set-top boxes like Roku & smart TVs
+
+    DASH is not supported by Safari, but is compatible with:
+    - Android devices (native support, recommended)
+    - LG, Samsung, Panasonic, Philips, and Sony TVs
+    - Chromecast
+    - web browsers, implemented via Media Source Extensions (MSEs) and Javascript
+
+    All assets are encoded using CMAF with H264 video and AAC audio. CMAF is a modern, HTTP-based standard that simplifies the delivery of streaming media by using a common media format for video streams, reducing costs, complexity, and latency. This allows us to maximise support coverage while also keeping encoding and delivery costs low.
+
+    [Read more about the CMAF format here](https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming).
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      The number of renditions in the playlists, as well as the resolution and the bitrate for each rendition, are not fixed, but determined automatically by Veeplay based on input characteristics.
+    </div>
+
+    Upon ingestion, Veeplay will analyze the input file and then automatically generate multiple video renditions with different bitrates and resolutions, in order to mazimize the video quality that the end viewer will see. For example, if the input is a fast-moving, visually complex asset, Veeplay might generate two 720p outputs with different bitrates that will feel very different quality-wise when viewed.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      The rendition bitrate itself is variable and depends on video segment complexity. This allows us to further optimize asset size and delivery.
+    </div>
+
+    ## Download & Offline View
+    All assets ingested by the Veeplay API are also converted into a series of MP4 renditions. This is useful if you plan to support downloads or offline viewing, or if you need a simple, straightforward version that you can use, for example, for Open Graph tags.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      By default, three MP4 renditions are generated: low, medium, and high quality. <a class="alert-link" href="mailto:office@veeplay.com">Get in touch</a> with us if you need more.
+    </div>
+
+    ## Audio Normalization
+    Turn on audio normalization to bring audio loudness levels of your input to a standard target level during encoding. This is useful if your input audio loudness varies noticeably at different moments or between scenes.
+
+    To turn on, set `audio_normalization: true` in the order object you provide to the asset create endpoint.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      The algorithm used for audio normalization is <a href="https://www.itu.int/rec/R-REC-BS.1770" target="_blank">ITU-R BS.1770-1</a>, and the target loudness value is -24 LKFS.
+    </div>
+
+    ## Image Overlays
+    When creating a new asset with the Veeplay Video API, you can provide a series of image URLs to overlay on top of your input video during the encoding process. A series of configuration options are available, including:
+    - Specifying a start time and a duration;
+    - Defining horizontal and vertical alignments and margins for the overlay;
+    - Setting the overlay opacity, as well as fade-in and fade-out durations.
+
+    To use this feature, populate the `overlays` array in the order object you provide to the asset create endpoint.
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      You need to provide a publically accessible URL to a PNG image to use as the overlay.
+    </div>
+
+    ## Asset Structure
+    Each asset has the following properties:
+      - `asset_id` - use this to generate adaptive bitrate and MP4 links for playback.
+      - `order` - the order options originally used to create the asset.
+      - `status`, one of:
+        - `CREATED`
+        - `QUEUED`
+        - `SUBMITTED`
+        - `PROGRESSING`
+        - `COMPLETE`
+        - `ERROR`
+      - `output`, a collection of transcoded rendition urls.
+      - `error`, populated with an error description in case the asset status equals `ERROR`.
+      - `metadata`, an object that can be populated with any key-value data attached to the asset.
+      - `created_at`, the datetime of asset creation.
+      - `updated_at`, the datetime of the asset's last update.
+paths:
+  /assets:
+    get:
+      tags:
+      - Video Assets
+      summary: List assets
+      description: "Lists all available assets. \n"
+      operationId: listAssets
+      responses:
+        "200":
+          description: Array of all available assets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+    post:
+      tags:
+      - Video Assets
+      summary: Create a new asset
+      description: |
+        Ingest a new asset, transcode it and make it available for distribution.
+      operationId: createAsset
+      requestBody:
+        description: Asset to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetOrder'
+      responses:
+        "200":
+          description: Asset created
+        "400":
+          description: Invalid input
+  /assets/{assetId}:
+    get:
+      tags:
+      - Video Assets
+      summary: Get an asset by id
+      parameters:
+      - name: assetId
+        in: path
+        description: Id of the asset to get
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The requested asset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        "404":
+          description: Asset not found
+    put:
+      tags:
+      - Video Assets
+      summary: Update an asset by id
+      description: |
+        For now, the only updatable field for an asset is `metadata`.
+      parameters:
+      - name: assetId
+        in: path
+        description: Id of the asset to update
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Asset details to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetUpdate'
+      responses:
+        "200":
+          description: The updated asset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        "404":
+          description: Asset not found
+    delete:
+      tags:
+      - Video Assets
+      summary: Delete an asset by id
+      parameters:
+      - name: assetId
+        in: path
+        description: Id of the asset to delete
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Asset removal confirmation
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+        "404":
+          description: Asset not found
+components:
+  schemas:
+    Asset:
+      required:
+      - asset_id
+      - created_at
+      - order
+      - status
+      - updated_at
+      type: object
+      properties:
+        asset_id:
+          type: string
+          description: Use this to generate adaptive bitrate and MP4 links for playback.
+          format: uuid
+          example: 71c404ad-7333-4527-a228-868e014fad41
+        status:
+          type: string
+          description: The current asset ingestion and processing status.
+          example: PROGRESSING
+          enum:
+          - CREATED
+          - QUEUED
+          - SUBMITTED
+          - PROGRESSING
+          - COMPLETE
+          - ERROR
+        order:
+          description: The order options originally used to create the asset.
+          $ref: '#/components/schemas/AssetOrder'
+        error:
+          description: This field is populated with an error description in case the asset status equals `ERROR`.
+          type: string
+        metadata:
+          type: object
+          description: An object that can be populated with any key-value data attached to the asset.
+          example:
+            title: Cool Movie
+        output:
+          type: object
+          description: CDN URLs for transcoded outputs. This becomes available once the asset status is `COMPLETE`
+          properties:
+            hls:
+              type: string
+              description: CDN URL for HLS rendition.
+            dash:
+              type: string
+              description: CDN URL for DASH rendition.
+            mp4_low:
+              type: string
+              description: CDN URL for the MP4 low quality rendition.
+            mp4_medium:
+              type: string
+              description: CDN URL for the MP4 medium quality rendition.
+            mp4_high:
+              type: string
+              description: CDN URL for the MP4 high quality rendition.
+        created_at:
+          type: string
+          description: The datetime of asset creation.
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+        updated_at:
+          type: string
+          description: The datetime of the asset's last update.
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+    AssetOrder:
+      required:
+      - input_url
+      type: object
+      properties:
+        input_url:
+          type: string
+          description: You must provide a URL to the master, high-res, high-quality version of the media to be ingested.
+          example: https://ia800209.us.archive.org/20/items/ElephantsDream/ed_hd.mp4
+        normalize_audio:
+          type: boolean
+          description: Normalize audio using the ITU-R BS.1770-1 algorithm.
+          example: true
+        metadata:
+          type: object
+          description: An object that can be populated with any key-value data.
+          example:
+            title: Cool Movie
+        clip:
+          $ref: '#/components/schemas/AssetOrder_clip'
+        overlays:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetOrder_overlay'
+    AssetUpdate:
+      type: object
+      properties:
+        metadata:
+          type: object
+          example:
+            title: Cool Movie
+    AssetOrder_clip:
+      type: object
+      properties:
+        start:
+          type: string
+          example: 00:00:10:00
+        end:
+          type: string
+          example: 00:00:30:00
+      description: |
+        An object that holds clipping timestamps, in case you want to crop a fragment of the input media.
+        - provide a `start` and/or `stop` key with a string timestamp in the format "HH:MM:SS:FF"
+    AssetOrder_overlay:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://example.com/overlay_image.png
+          description: The URL to a publically accessible PNG image.
+        horizontal_margin:
+          type: integer
+          example: 10
+          description: The horizontal margin size to be left empty when placing the overlay.
+          default: 0
+        vertical_margin:
+          type: integer
+          example: 10
+          description: The vertical margin size to be left empty when placing the overlay.
+          default: 0
+        width:
+          oneOf:
+          - type: string
+          - type: integer
+          example: "20%"
+          description: The desired image width. This is relative to the original video dimensions. Pass the absolute value as an integer, or a percentage of the video width as a string. If setting a width without a height, the height will be automatically calculated to conserve the original image aspect ratio. If both width and height are unspecified, the original image width and height will be used.
+        height:
+          oneOf:
+          - type: string
+          - type: integer
+          example: 50
+          description: The desired image height. This is relative to the original video dimensions. Pass the absolute value as an integer, or a percentage of the video height as a string. If setting a height without a width, the width will be automatically calculated to conserve the original image aspect ratio. If both width and height are unspecified, the original image width and height will be used.
+        horizontal_align:
+          type: string
+          example: "right"
+          default: "right"
+          description: The horizontal image alignment.
+          enum:
+          - "left"
+          - "center"
+          - "right"
+        vertical_align:
+          type: string
+          example: "bottom"
+          default: "bottom"
+          description: The vertical image alignment.
+          enum:
+          - "top"
+          - "center"
+          - "bottom"
+        opacity:
+          type: integer
+          example: 80
+          default: 100
+          description: The overlay opacity percentage, from 0 to 100.
+        start:
+          type: string
+          example: "00:00:00:00"
+          default: "00:00:00:00"
+          description: The overlay on-screen start time.
+        duration:
+          type: integer
+          example: 10000
+          default: 10000
+          description: The overlay on-screen duration in miliseconds.
+        fade_in_duration:
+          type: integer
+          example: 1000
+          default: 0
+          description: The overlay fade-in duration in miliseconds.
+        fade_out_duration:
+          type: integer
+          example: 1000
+          default: 0
+          description: The overlay fade-out duration in miliseconds.
+

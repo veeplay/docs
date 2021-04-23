@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+#root {
+  background-color: #FDFDFD;
+}
+
+.json-docs {
+  width: 1280px;
+  margin: auto;
+}
+
+.Content {
+  padding: 40px;
+}

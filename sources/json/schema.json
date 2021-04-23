@@ -1,0 +1,3183 @@
+{
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the video file to render."
+          },
+          "subtitlesUrl": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of a subtitle file to be used to render subtitles in this content unit. See platform docs for supported formats."
+          },
+          "autoplay": {
+            "type": "boolean",
+            "optional": true,
+            "default": true,
+            "title": "Defines whether the video should autoplay on load."
+          },
+          "scalingMode": {
+            "type": "string",
+            "optional": true,
+            "default": "aspectFit",
+            "enum": [
+              "aspectFit",
+              "aspectFill",
+              "fill",
+              "none"
+            ],
+            "title": "The video clip scaling mode, relative to the player surface.",
+            "platforms": [
+              "html",
+              "ios"
+            ]
+          },
+          "allowPinch": {
+            "type": "boolean",
+            "optional": true,
+            "default": true,
+            "title": "Defines whether the player should allow pinching to toggle fullscreen.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          },
+          "initialPlaybackTime": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The initial playback time for the video, in seconds."
+          },
+          "controls": {
+            "type": "object",
+            "properties": {
+              "position": {
+                "type": "string",
+                "optional": true,
+                "default": "bottom",
+                "enum": [
+                  "top",
+                  "bottom",
+                  "none"
+                ],
+                "title": "Position of the playback controls bar."
+              },
+              "barColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#000000",
+                "title": "Background color of the controls bar."
+              },
+              "barAlpha": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "optional": true,
+                "default": 0.5,
+                "title": "Opacity of the controls bar."
+              },
+              "playedTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ff0000",
+                "title": "The color of the portion of the seek bar that indicates the currently played duration of the movie."
+              },
+              "bufferedTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#aaaaaa",
+                "title": "The color of the portion of the seek bar that indicates the currently buffered duration of the movie."
+              },
+              "emptyTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ffffff",
+                "title": "The color of the portion of the seek bar that indicates the currently unbuffered duration of the movie."
+              },
+              "playImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the play button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+              },
+              "pauseImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the pause button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+              },
+              "fullscreenImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array."
+              },
+              "leaveFullscreenImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the leave fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array.",
+                "platforms": ["html", "ios"]
+              },
+              "backImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the back button image to use in the playback controls bar. Only displayed if 'backButton' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "forwardImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the forward button image to use in the playback controls bar. Only displayed if 'forwardButton' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "seekThumbImage":{
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the seek bar thumb button image, to use in the playback controls bar."
+              },
+              "mutedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the volume muted button image, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeLowImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is low, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeMidImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is medium, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeHighImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is high, to use in the playback controls bar.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "visibleInFullscreenOnly": {
+                "type": "boolean",
+                "optional": true,
+                "default": false,
+                "title": "Defines whether the playback controls bar should only be visible while the player is in fullscreen mode. This is useful if implementing a custom player UX for normal mode.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "autohideDuration": {
+                "type": "number",
+                "optional": true,
+                "default": 5,
+                "title": "The number of seconds the playback controls bar should automatically become hidden after."
+              },
+              "components": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "playback",
+                    "currentTime",
+                    "slider",
+                    "thumbnailSlider",
+                    "totalTime",
+                    "airplay",
+                    "chromecast",
+                    "volume",
+                    "fullscreen",
+                    "backButton",
+                    "forwardButton",
+                    "adMarks",
+                    "pictureInPicture"
+                  ]
+                },
+                "optional": true,
+                "additionalProperties": false,
+                "title": "Defines what controls should be available in the playback controls bar.\nControls available on HTML: \"playback\", \"backButton\", \"currentTime\", \"slider\", \"totalTime\", \"forwardButton\", \"volume\", \"fullscreen\"\nControls available on iOS: \"playback\", \"currentTime\", \"slider\", \"thumbnailSlider\", \"totalTime\", \"airplay\", \"fullscreen\", \"backButton\", \"forwardButton\", \"adMarks\", \"pictureInPicture\"\nControls available on Android: \"playback\", \"currentTime\", \"slider\", \"totalTime\", \"fullscreen\", \"backButton\", \"forwardButton\""
+              },
+              "liveText": {
+                "type": "string",
+                "optional": true,
+                "default": "LIVE",
+                "title": "The text to display instead of the total video duration, for live streams. Only has effect if 'totalTime' is present in the 'fullscreen' array.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "playbackTimeText": {
+                "type": "string",
+                "optional": true,
+                "title": "The text to display instead of the current playback time, for live streams. Only has effect if 'currentTime' is present in the 'fullscreen' array.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "chromecastDisconnectedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of chromecast button image in disconnected state to use in the playback controls bar.",
+                "platforms": ["ios"]
+              },
+              "chromecastConnectedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of chromecast button image in connected state to use in the playback controls bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "updateTimeWhileSeeking": {
+                "type": "boolean",
+                "optional": true,
+                "title": "Enables displaying the seek-to time (instead of the current playback time) when scrubbing the seek bar",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "adMarkColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ffd000",
+                "title": "The color of the ad marks in the playback progress bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "enterPictureInPictureImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "leavePictureInPictureImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the leave PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+                "platforms": [
+                  "ios"
+                ]
+              }
+            },
+            "optional": true,
+            "additionalProperties": false,
+            "title": "Contains configuration settings for the playback controls bar."
+          },
+          "overlays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "title": "The overlay type ('text', 'image' etc.)"
+                },
+                "position": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "bottom",
+                  "enum": [
+                    "top",
+                    "topLeft",
+                    "topRight",
+                    "bottomLeft",
+                    "bottomRight",
+                    "left",
+                    "right",
+                    "fullscreen"
+                  ],
+                  "title": "The position of the overlay relative to the player surface.\nFor iOS, only the following are available: \"top\", \"topLeft\", \"topRight\", \"bottomLeft\", \"bottomRight\", \"fullscreen\""
+                },
+                "width": {
+                  "type": "string",
+                  "optional": true,
+                  "default": 320,
+                  "title": "The width of the overlay. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+                },
+                "height": {
+                  "type": "string",
+                  "optional": true,
+                  "default": 50,
+                  "title": "The height of the overlay. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+                },
+                "fadeIn": {
+                  "type": "number",
+                  "optional": true,
+                  "default": 0.5,
+                  "title": "Duration (in seconds) of the fade-in effect to be applied to the overlay on display and hide.",
+                  "platforms": ["ios", "android"]
+                },
+                "start": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "0",
+                  "title": "A string format describing the time point when the player needs to display the overlay. Possible values are seconds (e.g.: '60') or a percentage relative to the total duration of the parent clip (e.g.: '50%')."
+                },
+                "end": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "100%",
+                  "title": "A string format describing the time point when the player needs to remove the overlay. Possible values are seconds (e.g.: '60') or a percentage relative to the total duration of the parent clip (e.g.: '50%')."
+                },
+                "absoluteX": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The overlay's absolute horizontal offset, relative to the current origin. The current origin is determined by the overlay's 'position' parameter, while the positive direction is always toward the center of the player surface. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+                },
+                "absoluteY": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The overlay's absolute vertical offset, relative to the current origin. The current origin is determined by the overlay's 'position' parameter, while the positive direction is always toward the center of the player surface. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+                },
+                "zIndex": {
+                  "type": "integer",
+                  "optional": true,
+                  "title": "Defines the on-screen view stack order of the overlay.",
+                  "platforms": ["ios"]
+                },
+                "closeButton": {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "string",
+                      "optional": true,
+                      "title": "The URL of the image to be used in place of the standard X symbol for the close button."
+                    },
+                    "size": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": 20,
+                      "title": "The size (in pixels) of the side of the close button square."
+                    },
+                    "backgroundColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "title": "The background color of the close button (e.g. '#000000')."
+                    },
+                    "xColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "title": "The color of the default X symbol for the close button (e.g. '#000000')."
+                    },
+                    "progressColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "default": "#555555",
+                      "title": "The color of the circle arc that indicates time elapsed since the display of the overlay."
+                    },
+                    "trackColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "default": "#aaaaaa",
+                      "title": "The color of the circle that surrounds the X symbol and indicates the total time remaining until the overlay can be closed."
+                    },
+                    "offsetX": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "The horizontal offset (in pixels) of the close button, relative to the top-right corner of the overlay."
+                    },
+                    "offsetY": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "The vertical offset (in pixels) of the close button, relative to the top-right corner of the overlay."
+                    },
+                    "initialAlpha": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "optional": true,
+                      "default": 0.5,
+                      "title": "The initial opacity of the close button, before it becomes activated to touch."
+                    },
+                    "finalAlpha": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "optional": true,
+                      "default": 0.7,
+                      "title": "The final opacity of the close button, after it becomes activated to touch."
+                    },
+                    "show": {
+                      "type": "boolean",
+                      "optional": true,
+                      "default": true,
+                      "title": "Show close button on top of overlay?"
+                    },
+                    "activationOffset": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "Time in seconds before the close button activates."
+                    }
+                  },
+                  "optional": true,
+                  "additionalProperties": false,
+                  "title": "Contains configuration settings for the overlay close button."
+                },
+                "parameters": {
+                  "type": "object",
+                  "optional": true,
+                  "skipHeader": true,
+                  "properties": {
+                    "image": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "title": "The URL of the image to load."
+                        },
+                        "clickThrough": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL that should be loaded on image tap. You can also use the following player commands: appscend://play, appscend://pause, appscend://skip and appscend://fullscreen."
+                        },
+                        "clickTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image is tapped by the user."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image is tapped by the user."
+                        },
+                        "viewTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image is displayed on screen."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image is displayed on screen."
+                        },
+                        "errorTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image cannot be loaded."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image cannot be loaded."
+                        },
+                        "backgroundColor": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 6,
+                          "title": "The background color of the image overlay (e.g. '#000000')."
+                        },
+                        "stretchMode": {
+                          "type": "string",
+                          "optional": true,
+                          "default": "aspectFit",
+                          "enum": [
+                            "aspectFill",
+                            "aspectFit",
+                            "fill",
+                            "center",
+                            "top",
+                            "bottom",
+                            "left",
+                            "right"
+                          ],
+                          "title": "Defines how the image should be stretched within the overlay surface."
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "text": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "title": "MKD::The text to display in the overlay. The following placeholders are accepted:\n\n- *`__remaining__`* will be replaced with the remaining number of seconds for the current video clip being rendered.\n- *`__ad_index__`* will be replaced with the current ad index within the ad break.\n- *`__total_ads__`* will be replaced with the total number of ads within the ad break."
+                        },
+                        "color": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 6,
+                          "default": "#ffffff",
+                          "title": "The color of the text."
+                        },
+                        "font": {
+                          "type": "string",
+                          "title": "The font of the text."
+                        },
+                        "size": {
+                          "type": "integer",
+                          "title": "The size of the text"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "button": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "clickThrough": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL that should be loaded on button click. You can also use the following player commands: appscend://play, appscend://pause, appscend://skip and appscend://fullscreen."
+                        },
+                        "clickTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the button is tapped by the user."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the button is tapped by the user."
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "html": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "HTML code to display in the overlay.\nNOTE: in the HTML player, this config is called \"htmlCode\""
+                        },
+                        "iframe": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL to be used as the source for the iframe loaded in the overlay.\nNOTE: in the HTML player, this config is called \"iframeSource\""
+                        },
+                        "script": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL of the JavaScript file to load in the overlay.\nNOTE: in the HTML player, this config is called \"htmlCode\""
+                        },
+                        "url": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL to load in the overlay."
+                        },
+                        "viewportWidth": {
+                          "type": "integer",
+                          "optional": true,
+                          "title": "The width to be set in the meta viewport tag of the rendered content."
+                        },
+                        "viewportHeight": {
+                          "type": "integer",
+                          "optional": true,
+                          "title": "The height to be set in the meta viewport tag of the rendered content."
+                        },
+                        "errorTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the requested content is unable to load."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the requested content is unable to load."
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "metadata": {
+                  "type": "object",
+                  "optional": true,
+                  "additionalProperties": true,
+                  "title": "Any additional key-value date to expose to overlay controller."
+                },
+                "tracking": {
+                  "type": "object",
+                  "optional": true,
+                  "title": "Tracking URLs the player will ping on prefefined playback time triggers.\nPossible keys for this config: \"firstQuartile\" (same as \"25%\"),\"midpoint\" (same as \"50%\"), \"thirdQuartile\" (same as \"75%\"), \"X%\" or \"XX:XX:XX\".\nEach object value should be an array containing one or more string URLs to be invoked."
+                }
+              },
+              "additionalProperties": false
+            },
+            "optional": true,
+            "additionalProperties": false,
+            "title": "Contains definitions for overlays associated with the current unit."
+          },
+          "manager": {
+            "type": "string",
+            "optional": true,
+            "title": "The string type of the unit manager to use with playback (for DRM, SSAI etc.)"
+          },
+          "renderer": {
+            "type": "string",
+            "optional": true,
+            "title": "The string type of the video renderer to use with playback.",
+            "platforms": [
+              "android"
+            ]
+          },
+          "minimumAdInitialOffset": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum initial offset in seconds, from content start, for ad insertion."
+          },
+          "minimumAdFinalOffset": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum final time in seconds, to content end, free of ad insertion."
+          },
+          "minimumAdSpacing": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum time in seconds between ad insertion."
+          },
+          "seekAdHandling": {
+            "type": "string",
+            "optional": true,
+            "default": "last",
+            "enum": [
+              "last",
+              "first"
+            ],
+            "title": "Which ad break to display when skipping across multiple breaks."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "optional": true,
+            "title": "Any additional key-value date to expose to player plugins."
+          },
+          "tracking": {
+            "type": "object",
+            "optional": true,
+            "title": "Tracking URLs the player will ping on prefefined playback time triggers.\nPossible keys for this config: \"firstQuartile\" (same as \"25%\"),\"midpoint\" (same as \"50%\"), \"thirdQuartile\" (same as \"75%\"), \"X%\" or \"XX:XX:XX\".\nEach object value should be an array containing one or more string URLs to be invoked."
+          },
+          "youtube": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the Youtube video to render.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          },
+          "vimeo": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the Vimeo video to render.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "additionalProperties": false,
+      "title": "Defines the main video content units to playback. Ads will be automatically inserted to this array, as configured using the `ads` dictionary, in the root of the configuration file. The units defined in this array will playback after units defined as `bumpers` and before units defined as `exits`."
+    },
+    "bumpers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the video file to render."
+          },
+          "subtitlesUrl": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of a subtitle file to be used to render subtitles in this content unit. See platform docs for supported formats."
+          },
+          "autoplay": {
+            "type": "boolean",
+            "optional": true,
+            "default": true,
+            "title": "Defines whether the video should autoplay on load."
+          },
+          "scalingMode": {
+            "type": "string",
+            "optional": true,
+            "default": "aspectFit",
+            "enum": [
+              "aspectFit",
+              "aspectFill",
+              "fill",
+              "none"
+            ],
+            "title": "The video clip scaling mode, relative to the player surface.",
+            "platforms": [
+              "html",
+              "ios"
+            ]
+          },
+          "allowPinch": {
+            "type": "boolean",
+            "optional": true,
+            "default": true,
+            "title": "Defines whether the player should allow pinching to toggle fullscreen.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          },
+          "initialPlaybackTime": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The initial playback time for the video, in seconds."
+          },
+          "controls": {
+            "type": "object",
+            "properties": {
+              "position": {
+                "type": "string",
+                "optional": true,
+                "default": "bottom",
+                "enum": [
+                  "top",
+                  "bottom",
+                  "none"
+                ],
+                "title": "Position of the playback controls bar."
+              },
+              "barColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#000000",
+                "title": "Background color of the controls bar."
+              },
+              "barAlpha": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "optional": true,
+                "default": 0.5,
+                "title": "Opacity of the controls bar."
+              },
+              "playedTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ff0000",
+                "title": "The color of the portion of the seek bar that indicates the currently played duration of the movie."
+              },
+              "bufferedTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#aaaaaa",
+                "title": "The color of the portion of the seek bar that indicates the currently buffered duration of the movie."
+              },
+              "emptyTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ffffff",
+                "title": "The color of the portion of the seek bar that indicates the currently unbuffered duration of the movie."
+              },
+              "playImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the play button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+              },
+              "pauseImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the pause button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+              },
+              "fullscreenImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array."
+              },
+              "leaveFullscreenImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the leave fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "backImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the back button image to use in the playback controls bar. Only displayed if 'backButton' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "forwardImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the forward button image to use in the playback controls bar. Only displayed if 'forwardButton' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "seekThumbImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the seek bar thumb button image, to use in the playback controls bar."
+              },
+              "mutedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the volume muted button image, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeLowImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is low, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeMidImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is medium, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeHighImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is high, to use in the playback controls bar.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "visibleInFullscreenOnly": {
+                "type": "boolean",
+                "optional": true,
+                "default": false,
+                "title": "Defines whether the playback controls bar should only be visible while the player is in fullscreen mode. This is useful if implementing a custom player UX for normal mode.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "autohideDuration": {
+                "type": "number",
+                "optional": true,
+                "default": 5,
+                "title": "The number of seconds the playback controls bar should automatically become hidden after."
+              },
+              "components": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "playback",
+                    "currentTime",
+                    "slider",
+                    "thumbnailSlider",
+                    "totalTime",
+                    "airplay",
+                    "chromecast",
+                    "volume",
+                    "fullscreen",
+                    "backButton",
+                    "forwardButton",
+                    "adMarks",
+                    "pictureInPicture"
+                  ]
+                },
+                "optional": true,
+                "additionalProperties": false,
+                "title": "Defines what controls should be available in the playback controls bar.\nControls available on HTML: \"playback\", \"backButton\", \"currentTime\", \"slider\", \"totalTime\", \"forwardButton\", \"volume\", \"fullscreen\"\nControls available on iOS: \"playback\", \"currentTime\", \"slider\", \"thumbnailSlider\", \"totalTime\", \"airplay\", \"fullscreen\", \"backButton\", \"forwardButton\", \"adMarks\", \"pictureInPicture\"\nControls available on Android: \"playback\", \"currentTime\", \"slider\", \"totalTime\", \"fullscreen\", \"backButton\", \"forwardButton\""
+              },
+              "liveText": {
+                "type": "string",
+                "optional": true,
+                "default": "LIVE",
+                "title": "The text to display instead of the total video duration, for live streams. Only has effect if 'totalTime' is present in the 'fullscreen' array.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "playbackTimeText": {
+                "type": "string",
+                "optional": true,
+                "title": "The text to display instead of the current playback time, for live streams. Only has effect if 'currentTime' is present in the 'fullscreen' array.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "chromecastDisconnectedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of chromecast button image in disconnected state to use in the playback controls bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "chromecastConnectedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of chromecast button image in connected state to use in the playback controls bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "updateTimeWhileSeeking": {
+                "type": "boolean",
+                "optional": true,
+                "title": "Enables displaying the seek-to time (instead of the current playback time) when scrubbing the seek bar",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "adMarkColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ffd000",
+                "title": "The color of the ad marks in the playback progress bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "enterPictureInPictureImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "leavePictureInPictureImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the leave PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+                "platforms": [
+                  "ios"
+                ]
+              }
+            },
+            "optional": true,
+            "additionalProperties": false,
+            "title": "Contains configuration settings for the playback controls bar."
+          },
+          "overlays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "title": "The overlay type ('text', 'image' etc.)"
+                },
+                "position": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "bottom",
+                  "enum": [
+                    "top",
+                    "topLeft",
+                    "topRight",
+                    "bottomLeft",
+                    "bottomRight",
+                    "left",
+                    "right",
+                    "fullscreen"
+                  ],
+                  "title": "The position of the overlay relative to the player surface.\nFor iOS, only the following are available: \"top\", \"topLeft\", \"topRight\", \"bottomLeft\", \"bottomRight\", \"fullscreen\""
+                },
+                "width": {
+                  "type": "string",
+                  "optional": true,
+                  "default": 320,
+                  "title": "The width of the overlay. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+                },
+                "height": {
+                  "type": "string",
+                  "optional": true,
+                  "default": 50,
+                  "title": "The height of the overlay. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+                },
+                "fadeIn": {
+                  "type": "number",
+                  "optional": true,
+                  "default": 0.5,
+                  "title": "Duration (in seconds) of the fade-in effect to be applied to the overlay on display and hide.",
+                  "platforms": [
+                    "ios",
+                    "android"
+                  ]
+                },
+                "start": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "0",
+                  "title": "A string format describing the time point when the player needs to display the overlay. Possible values are seconds (e.g.: '60') or a percentage relative to the total duration of the parent clip (e.g.: '50%')."
+                },
+                "end": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "100%",
+                  "title": "A string format describing the time point when the player needs to remove the overlay. Possible values are seconds (e.g.: '60') or a percentage relative to the total duration of the parent clip (e.g.: '50%')."
+                },
+                "absoluteX": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The overlay's absolute horizontal offset, relative to the current origin. The current origin is determined by the overlay's 'position' parameter, while the positive direction is always toward the center of the player surface. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+                },
+                "absoluteY": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The overlay's absolute vertical offset, relative to the current origin. The current origin is determined by the overlay's 'position' parameter, while the positive direction is always toward the center of the player surface. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+                },
+                "zIndex": {
+                  "type": "integer",
+                  "optional": true,
+                  "title": "Defines the on-screen view stack order of the overlay.",
+                  "platforms": [
+                    "ios"
+                  ]
+                },
+                "closeButton": {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "string",
+                      "optional": true,
+                      "title": "The URL of the image to be used in place of the standard X symbol for the close button."
+                    },
+                    "size": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": 20,
+                      "title": "The size (in pixels) of the side of the close button square."
+                    },
+                    "backgroundColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "title": "The background color of the close button (e.g. '#000000')."
+                    },
+                    "xColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "title": "The color of the default X symbol for the close button (e.g. '#000000')."
+                    },
+                    "progressColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "default": "#555555",
+                      "title": "The color of the circle arc that indicates time elapsed since the display of the overlay."
+                    },
+                    "trackColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "default": "#aaaaaa",
+                      "title": "The color of the circle that surrounds the X symbol and indicates the total time remaining until the overlay can be closed."
+                    },
+                    "offsetX": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "The horizontal offset (in pixels) of the close button, relative to the top-right corner of the overlay."
+                    },
+                    "offsetY": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "The vertical offset (in pixels) of the close button, relative to the top-right corner of the overlay."
+                    },
+                    "initialAlpha": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "optional": true,
+                      "default": 0.5,
+                      "title": "The initial opacity of the close button, before it becomes activated to touch."
+                    },
+                    "finalAlpha": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "optional": true,
+                      "default": 0.7,
+                      "title": "The final opacity of the close button, after it becomes activated to touch."
+                    },
+                    "show": {
+                      "type": "boolean",
+                      "optional": true,
+                      "default": true,
+                      "title": "Show close button on top of overlay?"
+                    },
+                    "activationOffset": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "Time in seconds before the close button activates."
+                    }
+                  },
+                  "optional": true,
+                  "additionalProperties": false,
+                  "title": "Contains configuration settings for the overlay close button."
+                },
+                "parameters": {
+                  "type": "object",
+                  "optional": true,
+                  "skipHeader": true,
+                  "properties": {
+                    "image": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "title": "The URL of the image to load."
+                        },
+                        "clickThrough": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL that should be loaded on image tap. You can also use the following player commands: appscend://play, appscend://pause, appscend://skip and appscend://fullscreen."
+                        },
+                        "clickTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image is tapped by the user."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image is tapped by the user."
+                        },
+                        "viewTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image is displayed on screen."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image is displayed on screen."
+                        },
+                        "errorTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image cannot be loaded."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image cannot be loaded."
+                        },
+                        "backgroundColor": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 6,
+                          "title": "The background color of the image overlay (e.g. '#000000')."
+                        },
+                        "stretchMode": {
+                          "type": "string",
+                          "optional": true,
+                          "default": "aspectFit",
+                          "enum": [
+                            "aspectFill",
+                            "aspectFit",
+                            "fill",
+                            "center",
+                            "top",
+                            "bottom",
+                            "left",
+                            "right"
+                          ],
+                          "title": "Defines how the image should be stretched within the overlay surface."
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "text": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "title": "MKD::The text to display in the overlay. The following placeholders are accepted:\n\n- *`__remaining__`* will be replaced with the remaining number of seconds for the current video clip being rendered.\n- *`__ad_index__`* will be replaced with the current ad index within the ad break.\n- *`__total_ads__`* will be replaced with the total number of ads within the ad break."
+                        },
+                        "color": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 6,
+                          "default": "#ffffff",
+                          "title": "The color of the text."
+                        },
+                        "font": {
+                          "type": "string",
+                          "title": "The font of the text."
+                        },
+                        "size": {
+                          "type": "integer",
+                          "title": "The size of the text"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "button": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "clickThrough": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL that should be loaded on button click. You can also use the following player commands: appscend://play, appscend://pause, appscend://skip and appscend://fullscreen."
+                        },
+                        "clickTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the button is tapped by the user."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the button is tapped by the user."
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "html": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "HTML code to display in the overlay.\nNOTE: in the HTML player, this config is called \"htmlCode\""
+                        },
+                        "iframe": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL to be used as the source for the iframe loaded in the overlay.\nNOTE: in the HTML player, this config is called \"iframeSource\""
+                        },
+                        "script": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL of the JavaScript file to load in the overlay.\nNOTE: in the HTML player, this config is called \"htmlCode\""
+                        },
+                        "url": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL to load in the overlay."
+                        },
+                        "viewportWidth": {
+                          "type": "integer",
+                          "optional": true,
+                          "title": "The width to be set in the meta viewport tag of the rendered content."
+                        },
+                        "viewportHeight": {
+                          "type": "integer",
+                          "optional": true,
+                          "title": "The height to be set in the meta viewport tag of the rendered content."
+                        },
+                        "errorTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the requested content is unable to load."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the requested content is unable to load."
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "metadata": {
+                  "type": "object",
+                  "optional": true,
+                  "additionalProperties": true,
+                  "title": "Any additional key-value date to expose to overlay controller."
+                },
+                "tracking": {
+                  "type": "object",
+                  "optional": true,
+                  "title": "Tracking URLs the player will ping on prefefined playback time triggers.\nPossible keys for this config: \"firstQuartile\" (same as \"25%\"),\"midpoint\" (same as \"50%\"), \"thirdQuartile\" (same as \"75%\"), \"X%\" or \"XX:XX:XX\".\nEach object value should be an array containing one or more string URLs to be invoked."
+                }
+              },
+              "additionalProperties": false
+            },
+            "optional": true,
+            "additionalProperties": false,
+            "title": "Contains definitions for overlays associated with the current unit."
+          },
+          "manager": {
+            "type": "string",
+            "optional": true,
+            "title": "The string type of the unit manager to use with playback (for DRM, SSAI etc.)"
+          },
+          "renderer": {
+            "type": "string",
+            "optional": true,
+            "title": "The string type of the video renderer to use with playback.",
+            "platforms": [
+              "android"
+            ]
+          },
+          "minimumAdInitialOffset": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum initial offset in seconds, from content start, for ad insertion."
+          },
+          "minimumAdFinalOffset": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum final time in seconds, to content end, free of ad insertion."
+          },
+          "minimumAdSpacing": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum time in seconds between ad insertion."
+          },
+          "seekAdHandling": {
+            "type": "string",
+            "optional": true,
+            "default": "last",
+            "enum": [
+              "last",
+              "first"
+            ],
+            "title": "Which ad break to display when skipping across multiple breaks."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "optional": true,
+            "title": "Any additional key-value date to expose to player plugins."
+          },
+          "tracking": {
+            "type": "object",
+            "optional": true,
+            "title": "Tracking URLs the player will ping on prefefined playback time triggers.\nPossible keys for this config: \"firstQuartile\" (same as \"25%\"),\"midpoint\" (same as \"50%\"), \"thirdQuartile\" (same as \"75%\"), \"X%\" or \"XX:XX:XX\".\nEach object value should be an array containing one or more string URLs to be invoked."
+          },
+          "youtube": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the Youtube video to render.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          },
+          "vimeo": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the Vimeo video to render.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "optional": true,
+      "additionalProperties": false,
+      "title": "Defines the video content units to playback before the main content units. Ad insertion will not affect this array, so you can use this to schedule videos that need to run at the beginning of a playlist, like the main titles of a show."
+    },
+    "exits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the video file to render."
+          },
+          "subtitlesUrl": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of a subtitle file to be used to render subtitles in this content unit. See platform docs for supported formats."
+          },
+          "autoplay": {
+            "type": "boolean",
+            "optional": true,
+            "default": true,
+            "title": "Defines whether the video should autoplay on load."
+          },
+          "scalingMode": {
+            "type": "string",
+            "optional": true,
+            "default": "aspectFit",
+            "enum": [
+              "aspectFit",
+              "aspectFill",
+              "fill",
+              "none"
+            ],
+            "title": "The video clip scaling mode, relative to the player surface.",
+            "platforms": [
+              "html",
+              "ios"
+            ]
+          },
+          "allowPinch": {
+            "type": "boolean",
+            "optional": true,
+            "default": true,
+            "title": "Defines whether the player should allow pinching to toggle fullscreen.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          },
+          "initialPlaybackTime": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The initial playback time for the video, in seconds."
+          },
+          "controls": {
+            "type": "object",
+            "properties": {
+              "position": {
+                "type": "string",
+                "optional": true,
+                "default": "bottom",
+                "enum": [
+                  "top",
+                  "bottom",
+                  "none"
+                ],
+                "title": "Position of the playback controls bar."
+              },
+              "barColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#000000",
+                "title": "Background color of the controls bar."
+              },
+              "barAlpha": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "optional": true,
+                "default": 0.5,
+                "title": "Opacity of the controls bar."
+              },
+              "playedTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ff0000",
+                "title": "The color of the portion of the seek bar that indicates the currently played duration of the movie."
+              },
+              "bufferedTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#aaaaaa",
+                "title": "The color of the portion of the seek bar that indicates the currently buffered duration of the movie."
+              },
+              "emptyTrackColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ffffff",
+                "title": "The color of the portion of the seek bar that indicates the currently unbuffered duration of the movie."
+              },
+              "playImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the play button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+              },
+              "pauseImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the pause button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+              },
+              "fullscreenImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array."
+              },
+              "leaveFullscreenImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the leave fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "backImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the back button image to use in the playback controls bar. Only displayed if 'backButton' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "forwardImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the forward button image to use in the playback controls bar. Only displayed if 'forwardButton' is present in the 'components' array.",
+                "platforms": [
+                  "html",
+                  "ios"
+                ]
+              },
+              "seekThumbImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the seek bar thumb button image, to use in the playback controls bar."
+              },
+              "mutedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the volume muted button image, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeLowImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is low, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeMidImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is medium, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "volumeHighImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the image to display when volume is high, to use in the playback controls bar.",
+                "platforms": [
+                  "html"
+                ]
+              },
+              "visibleInFullscreenOnly": {
+                "type": "boolean",
+                "optional": true,
+                "default": false,
+                "title": "Defines whether the playback controls bar should only be visible while the player is in fullscreen mode. This is useful if implementing a custom player UX for normal mode.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "autohideDuration": {
+                "type": "number",
+                "optional": true,
+                "default": 5,
+                "title": "The number of seconds the playback controls bar should automatically become hidden after."
+              },
+              "components": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "playback",
+                    "currentTime",
+                    "slider",
+                    "thumbnailSlider",
+                    "totalTime",
+                    "airplay",
+                    "chromecast",
+                    "volume",
+                    "fullscreen",
+                    "backButton",
+                    "forwardButton",
+                    "adMarks",
+                    "pictureInPicture"
+                  ]
+                },
+                "optional": true,
+                "additionalProperties": false,
+                "title": "Defines what controls should be available in the playback controls bar.\nControls available on HTML: \"playback\", \"backButton\", \"currentTime\", \"slider\", \"totalTime\", \"forwardButton\", \"volume\", \"fullscreen\"\nControls available on iOS: \"playback\", \"currentTime\", \"slider\", \"thumbnailSlider\", \"totalTime\", \"airplay\", \"fullscreen\", \"backButton\", \"forwardButton\", \"adMarks\", \"pictureInPicture\"\nControls available on Android: \"playback\", \"currentTime\", \"slider\", \"totalTime\", \"fullscreen\", \"backButton\", \"forwardButton\""
+              },
+              "liveText": {
+                "type": "string",
+                "optional": true,
+                "default": "LIVE",
+                "title": "The text to display instead of the total video duration, for live streams. Only has effect if 'totalTime' is present in the 'fullscreen' array.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "playbackTimeText": {
+                "type": "string",
+                "optional": true,
+                "title": "The text to display instead of the current playback time, for live streams. Only has effect if 'currentTime' is present in the 'fullscreen' array.",
+                "platforms": [
+                  "android",
+                  "ios"
+                ]
+              },
+              "chromecastDisconnectedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of chromecast button image in disconnected state to use in the playback controls bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "chromecastConnectedImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of chromecast button image in connected state to use in the playback controls bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "updateTimeWhileSeeking": {
+                "type": "boolean",
+                "optional": true,
+                "title": "Enables displaying the seek-to time (instead of the current playback time) when scrubbing the seek bar",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "adMarkColor": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 6,
+                "optional": true,
+                "default": "#ffd000",
+                "title": "The color of the ad marks in the playback progress bar.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "enterPictureInPictureImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+                "platforms": [
+                  "ios"
+                ]
+              },
+              "leavePictureInPictureImage": {
+                "type": "string",
+                "optional": true,
+                "title": "The URL of the leave PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+                "platforms": [
+                  "ios"
+                ]
+              }
+            },
+            "optional": true,
+            "additionalProperties": false,
+            "title": "Contains configuration settings for the playback controls bar."
+          },
+          "overlays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "title": "The overlay type ('text', 'image' etc.)"
+                },
+                "position": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "bottom",
+                  "enum": [
+                    "top",
+                    "topLeft",
+                    "topRight",
+                    "bottomLeft",
+                    "bottomRight",
+                    "left",
+                    "right",
+                    "fullscreen"
+                  ],
+                  "title": "The position of the overlay relative to the player surface.\nFor iOS, only the following are available: \"top\", \"topLeft\", \"topRight\", \"bottomLeft\", \"bottomRight\", \"fullscreen\""
+                },
+                "width": {
+                  "type": "string",
+                  "optional": true,
+                  "default": 320,
+                  "title": "The width of the overlay. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+                },
+                "height": {
+                  "type": "string",
+                  "optional": true,
+                  "default": 50,
+                  "title": "The height of the overlay. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+                },
+                "fadeIn": {
+                  "type": "number",
+                  "optional": true,
+                  "default": 0.5,
+                  "title": "Duration (in seconds) of the fade-in effect to be applied to the overlay on display and hide.",
+                  "platforms": [
+                    "ios",
+                    "android"
+                  ]
+                },
+                "start": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "0",
+                  "title": "A string format describing the time point when the player needs to display the overlay. Possible values are seconds (e.g.: '60') or a percentage relative to the total duration of the parent clip (e.g.: '50%')."
+                },
+                "end": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "100%",
+                  "title": "A string format describing the time point when the player needs to remove the overlay. Possible values are seconds (e.g.: '60') or a percentage relative to the total duration of the parent clip (e.g.: '50%')."
+                },
+                "absoluteX": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The overlay's absolute horizontal offset, relative to the current origin. The current origin is determined by the overlay's 'position' parameter, while the positive direction is always toward the center of the player surface. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+                },
+                "absoluteY": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The overlay's absolute vertical offset, relative to the current origin. The current origin is determined by the overlay's 'position' parameter, while the positive direction is always toward the center of the player surface. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+                },
+                "zIndex": {
+                  "type": "integer",
+                  "optional": true,
+                  "title": "Defines the on-screen view stack order of the overlay.",
+                  "platforms": [
+                    "ios"
+                  ]
+                },
+                "closeButton": {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "string",
+                      "optional": true,
+                      "title": "The URL of the image to be used in place of the standard X symbol for the close button."
+                    },
+                    "size": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": 20,
+                      "title": "The size (in pixels) of the side of the close button square."
+                    },
+                    "backgroundColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "title": "The background color of the close button (e.g. '#000000')."
+                    },
+                    "xColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "title": "The color of the default X symbol for the close button (e.g. '#000000')."
+                    },
+                    "progressColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "default": "#555555",
+                      "title": "The color of the circle arc that indicates time elapsed since the display of the overlay."
+                    },
+                    "trackColor": {
+                      "type": "string",
+                      "minLength": 6,
+                      "maxLength": 6,
+                      "optional": true,
+                      "default": "#aaaaaa",
+                      "title": "The color of the circle that surrounds the X symbol and indicates the total time remaining until the overlay can be closed."
+                    },
+                    "offsetX": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "The horizontal offset (in pixels) of the close button, relative to the top-right corner of the overlay."
+                    },
+                    "offsetY": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "The vertical offset (in pixels) of the close button, relative to the top-right corner of the overlay."
+                    },
+                    "initialAlpha": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "optional": true,
+                      "default": 0.5,
+                      "title": "The initial opacity of the close button, before it becomes activated to touch."
+                    },
+                    "finalAlpha": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1,
+                      "optional": true,
+                      "default": 0.7,
+                      "title": "The final opacity of the close button, after it becomes activated to touch."
+                    },
+                    "show": {
+                      "type": "boolean",
+                      "optional": true,
+                      "default": true,
+                      "title": "Show close button on top of overlay?"
+                    },
+                    "activationOffset": {
+                      "type": "integer",
+                      "optional": true,
+                      "default": "0",
+                      "title": "Time in seconds before the close button activates."
+                    }
+                  },
+                  "optional": true,
+                  "additionalProperties": false,
+                  "title": "Contains configuration settings for the overlay close button."
+                },
+                "parameters": {
+                  "type": "object",
+                  "optional": true,
+                  "skipHeader": true,
+                  "properties": {
+                    "image": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "title": "The URL of the image to load."
+                        },
+                        "clickThrough": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL that should be loaded on image tap. You can also use the following player commands: appscend://play, appscend://pause, appscend://skip and appscend://fullscreen."
+                        },
+                        "clickTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image is tapped by the user."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image is tapped by the user."
+                        },
+                        "viewTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image is displayed on screen."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image is displayed on screen."
+                        },
+                        "errorTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the image cannot be loaded."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the image cannot be loaded."
+                        },
+                        "backgroundColor": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 6,
+                          "title": "The background color of the image overlay (e.g. '#000000')."
+                        },
+                        "stretchMode": {
+                          "type": "string",
+                          "optional": true,
+                          "default": "aspectFit",
+                          "enum": [
+                            "aspectFill",
+                            "aspectFit",
+                            "fill",
+                            "center",
+                            "top",
+                            "bottom",
+                            "left",
+                            "right"
+                          ],
+                          "title": "Defines how the image should be stretched within the overlay surface."
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "text": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "title": "MKD::The text to display in the overlay. The following placeholders are accepted:\n\n- *`__remaining__`* will be replaced with the remaining number of seconds for the current video clip being rendered.\n- *`__ad_index__`* will be replaced with the current ad index within the ad break.\n- *`__total_ads__`* will be replaced with the total number of ads within the ad break."
+                        },
+                        "color": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 6,
+                          "default": "#ffffff",
+                          "title": "The color of the text."
+                        },
+                        "font": {
+                          "type": "string",
+                          "title": "The font of the text."
+                        },
+                        "size": {
+                          "type": "integer",
+                          "title": "The size of the text"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "button": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "clickThrough": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL that should be loaded on button click. You can also use the following player commands: appscend://play, appscend://pause, appscend://skip and appscend://fullscreen."
+                        },
+                        "clickTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the button is tapped by the user."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the button is tapped by the user."
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "html": {
+                      "type": "when using overlay type",
+                      "skipHeader": true,
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "HTML code to display in the overlay.\nNOTE: in the HTML player, this config is called \"htmlCode\""
+                        },
+                        "iframe": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL to be used as the source for the iframe loaded in the overlay.\nNOTE: in the HTML player, this config is called \"iframeSource\""
+                        },
+                        "script": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL of the JavaScript file to load in the overlay.\nNOTE: in the HTML player, this config is called \"htmlCode\""
+                        },
+                        "url": {
+                          "type": "string",
+                          "optional": true,
+                          "title": "The URL to load in the overlay."
+                        },
+                        "viewportWidth": {
+                          "type": "integer",
+                          "optional": true,
+                          "title": "The width to be set in the meta viewport tag of the rendered content."
+                        },
+                        "viewportHeight": {
+                          "type": "integer",
+                          "optional": true,
+                          "title": "The height to be set in the meta viewport tag of the rendered content."
+                        },
+                        "errorTracking": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "title": "A URL that should be pinged when the requested content is unable to load."
+                          },
+                          "optional": true,
+                          "additionalProperties": false,
+                          "title": "An array of URLs that should be pinged when the requested content is unable to load."
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "metadata": {
+                  "type": "object",
+                  "optional": true,
+                  "additionalProperties": true,
+                  "title": "Any additional key-value date to expose to overlay controller."
+                },
+                "tracking": {
+                  "type": "object",
+                  "optional": true,
+                  "title": "Tracking URLs the player will ping on prefefined playback time triggers.\nPossible keys for this config: \"firstQuartile\" (same as \"25%\"),\"midpoint\" (same as \"50%\"), \"thirdQuartile\" (same as \"75%\"), \"X%\" or \"XX:XX:XX\".\nEach object value should be an array containing one or more string URLs to be invoked."
+                }
+              },
+              "additionalProperties": false
+            },
+            "optional": true,
+            "additionalProperties": false,
+            "title": "Contains definitions for overlays associated with the current unit."
+          },
+          "manager": {
+            "type": "string",
+            "optional": true,
+            "title": "The string type of the unit manager to use with playback (for DRM, SSAI etc.)"
+          },
+          "renderer": {
+            "type": "string",
+            "optional": true,
+            "title": "The string type of the video renderer to use with playback.",
+            "platforms": [
+              "android"
+            ]
+          },
+          "minimumAdInitialOffset": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum initial offset in seconds, from content start, for ad insertion."
+          },
+          "minimumAdFinalOffset": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum final time in seconds, to content end, free of ad insertion."
+          },
+          "minimumAdSpacing": {
+            "type": "integer",
+            "optional": true,
+            "default": "0",
+            "title": "The minimum time in seconds between ad insertion."
+          },
+          "seekAdHandling": {
+            "type": "string",
+            "optional": true,
+            "default": "last",
+            "enum": [
+              "last",
+              "first"
+            ],
+            "title": "Which ad break to display when skipping across multiple breaks."
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "optional": true,
+            "title": "Any additional key-value date to expose to player plugins."
+          },
+          "tracking": {
+            "type": "object",
+            "optional": true,
+            "title": "Tracking URLs the player will ping on prefefined playback time triggers.\nPossible keys for this config: \"firstQuartile\" (same as \"25%\"),\"midpoint\" (same as \"50%\"), \"thirdQuartile\" (same as \"75%\"), \"X%\" or \"XX:XX:XX\".\nEach object value should be an array containing one or more string URLs to be invoked."
+          },
+          "youtube": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the Youtube video to render.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          },
+          "vimeo": {
+            "type": "string",
+            "optional": true,
+            "title": "The URL of the Vimeo video to render.",
+            "platforms": [
+              "ios",
+              "android"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "optional": true,
+      "additionalProperties": false,
+      "title": "Defines the video content units to playback after the main content units. Ad insertion will not affect this array, so you can use this to schedule videos that need to run at the end of a playlist, like the exit titles/credits of a show."
+    },
+    "ads": {
+      "type": "object",
+      "properties": {
+        "vmap": {
+          "type": "string",
+          "optional": true,
+          "title": "The URL of the VMAP ad configuration.",
+          "platforms": ["android", "ios"]
+        },
+        "adBreaks": {
+          "type": "object",
+          "properties": {
+            "preContent": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "additionalProperties": false,
+                    "title": "URL of a VAST ad configuration."
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "optional": true,
+                    "title": "Key-value metadata to copy to the ad media unit and make accessible to player plugins."
+                  }
+                },
+                "additionalProperties": false
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "URLs of the VAST ad configurations for video ads that should be displayed before the main content (prerolls)."
+            },
+            "postContent": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "additionalProperties": false,
+                    "title": "URL of a VAST ad configuration."
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "optional": true,
+                    "title": "Key-value metadata to copy to the ad media unit and make accessible to player plugins."
+                  }
+                },
+                "additionalProperties": false
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "URLs of the VAST ad configurations for video ads that should be displayed after the main content (postrolls)."
+            },
+            "midContent": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "additionalProperties": false,
+                    "title": "URL of a VAST ad configuration."
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "optional": true,
+                    "title": "Key-value metadata to copy to the ad media unit and make accessible to player plugins."
+                  },
+                  "offset": {
+                    "type": "string",
+                    "optional": true,
+                    "title": "Default offset for midroll ads defined in VAST tags. Accepted values are absolute seconds ('10'), percentage of unit duration ('10%'), or references to predefined ad break positions ('#1' for the first value in defaultAdBreakPositions)"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "URLs of the VAST ad configurations for video ads that should be displayed within the main content (midrolls)."
+            },
+            "nonLinears": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "additionalProperties": false,
+                    "title": "URL of a VAST ad configuration."
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "optional": true,
+                    "title": "Key-value metadata to copy to the ad media unit and make accessible to player plugins."
+                  },
+                  "offset": {
+                    "type": "string",
+                    "optional": true,
+                    "title": "Default offset for midroll ads defined in VAST tags. Accepted values are absolute seconds ('10'), percentage of unit duration ('10%'), or references to predefined ad break positions ('#1' for the first value in defaultAdBreakPositions)"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "URLs of the VAST ad configurations for banner ads that should be displayed within the main content (nonlinears)."
+            }
+          },
+          "optional": true,
+          "additionalProperties": false,
+          "title": "Defines collections of VAST ad configurations to be used for inserting ads in specific positions inside the current playlist."
+        },
+        "scalingMode": {
+          "type": "string",
+          "optional": true,
+          "default": "aspectFit",
+          "enum": [
+            "aspectFit",
+            "aspectFill",
+            "fill",
+            "none"
+          ],
+          "title": "The video ad scaling mode, relative to the player surface.",
+          "platforms": ["html", "ios"]
+        },
+        "videoMimeTypes": {
+          "type": "array",
+          "optional": true,
+          "default": "[\"mobile/mp4\",\"video/mp4\",\"mobile/m3u8\",\"application/x-mpegURL\",\"application/vnd.apple.mpegURL\",\"vnd.apple.mpegURL\",\"video/m3u8\"]",
+          "items": {
+            "type": "string",
+            "title": "Supported video ad mime-type."
+          },
+          "title": "Defines the mime-types supported when choosing a media file from the VAST response. Items are ordered from most preferred to least preferred."
+        },
+        "allowPinchToFullscreen": {
+          "type": "boolean",
+          "default": true,
+          "title": "Defines whether pinching to fullscreen should be available for video ads.",
+          "platforms": ["ios"]
+        },
+        "adPodFallback": {
+          "type": "string",
+          "optional": true,
+          "default": "all",
+          "enum": [
+            "all",
+            "first",
+            "drop"
+          ],
+          "title": "VAST 3.0 defines Ad Pods, with fallback mechanisms that allow loading an ad buffet of commercials to playback if the main ads fail. This value specifies how to treat backwards compatibility issues with VAST 2.0 and 1.0, by choosing what ads are promoted to the main Ad Pod if no valid Pods are detected."
+        },
+        "multiAdConflictPolicy": {
+          "type": "string",
+          "optional": true,
+          "default": "first",
+          "enum": [
+            "first",
+            "random",
+            "drop"
+          ],
+          "title": "The VMAP standard permits allowing only one ad from a certain ad source. This constant defines how the VAST builder plugin deals with situations when multiple valid ads are retrieved from a source that is disallowed to load several ads at one time."
+        },
+        "allowMultipleAds": {
+          "type": "boolean",
+          "optional": true,
+          "default": true,
+          "title": "Allow multiple ads inside a single ad break.",
+          "platforms": ["html", "ios"]
+        },
+        "followWrappers": {
+          "type": "boolean",
+          "optional": true,
+          "default": true,
+          "title": "Follow VAST wrapper ads.",
+          "platforms": [
+            "html",
+            "ios"
+          ]
+        },
+        "defaultAdBreakPositions": {
+          "type": "array",
+          "optional": true,
+          "default": "['5', '75%']",
+          "title": "If no time offsets are specified with midroll ads, you can define insertion markers using this array.",
+          "items": {
+            "type": "string",
+            "title": "Time in seconds or as a percentage of the current unit length."
+          }
+        },
+        "afterBannerTapped": {
+          "type": "string",
+          "optional": true,
+          "default": "closeOverlay",
+          "enum": [
+            "closeOverlay",
+            "skipUnit",
+            "doNothing"
+          ],
+          "title": "Defines the behavior of the player after a banner ad is tapped and the built-in web browser is dismissed.",
+          "platforms": ["ios", "android"]
+        },
+        "afterVideoAdTapped": {
+          "type": "string",
+          "optional": true,
+          "default": "skipUnit",
+          "enum": [
+            "skipUnit",
+            "doNothing"
+          ],
+          "title": "Defines the behavior of the player after a video ad is tapped and the built-in web browser is dismissed.",
+          "platforms": [
+            "ios",
+            "android"
+          ]
+        },
+        "requestUserAgent": {
+          "type": "string",
+          "optional": true,
+          "title": "The user agent that should be used when making HTTP requests.\nNOTE: On iOS, this config is called 'userAgent'",
+          "platforms": [
+            "ios",
+            "android"
+          ]
+        },
+        "skipButton": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "string",
+              "optional": true,
+              "default": "bottomRight",
+              "enum": [
+                "top",
+                "bottom",
+                "topLeft",
+                "topRight",
+                "bottomLeft",
+                "bottomRight",
+                "fullscreen"
+              ],
+              "title": "The position of the skip button relative to the player surface."
+            },
+            "defaultOffset": {
+              "type": "integer",
+              "optional": true,
+              "default": 4294967295,
+              "title": "The default time offset (in seconds) after which the skip button should become active. Set this to -1 to hide the skip button on video ads."
+            },
+            "text": {
+              "type": "string",
+              "optional": true,
+              "default": "Skip",
+              "title": "The text to be displayed by the skip button."
+            },
+            "textColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#ffffff",
+              "title": "The color of the text to be displayed by the skip button."
+            },
+            "padding": {
+              "type": "integer",
+              "optional": true,
+              "default": 5,
+              "title": "Size of the interior padding for the skip button."
+            },
+            "width": {
+              "type": "string",
+              "optional": true,
+              "default": "75",
+              "title": "The width of the skip button. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+            },
+            "height": {
+              "type": "string",
+              "optional": true,
+              "default": "30",
+              "title": "The height of the skip button. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+            },
+            "backgroundColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "title": "The background color of the skip button (e.g. '#330099')."
+            },
+            "border": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#aaaaaa",
+                  "title": "The border color of the skip button."
+                },
+                "radius": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": 5,
+                  "title": "The border radius of the skip button."
+                }
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "Contains configuration settings for the border of the skip button."
+            },
+            "progress": {
+              "type": "object",
+              "properties": {
+                "position": {
+                  "type": "string",
+                  "optional": true,
+                  "default": "right",
+                  "enum": [
+                    "left",
+                    "right",
+                    "hidden"
+                  ],
+                  "title": "The position of the progress wheel inside the skip button.",
+                  "platforms": ["android", "ios"]
+                },
+                "circleColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#aaaaaa",
+                  "title": "The color of the main progress wheel circle."
+                },
+                "trackColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#555555",
+                  "title": "The color of the circle arc within the progress wheel that indicates the currently elapsed time since the ad started."
+                },
+                "textColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#ffffff",
+                  "title": "The color of the text inside the progress wheel."
+                }
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "Contains configuration settings for the progress wheel that can be displayed together with the skip button."
+            }
+          },
+          "optional": true,
+          "additionalProperties": false,
+          "title": "Contains configuration settings for the skip button that can be displayed over video ads."
+        },
+        "countdown": {
+          "type": "object",
+          "properties": {
+            "show": {
+              "type": "boolean",
+              "optional": true,
+              "default": true,
+              "title": "Defines whether the countdown overlay should be displayed or not."
+            },
+            "position": {
+              "type": "string",
+              "optional": true,
+              "default": "bottomLeft",
+              "enum": [
+                "top",
+                "bottom",
+                "topLeft",
+                "topRight",
+                "bottomLeft",
+                "bottomRight",
+                "fullscreen"
+              ],
+              "title": "The position of the countdown overlay relative to the player surface."
+            },
+            "text": {
+              "type": "string",
+              "optional": true,
+              "default": "Your content will start in __remaining__s",
+              "title": "The text of the countdown overlay. You can use the __remaining__ placeholder to display the remaining number of seconds."
+            },
+            "width": {
+              "type": "string",
+              "optional": true,
+              "default": "64%",
+              "title": "The width of the text countdown. Supports pixels (e.g.: '320') or percentages, relative to the total width (e.g.: '50%')."
+            },
+            "height": {
+              "type": "string",
+              "optional": true,
+              "default": "30",
+              "title": "The height of the text countdown. Supports pixels (e.g.: '320') or percentages, relative to the total height (e.g.: '50%')."
+            },
+            "font": {
+              "type": "string",
+              "optional": true,
+              "default": "Helvetica",
+              "title": "The fontname of the countdown overlay text."
+            },
+            "size": {
+              "type": "integer",
+              "optional": true,
+              "default": 13,
+              "title": "The size of the countdown overlay text."
+            },
+            "color": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#ffffff",
+              "title": "The color of the countdown overlay text."
+            }
+          },
+          "optional": true,
+          "additionalProperties": false,
+          "title": "Contains configuration settings for the countdown until next media that can be displayed over video ads."
+        },
+        "fullscreenButton": {
+          "type": "object",
+          "optional": true,
+          "title": "Configurations for the fullscreen button displayed while ads are running.",
+          "platforms": ["html", "ios"],
+          "properties": {
+            "visible": {
+              "type": "boolean",
+              "optional": true,
+              "default": true,
+              "title": "Toggle visibility of fullscreen button",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "position": {
+              "type": "string",
+              "optional": true,
+              "default": "bottomRight",
+              "enum": [
+                "top",
+                "topLeft",
+                "topRight",
+                "bottomLeft",
+                "bottomRight",
+                "left",
+                "right",
+                "fullscreen"
+              ],
+              "title": "Position of the fullscreen button.",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "enterFullscreenIcon": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the image to display to enter fullscreen mode from an ad.",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "leaveFullscreenIcon": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the image to display to exit fullscreen mode from an ad.",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "padding": {
+              "type": "integer",
+              "optional": true,
+              "platforms": [
+                "html",
+                "ios"
+              ],
+              "title": "The amount of empty space to reserve around the button."
+            },
+            "width": {
+              "type": "string",
+              "optional": true,
+              "platforms": [
+                "html",
+                "ios"
+              ],
+              "title": "The width of the fullscreen button."
+            },
+            "height": {
+              "type": "string",
+              "optional": true,
+              "platforms": [
+                "html",
+                "ios"
+              ],
+              "title": "The height of the fullscreen button."
+            },
+            "backgroundColor": {
+              "type": "string",
+              "optional": true,
+              "platforms": [
+                "html",
+                "ios"
+              ],
+              "title": "The background color of the fullscreen button."
+            },
+            "borderColor": {
+              "type": "string",
+              "optional": true,
+              "platforms": [
+                "html"
+              ],
+              "title": "The border color of the fullscreen button."
+            },
+            "borderRadius": {
+              "type": "integer",
+              "optional": true,
+              "platforms": [
+                "html"
+              ],
+              "title": "The border radius of the fullscreen button, in pixels."
+            },
+            "border": {
+              "type": "object",
+              "optional": true,
+              "platforms": [ "ios" ],
+              "title": "iOS specific border configurations for the fullscreen button",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "optional": true,
+                  "platforms": [
+                    "ios"
+                  ],
+                  "title": "The border color of the fullscreen button."
+                },
+                "radius": {
+                  "type": "integer",
+                  "optional": true,
+                  "platforms": [
+                    "ios"
+                  ],
+                  "title": "The border radius of the fullscreen button, in pixels."
+                }
+              }
+            }
+          }
+        },
+        "banners": {
+          "type": "object",
+          "properties": {
+            "maxWidth": {
+              "type": "integer",
+              "optional": true,
+              "default": 320,
+              "title": "The maximum allowed banner width. Declared widths larger than this are truncated."
+            },
+            "maxHeight": {
+              "type": "integer",
+              "optional": true,
+              "default": 50,
+              "title": "The maximum allowed banner height. Declared heights larger than this are truncated."
+            },
+            "stretchToMax": {
+              "type": "boolean",
+              "optional": true,
+              "default": false,
+              "title": "In case the declared size of the banner is smaller than the configured maximum size, defines if the banner should automatically be stretched to maximum size."
+            },
+            "position": {
+              "type": "string",
+              "optional": true,
+              "default": "bottom",
+              "enum": [
+                "top",
+                "bottom",
+                "fullscreen"
+              ],
+              "title": "The default position of banner ads relative to the player surface."
+            },
+            "fadeIn": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "optional": true,
+              "default": 0.5,
+              "title": "The duration (in seconds) of the fade-in effect that should be applied on banner display/hide.",
+              "platforms": ["android", "ios"]
+            },
+            "defaultDuration": {
+              "type": "integer",
+              "optional": true,
+              "default": 10,
+              "title": "The default on-screen visibility duration for banner ads (in seconds)."
+            },
+            "skipOffset": {
+              "type": "integer",
+              "optional": true,
+              "default": 3,
+              "title": "The default duration (in seconds) after which the close button can be pressed to hide a banner ad."
+            },
+            "closeButton": {
+              "type": "object",
+              "properties": {
+                "show": {
+                  "type": "boolean",
+                  "optional": true,
+                  "default": true,
+                  "title": "Defines whether the close button should be displayed over banner ads."
+                },
+                "image": {
+                  "type": "string",
+                  "optional": true,
+                  "title": "The URL of the image to be used in place of the standard X symbol for the close button."
+                },
+                "size": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": 20,
+                  "title": "The size (in pixels) of the side of the close button square."
+                },
+                "backgroundColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "title": "The background color of the close button for the banner ad."
+                },
+                "xColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#555555",
+                  "title": "The color of the default X symbol for the close button of the banner ad."
+                },
+                "progressColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#555555",
+                  "title": "The color of the circle arc that indicates time elapsed since the display of the banner ad."
+                },
+                "trackColor": {
+                  "type": "string",
+                  "minLength": 6,
+                  "maxLength": 6,
+                  "optional": true,
+                  "default": "#aaaaaa",
+                  "title": "The color of the circle that surrounds the X symbol and indicates the total time remaining until the banner ad can be closed."
+                },
+                "offsetX": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The horizontal offset (in pixels) of the close button for banner ads, relative to the top-right corner of the overlay."
+                },
+                "offsetY": {
+                  "type": "integer",
+                  "optional": true,
+                  "default": "0",
+                  "title": "The vertical offset (in pixels) of the close button for banner ads, relative to the top-right corner of the overlay."
+                },
+                "initialAlpha": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "optional": true,
+                  "default": 0.5,
+                  "title": "The initial opacity of the close button for banner ads, before it becomes activated to touch."
+                },
+                "finalAlpha": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "optional": true,
+                  "default": 0.7,
+                  "title": "The final opacity of the close button for banner ads, after it becomes activated to touch."
+                }
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "Contains configuration settings for banner ads close buttons."
+            }
+          },
+          "optional": true,
+          "additionalProperties": false,
+          "title": "Contains configuration settings for displayed banner ads."
+        },
+        "controls": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "string",
+              "optional": true,
+              "default": "bottom",
+              "enum": [
+                "top",
+                "bottom",
+                "none"
+              ],
+              "title": "Position of the playback controls bar."
+            },
+            "barColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#000000",
+              "title": "Background color of the controls bar."
+            },
+            "barAlpha": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "optional": true,
+              "default": 0.5,
+              "title": "Opacity of the controls bar."
+            },
+            "playedTrackColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#ff0000",
+              "title": "The color of the portion of the seek bar that indicates the currently played duration of the movie."
+            },
+            "bufferedTrackColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#aaaaaa",
+              "title": "The color of the portion of the seek bar that indicates the currently buffered duration of the movie."
+            },
+            "emptyTrackColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#ffffff",
+              "title": "The color of the portion of the seek bar that indicates the currently unbuffered duration of the movie."
+            },
+            "playImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the play button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+            },
+            "pauseImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the pause button image to use in the playback controls bar. Only displayed if 'playback' is present in the 'components' array."
+            },
+            "fullscreenImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array."
+            },
+            "leaveFullscreenImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the leave fullscreen button image to use in the playback controls bar. Only displayed if 'fullscreen' is present in the 'components' array.",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "backImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the back button image to use in the playback controls bar. Only displayed if 'backButton' is present in the 'components' array.",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "forwardImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the forward button image to use in the playback controls bar. Only displayed if 'forwardButton' is present in the 'components' array.",
+              "platforms": [
+                "html",
+                "ios"
+              ]
+            },
+            "seekThumbImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the seek bar thumb button image, to use in the playback controls bar."
+            },
+            "mutedImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the volume muted button image, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+              "platforms": [
+                "html"
+              ]
+            },
+            "volumeLowImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the image to display when volume is low, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+              "platforms": [
+                "html"
+              ]
+            },
+            "volumeMidImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the image to display when volume is medium, to use in the playback controls bar. Only displayed if 'volume' is present in the 'components' array.",
+              "platforms": [
+                "html"
+              ]
+            },
+            "volumeHighImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the image to display when volume is high, to use in the playback controls bar.",
+              "platforms": [
+                "html"
+              ]
+            },
+            "visibleInFullscreenOnly": {
+              "type": "boolean",
+              "optional": true,
+              "default": false,
+              "title": "Defines whether the playback controls bar should only be visible while the player is in fullscreen mode. This is useful if implementing a custom player UX for normal mode.",
+              "platforms": [
+                "android",
+                "ios"
+              ]
+            },
+            "autohideDuration": {
+              "type": "number",
+              "optional": true,
+              "default": 5,
+              "title": "The number of seconds the playback controls bar should automatically become hidden after."
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "playback",
+                  "currentTime",
+                  "slider",
+                  "thumbnailSlider",
+                  "totalTime",
+                  "airplay",
+                  "chromecast",
+                  "volume",
+                  "fullscreen",
+                  "backButton",
+                  "forwardButton",
+                  "adMarks",
+                  "pictureInPicture"
+                ]
+              },
+              "optional": true,
+              "additionalProperties": false,
+              "title": "Defines what controls should be available in the playback controls bar.\nControls available on HTML: \"playback\", \"backButton\", \"currentTime\", \"slider\", \"totalTime\", \"forwardButton\", \"volume\", \"fullscreen\"\nControls available on iOS: \"playback\", \"currentTime\", \"slider\", \"thumbnailSlider\", \"totalTime\", \"airplay\", \"fullscreen\", \"backButton\", \"forwardButton\", \"adMarks\", \"pictureInPicture\"\nControls available on Android: \"playback\", \"currentTime\", \"slider\", \"totalTime\", \"fullscreen\", \"backButton\", \"forwardButton\""
+            },
+            "liveText": {
+              "type": "string",
+              "optional": true,
+              "default": "LIVE",
+              "title": "The text to display instead of the total video duration, for live streams. Only has effect if 'totalTime' is present in the 'fullscreen' array.",
+              "platforms": [
+                "android",
+                "ios"
+              ]
+            },
+            "playbackTimeText": {
+              "type": "string",
+              "optional": true,
+              "title": "The text to display instead of the current playback time, for live streams. Only has effect if 'currentTime' is present in the 'fullscreen' array.",
+              "platforms": [
+                "android",
+                "ios"
+              ]
+            },
+            "chromecastDisconnectedImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of chromecast button image in disconnected state to use in the playback controls bar.",
+              "platforms": [
+                "ios"
+              ]
+            },
+            "chromecastConnectedImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of chromecast button image in connected state to use in the playback controls bar.",
+              "platforms": [
+                "ios"
+              ]
+            },
+            "updateTimeWhileSeeking": {
+              "type": "boolean",
+              "optional": true,
+              "title": "Enables displaying the seek-to time (instead of the current playback time) when scrubbing the seek bar",
+              "platforms": [
+                "ios"
+              ]
+            },
+            "adMarkColor": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 6,
+              "optional": true,
+              "default": "#ffd000",
+              "title": "The color of the ad marks in the playback progress bar.",
+              "platforms": [
+                "ios"
+              ]
+            },
+            "enterPictureInPictureImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+              "platforms": [
+                "ios"
+              ]
+            },
+            "leavePictureInPictureImage": {
+              "type": "string",
+              "optional": true,
+              "title": "The URL of the leave PiP button image to use in the playback controls bar. Only displayed if 'pictureInPicture' is present in the 'components' array.",
+              "platforms": [
+                "ios"
+              ]
+            }
+          },
+          "optional": true,
+          "additionalProperties": false,
+          "title": "Contains configuration settings for the playback controls bar."
+        },
+        "icons": {
+          "type": "object",
+          "title": "Industry / AdChoices Icon support",
+          "optional": true,
+          "properties": {
+            "height": {
+              "type": "integer",
+              "title": "Height of the industry icon, in pixels",
+              "optional": true
+            },
+            "fadeIn": {
+              "type": "number",
+              "title": "Icon fade-in duration in seconds",
+              "platforms": ["android", "ios"],
+              "optional": true
+            }
+          }
+        }
+      },
+      "optional": true,
+      "additionalProperties": false,
+      "title": "Contains configuration settings for ads to be displayed with the main playlist."
+    }
+  },
+  "additionalProperties": false
+}

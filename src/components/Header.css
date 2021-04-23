@@ -1,0 +1,166 @@
+.json-docs header {
+  width: 1200px;
+  height: 70px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 10px #0000000A;
+  opacity: 1;
+  padding: 15px 40px;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+}
+
+.json-docs .logo {
+  margin-top: 5px;
+}
+
+.json-docs .search {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.json-docs .searchInput {
+  width: 100%;
+  height: 40px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #DEDEDE;
+  border-radius: 6px 0 0 6px;
+  opacity: 1;
+  padding: 10px 15px;
+  font: 400 14px/22px Open Sans;
+  letter-spacing: 0.14px;
+  color: #7E7E7E;
+  outline: none;
+}
+
+.json-docs .searchButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 0 6px 6px 0;
+  border: 1px solid #DEDEDE;
+  border-left: 0;
+  cursor: pointer;
+  background-image: url(../../static/img/json-configuration/search.svg);
+  margin-right: 20px;
+}
+
+.json-docs .autocompleteContainer {
+  position: absolute;
+  left: 0px;
+  top: 51px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #0000000F;
+  border-radius: 6px;
+  width: 400px;
+  padding: 10px 0;
+  max-height: 170px;
+  overflow: scroll;
+}
+
+.json-docs .autocompleteOption {
+  padding: 15px;
+  font: 400 15px/20px Roboto;
+  letter-spacing: 0.15px;
+  color: #7E7E7E;
+  cursor: pointer;
+}
+
+.json-docs .autocompleteOptionName {
+  color: #1D1D1D;
+}
+
+.json-docs .autocompleteOption:hover {
+  background-color: #FAFAFA;
+}
+
+.json-docs .autocompleteOption:hover .autocompleteOptionName {
+  color: #0095FF;
+}
+
+.json-docs .menuElement {
+  margin-left: 43px;
+  margin-top: 10px;
+  display: flex;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.json-docs .menuLabel {
+  text-align: left;
+  font: 600 13px/16px Open Sans;
+  letter-spacing: 0px;
+  color: #4D4D4D;
+  opacity: 1;
+  margin-left: 15px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.json-docs .menuElement:hover .menuLabel,
+.menuElement.selected .menuLabel {
+  color: #0095FF;
+}
+
+.json-docs .docsMenuIcon {
+  background-image: url(../../static/img/json-configuration/iconDoc.svg);
+  width: 24px;
+  height: 24px;
+}
+
+.json-docs .examplesMenuIcon {
+  background-image: url(../../static/img/json-configuration/iconExamples.svg);
+  width: 24px;
+  height: 24px;
+}
+
+.json-docs .examplesMenu {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 300px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 15px #0000000F;
+  border-radius: 6px;
+  padding: 10px 0;
+  display: none;
+}
+
+.json-docs .menuElement:hover .examplesMenu {
+  display: block;
+}
+
+.json-docs .examplesMenuItem {
+  height: 48px;
+  font: 400 15px/20px Roboto;
+  letter-spacing: 0.15px;
+  color: #1D1D1D;
+  line-height: 48px;
+  padding-left: 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.json-docs .examplesMenuItem:hover {
+  background-color: #FAFAFA;
+  color: #0095FF;
+}
+
+.json-docs .examplesMenuSeparator {
+  margin: 10px 20px;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.json-docs .dropDownMenuIcon {
+  background-image: url(../../static/img/json-configuration/dropdownArrow.svg);
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+}
+
+.menuElement:hover .docsMenuIcon,
+.menuElement:hover .examplesMenuIcon,
+.menuElement:hover .dropDownMenuIcon {
+  background-position-x: 24px;
+}
