@@ -1,0 +1,62 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0
+  aws-s3: circleci/aws-s3@2.0.0
+  aws-cloudfront: topmonks/aws-cloudfront@1.0.0
+jobs:
+  setup:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - '*'
+  build:
+    executor:
+      name: node/default
+    steps:
+      - attach_workspace:
+            at: .
+      - run:
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - 'build'
+  deploy:
+    executor:
+      name: node/default
+    steps:
+      - attach_workspace:
+          at: .
+      - aws-s3/sync:
+          arguments: |
+            --acl public-read
+          from: build
+          to: 's3://docs.veeplay.com'
+      - aws-cloudfront/invalidate:
+          distribution_id: E5J7VXPQVYG5I
+          paths: '/*'
+workflows:
+  deploy:
+    jobs:
+      - setup
+      - build:
+          requires:
+            - setup
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
