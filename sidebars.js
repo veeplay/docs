@@ -18,4 +18,13 @@ module.exports = {
       ],
     },
   ],
+  videoGuidesSidebar: [
+    {
+      type: 'category',
+      label: 'How Web Video Works',
+      items: [
+        'video-guides/how-video-streaming-works',
+      ],
+    },
+  ],
 };

@@ -28,6 +28,12 @@ module.exports = {
       items: [
         {
           position: 'left',
+          label: 'Video Guides',
+          type: 'doc',
+          docId: 'video-guides/how-video-streaming-works',
+        },
+        {
+          position: 'left',
           label: 'Video API',
           to: '/video-api/',
         },
@@ -90,6 +96,15 @@ module.exports = {
             {
               label: 'JSON Configuration',
               to: '/json-configuration/',
+            },
+          ],
+        },
+        {
+          title: 'Guides to Video',
+          items: [
+            {
+              label: 'Video Streaming',
+              to: '/docs/video-guides/how-video-streaming-works',
             },
           ],
         },
