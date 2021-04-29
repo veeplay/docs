@@ -12,14 +12,40 @@
   overflow: hidden;
 }
 
+.features {
+  display: flex;
+  align-items: top;
+  justify-content: space-evenly;
+  margin: 30px;
+  flex-flow: wrap;
+}
+
+.feature {
+  padding: 30px;
+  background: #efefef;
+  width: 35%;
+  margin-bottom: 30px;
+}
+
+.feature h2 i {
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 966px) {
   .heroBanner {
     padding: 2rem;
   }
-}
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .heroBanner h1 {
+    font-size: 2rem;
+  }
+
+  .heroBanner p {
+    font-size: 1.2rem;
+  }
+
+  .feature {
+    width: 100%;
+    flex: 1;
+  }
 }

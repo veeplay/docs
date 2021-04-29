@@ -21,10 +21,10 @@ module.exports = {
     navbar: {
       title: 'Veeplay Docs',
       style: 'dark',
-      // logo: {
-      //   alt: 'Veeplay',
-      //   src: 'img/logo.svg',
-      // },
+      logo: {
+        alt: 'Veeplay',
+        src: 'img/logo.png',
+      },
       items: [
         {
           position: 'left',

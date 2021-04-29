@@ -5,6 +5,8 @@
  * work well for content-centric websites.
  */
 
+ @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #0095ff;
@@ -28,6 +30,10 @@
 }
 
 .navbar__brand:hover {
+  color: white;
+}
+
+.navbar__toggle {
   color: white;
 }
 
