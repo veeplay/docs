@@ -1,3 +1,8 @@
+---
+description: A visual guide to how modern video streaming works.
+image: /img/video-guides/how-video-streaming-works.gif
+---
+
 # How Video Streaming Works
 
 Just upload the MP4 to S3 and we're done, right? We wish it was that easy.
@@ -37,7 +42,7 @@ Video processing workflows can be implemented using many different products and 
 
 The resulting rendering segments are then all uploaded to storage, cached on a CDN and made available to players. A playlist index file is also generated, connecting each individual segment to a specific playback time interval, and exposing metadata like information about bitrate and quality.
 
-## Streaming Formats
+## HTTP Streaming Protocols
 
 **HLS (HTTP Live Streaming)** and **DASH (Dynamic Adaptive Streaming over HTTP)** are the two main competing standards for implementing live streaming. [HLS](https://developer.apple.com/streaming/) was released by Apple in 2009 and is currently the market leader, while [DASH](https://dashif.org/) was published in 2012 and is promoted by the DASH Industry Forum (Microsoft, Netflix, Google, Ericsson, Samsung, Adobe, etc.)
 
@@ -83,6 +88,10 @@ A context-aware player can now download the playlist file, evaluate a series of 
 
 ![How video streaming works](/img/video-guides/how-video-streaming-works.gif)
 > Video streaming fixes the issues with progressive downloads
+
+:::note
+We've simplified things for this representation. In real-life, at least an audio track would also be included in the playlist, and downloaded separately. Subtitle tracks or alternate audio might also be included - the player could then allow the user to choose to change the audio to another language, or display any of the availablle subtitles.
+:::
 
 ## Live Broadcast Streaming
 
