@@ -7,7 +7,7 @@ jobs:
   setup:
     executor:
       name: node/default
-      tag: 15.0.0
+      tag: 15.0.1
     steps:
       - checkout
       - node/install-yarn
@@ -25,7 +25,7 @@ jobs:
   build:
     executor:
       name: node/default
-      tag: 15.0.0
+      tag: 15.0.1
     steps:
       - attach_workspace:
             at: .
