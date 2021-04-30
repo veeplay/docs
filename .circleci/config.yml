@@ -27,7 +27,7 @@ jobs:
       - attach_workspace:
             at: .
       - node/install:
-          version: 15.0.0
+          node-version: 15.0.0
       - run:
           name: Build
           command: npm run build
