@@ -5,7 +5,7 @@ image: /img/video-guides/video-transcoding-multiple-quality.png
 
 # Video Streaming, Visually Explained
 
-Just upload the MP4 to S3 and we're done, right? We wish it was that easy.
+Just upload the MP4 to S3, and we're done, right? We wish it were that easy. On all but the most straightforward use cases, you'll need to consider the user experience across multiple platforms, devices, and network conditions. This is exactly what video streaming technologies set out to achieve.
 
 ## Progressive Download
 
@@ -13,22 +13,22 @@ The simplest way to achieve video playback over the web is to:
 
 - Obtain or create a single render of the underlying media, usually in the form of a static, large `.mp4` file (`.webm` files are also popular);
 - Store that file on a server, under a publicly accessible URL;
-- Optionally, attach the source endpoint to a Content Delivery Network, that will cache the original file in multiple data centers around the world, allowing the viewer to retrieve his copy  faster, from a local server;
+- Optionally, attach the source endpoint to a Content Delivery Network that will cache the original file in multiple data centers around the world, allowing the viewer to retrieve his copy faster from a local server;
 - Integrate a player component in your application.
 
 When the player needs to start rendering a video, it will start downloading the file from the nearest CDN endpoint. As long as the network bandwidth is large enough to allow the player to download the file faster than it can play, playback will be smooth. However, a series of issues become evident:
 
-- The **player UI** size is usually not fixed but responsive, and needs to be able to **vary with device types and screen sizes**. This makes choosing the right source file resolution problematic: since we’ll be handing responsiveness client-side, the source should ideally be able to accommodate the largest resolution we want to support.
-- A high-quality source file is usually **very large in size**, and it will take long to download even under good network conditions.
+- The **player UI** size is usually not fixed but responsive and needs to be able to **vary with device types and screen sizes**. This makes choosing the right source file resolution problematic: since we’ll be handing responsiveness client-side, the source should ideally be able to accommodate the largest resolution we want to support.
+- A high-quality source file is usually **very large in size**, and it will take a long time to download even under good network conditions.
 - When users stop watching or skip portions of the clip, potentially large (and costly) amounts of downloaded data **go to waste**.
 
 ![Progressive video download over a good network](/img/video-guides/progressive-video-download-good-network.gif)
 > Progressive download for static video files: bandwidth is potentially wasted.
 
-Another issue with choosing the right quality vs size for progressive download videos becomes apparent when we consider streaming under constrained networks. A high quality, high size render will have trouble **buffering** to keep up with playback, resulting in a bad user experience:
+Another issue with choosing the right quality vs. size for progressive download videos becomes apparent when we consider streaming under constrained networks. A high quality, high size render will have trouble **buffering** to keep up with playback, resulting in a bad user experience:
 
 ![Progressive video download over a bad network](/img/video-guides/progressive-video-download-bad-network.gif)
-> Progressive download over constrained networks results in bad user experience.
+> Progressive download over constrained networks results in a bad user experience.
 
 ## Streaming
 
@@ -40,7 +40,7 @@ Video processing workflows can be implemented using many different products and 
 
 ![Transcoding a video to multiple qualities](/img/video-guides/video-transcoding-multiple-quality.png)
 
-The resulting rendering segments are then all uploaded to storage, cached on a CDN and made available to players. A playlist index file is also generated, connecting each individual segment to a specific playback time interval, and exposing metadata like information about bitrate and quality.
+The resulting rendering segments are then all uploaded to storage, cached on a CDN, and made available to players. A playlist index file is also generated, connecting each individual segment to a specific playback time interval and exposing metadata like information about bitrate and quality.
 
 ## HTTP Streaming Protocols
 
@@ -84,24 +84,24 @@ _Source: [the HLS RFC 8216 specs](https://tools.ietf.org/html/rfc8216)._
 
 ## Adaptive Bitrate Streaming
 
-A context-aware player can now download the playlist file, evaluate a series of on-device factors, like UI size and available bandwidth, and make a series of smart, local decisions about which of the segments to download and play at a given time. The result is adaptive bitrate streaming, or ABR - a process that optimises both network costs and the end-user experience.
+A context-aware player can now download the playlist file, evaluate a series of on-device factors, like UI size and available bandwidth, and make a series of smart, local decisions about which of the segments to download and play at a given time. The result is adaptive bitrate streaming, or ABR - a process that optimizes both network costs and the end-user experience.
 
 ![How video streaming works](/img/video-guides/how-video-streaming-works.gif)
-> Video streaming fixes the issues with progressive downloads
+> Video streaming fixes the issues with progressive downloads.
 
 :::note
-We've simplified things for this representation. In real-life, at least an audio track would also be included in the playlist, and downloaded separately. Subtitle tracks or alternate audio might also be included - the player could then allow the user to choose to change the audio to another language, or display any of the availablle subtitles.
+We've simplified things for this representation. In real life, at least an audio track would also be included in the playlist and downloaded separately. Subtitle tracks or alternate audio might also be included - the player could then allow the user to choose to change the audio to another language or display any of the available subtitles.
 :::
 
 ## Live Broadcast Streaming
 
-In the case of live events, the streaming process looks very similar to what we described above, the difference being that encoding and segmenting goes on continuously, in real time:
+In the case of live events, the streaming process looks very similar to what we described above, the difference being that encoding and segmenting goes on continuously, in real-time:
 
 ![How live video streaming works](/img/video-guides/how-live-video-streaming-works.gif)
-> Encoding, delivery and rendering are continuous for live streams.
+> Encoding, delivery, and rendering are continuous for live streams.
 
-Stream latency can vary between 30+ seconds for baseline HLS or DASH implementations, to around 5 seconds for tuned configurations of the same protocols.
+Stream latency can vary between 30+ seconds for baseline HLS or DASH implementations to around 5 seconds for tuned configurations of the same protocols.
 
 :::note
-An effort to implement low-latency streaming is underway for both [HLS](https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls) and [DASH](https://dashif.org/guidelines/), by splitting up the video segments into even smaller, independent pieces called chunks. These can be retrieved and rendered by the player as soon as they are available on the CDN, without needing to wait for a full segment to finish encoding. When supported by the CDN and players, this can reduce latency into the 1-5 seconds range.
+An effort to implement low-latency streaming is underway for both [HLS](https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls) and [DASH](https://dashif.org/guidelines/) by splitting up the video segments into even smaller, independent pieces called chunks. These can be retrieved and rendered by the player as soon as they are available on the CDN, without needing to wait for a full segment to finish encoding. When supported by the CDN and players, this can reduce latency into the 1-5 seconds range.
 :::
