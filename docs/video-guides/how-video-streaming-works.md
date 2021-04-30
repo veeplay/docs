@@ -3,7 +3,7 @@ description: A visual guide to how modern video streaming works.
 image: /img/video-guides/video-transcoding-multiple-quality.png
 ---
 
-# How Video Streaming Works
+# Video Streaming, Visually Explained
 
 Just upload the MP4 to S3 and we're done, right? We wish it was that easy.
 
