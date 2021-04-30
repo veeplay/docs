@@ -7,6 +7,7 @@ jobs:
   setup:
     executor:
       name: node/default
+      tag: 15.0.0
     steps:
       - checkout
       - restore_cache:
@@ -23,12 +24,10 @@ jobs:
   build:
     executor:
       name: node/default
+      tag: 15.0.0
     steps:
       - attach_workspace:
             at: .
-      - node/install:
-          node-version: 15.0.0
-          npm-version: 7.11.1
       - run:
           name: Build
           command: npm run build
