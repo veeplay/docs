@@ -10,11 +10,12 @@ jobs:
       tag: 15.0.0
     steps:
       - checkout
+      - node/install-yarn
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - run: npm install
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run: yarn install
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
       - persist_to_workspace:
@@ -28,9 +29,10 @@ jobs:
     steps:
       - attach_workspace:
             at: .
+      - node/install-yarn
       - run:
           name: Build
-          command: npm run build
+          command: yarn build
       - persist_to_workspace:
           root: .
           paths:
