@@ -1,6 +1,6 @@
 ---
 description: A visual guide to how modern video streaming works.
-image: /img/video-guides/how-video-streaming-works.gif
+image: /img/video-guides/video-transcoding-multiple-quality.png
 ---
 
 # How Video Streaming Works
