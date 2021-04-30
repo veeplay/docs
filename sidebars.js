@@ -21,9 +21,10 @@ module.exports = {
   videoGuidesSidebar: [
     {
       type: 'category',
-      label: 'How Web Video Works',
+      label: 'Guides to Web Video',
       items: [
         'video-guides/how-video-streaming-works',
+        'video-guides/how-video-encoding-works-codec-types',
       ],
     },
   ],

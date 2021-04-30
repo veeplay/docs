@@ -99,3 +99,9 @@ In the case of live events, the streaming process looks very similar to what we 
 
 ![How live video streaming works](/img/video-guides/how-live-video-streaming-works.gif)
 > Encoding, delivery and rendering are continuous for live streams.
+
+Stream latency can vary between 30+ seconds for baseline HLS or DASH implementations, to around 5 seconds for tuned configurations of the same protocols.
+
+:::note
+An effort to implement low-latency streaming is underway for both [HLS](https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls) and [DASH](https://dashif.org/guidelines/), by splitting up the video segments into even smaller, independent pieces called chunks. These can be retrieved and rendered by the player as soon as they are available on the CDN, without needing to wait for a full segment to finish encoding. When supported by the CDN and players, this can reduce latency into the 1-5 seconds range.
+:::
