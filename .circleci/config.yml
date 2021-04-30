@@ -28,6 +28,7 @@ jobs:
             at: .
       - node/install:
           node-version: 15.0.0
+          npm-version: 7.11.1
       - run:
           name: Build
           command: npm run build
