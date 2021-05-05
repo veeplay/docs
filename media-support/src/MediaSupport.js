@@ -1,6 +1,6 @@
 const { FAMILY_TYPE } = require('./constants');
 
-module.exports = class MediaSupport {
+export default class MediaSupport {
   constructor() {
     // eslint-disable-next-line global-require
     this.deviceFamilies = require('../data/families.json');
@@ -221,4 +221,4 @@ module.exports = class MediaSupport {
 
     return agg;
   }
-};
+}

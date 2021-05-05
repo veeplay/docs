@@ -33,6 +33,8 @@
   { "id": "m4v", "name": "M4V", "type": "container" },
   { "id": "ogg", "name": "OGG", "type": "container" },
   { "id": "pcm", "name": "PCM", "type": "audio" },
+  { "id": "midi", "name": "MIDI", "type": "audio" },
+  { "id": "amrnb", "name": "AMR-NB", "type": "audio" },
   { "id": "ac4", "name": "AC4", "type": "audio" },
   { "id": "alac", "name": "Apple Lossless", "type": "audio" },
   { "id": "dts", "name": "DTS", "type": "audio" },
@@ -50,5 +52,9 @@
   { "id": "hdcp", "name": "HDCP", "type": "drm" },
   { "id": "smpte-tt", "name": "SMPTE-TT", "type": "subtitle" },
   { "id": "av1", "name": "AV1", "type": "video" },
-  { "id": "clearkey", "name": "ClearKey", "type": "drm" }
+  { "id": "clearkey", "name": "ClearKey", "type": "drm" },
+  { "id": "hdr10", "name": "HDR10", "type": "hdr" },
+  { "id": "hdr10+", "name": "HDR10+", "type": "hdr" },
+  { "id": "hlg", "name": "HLG", "type": "hdr" },
+  { "id": "dolby-vision", "name": "Dolby Vision", "type": "hdr" }
 ]

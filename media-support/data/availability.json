@@ -23,7 +23,7 @@
           ]
         }
       ],
-      "containers": ["mp4", "webm", "m4a"],
+      "containers": ["mp4", "webm", "m4a", "ts", "ogg"],
       "audio": [
         "mp3",
         "flac",
@@ -32,9 +32,9 @@
         "opus",
         "vorbis",
         "lpcm",
-        "ac3",
-        "eac3",
-        "mpeg-h"
+        { "type": "ac3", "notes": "Passthrough" },
+        { "type": "eac3", "notes": "Passthrough" },
+        { "type": "mpeg-h", "notes": "Passthrough" }
       ],
       "streaming": [
         { "type": "dash", "drm": ["playready", "widevine"] },
@@ -97,6 +97,10 @@
           "level": "5.1",
           "max": { "res": "4K", "fps": 60 }
         }
+      ],
+      "hdr": [
+        { "type": "hdr10", "video": "vp9" },
+        { "type": "dolby-vision", "video": "vp9" }
       ]
     }
   },
@@ -166,6 +170,14 @@
           "containers": ["mkv", "webm"]
         }
       ],
+      "hdr": [
+        {
+          "type": "hdr10",
+          "video": ["vp9", "h265"],
+          "notes": "Only available on some devices; Requires HDMI version 2.0a, HDCP version 2.2, and an HDR10 capable player and display."
+        },
+        { "type": "dolby-vision", "video": ["h264", "h265"] }
+      ],
       "containers": [
         "webm",
         "mkv",
@@ -229,7 +241,17 @@
         { "type": "fmp4", "notes": "tvOS 10+" },
         "ts"
       ],
-      "audio": ["mp3", "flac", "aiff", "pcm", "he-aac", "aac", "ac3", "eac3"],
+      "audio": [
+        "mp3",
+        "flac",
+        "alac",
+        "aiff",
+        "pcm",
+        "he-aac",
+        "aac",
+        "ac3",
+        "eac3"
+      ],
       "streaming": [
         { "type": "cmaf", "notes": "tvOS 10+" },
         { "type": "hls", "drm": ["aes-128", "fairplay"] }
@@ -257,7 +279,8 @@
           "max": { "res": "4K", "fps": 30 }
         }
       ],
-      "audio": ["atmos"]
+      "audio": ["atmos"],
+      "hdr": [{ "type": "hdr10", "video": "h265" }]
     }
   },
   {
@@ -278,12 +301,32 @@
             { "res": "720p", "fps": 60 }
           ]
         },
-        "h263",
-        "mpeg2",
-        "mpeg4"
+        {
+          "type": "h263",
+          "profiles": "0",
+          "level": "70",
+          "max": { "res": "800x400", "fps": 30 }
+        },
+        { "type": "mpeg2", "max": { "res": "1080p", "fps": 30 } },
+        {
+          "type": "mpeg4",
+          "profiles": "Advanced Simple",
+          "level": "5",
+          "max": { "res": "1080p", "fps": 30 }
+        }
       ],
       "containers": ["mp4", "ogg", "ts"],
-      "audio": ["mp3", "flac", "pcm", "he-aac", "lc-aac", "ac3", "eac3"],
+      "audio": [
+        "mp3",
+        "flac",
+        "midi",
+        "pcm",
+        "he-aac",
+        "lc-aac",
+        "ac3",
+        "eac3",
+        "amrnb"
+      ],
       "streaming": ["hls", "dash"],
       "drm": ["playready", "widevine", "hdcp"]
     }
@@ -339,6 +382,12 @@
         },
         { "type": "vp9", "profiles": "2", "max": { "res": "4K", "fps": 60 } }
       ],
+      "hdr": [
+        { "type": "hdr10", "video": "h265" },
+        { "type": "hdr10+", "video": "h265" },
+        { "type": "hlg", "video": "h265" },
+        "dolby-vision"
+      ],
       "audio": ["atmos", "opus"],
       "containers": ["webm"],
       "drm": [
@@ -390,7 +439,8 @@
           "max": { "res": "1080", "fps": 60 }
         },
         { "type": "vp9", "profiles": "2", "max": { "res": "1080", "fps": 60 } }
-      ]
+      ],
+      "hdr": [{ "type": "dolby-vision", "enabled": false }]
     }
   },
   {
@@ -423,6 +473,11 @@
         },
         { "type": "vp9", "profiles": "2", "max": { "res": "1080", "fps": 60 } }
       ],
+      "hdr": [
+        { "type": "hdr10", "video": "h265" },
+        { "type": "hdr10+", "video": "h265" },
+        { "type": "hlg", "video": "h265" }
+      ],
       "drm": [
         { "type": "playready", "version": "3.0" },
         { "type": "hdcp", "version": "2.2" }
@@ -454,8 +509,9 @@
           "max": { "res": "4K", "fps": 60 }
         },
         { "type": "vp9", "profiles": "2", "max": { "res": "4K", "fps": 60 } },
-        "mpeg2"
+        { "type": "mpeg2", "max": { "res": "1080p", "fps": 60 } }
       ],
+      "hdr": [{ "type": "hdr10", "video": ["h265", "vp9"] }],
       "containers": ["mp4", "ogg", "webm"],
       "audio": [
         "mp3",
@@ -467,7 +523,9 @@
         "eac3",
         "atmos",
         "vorbis",
-        "opus"
+        "opus",
+        "amrnb",
+        "midi"
       ],
       "streaming": ["hls", "dash"],
       "drm": [
@@ -492,8 +550,19 @@
           "profiles": "Baseline",
           "max": { "res": "1080p", "fps": 30 }
         },
-        "mpeg4",
-        "h263"
+        { "type": "mpeg4", "max": { "res": "1080p", "fps": 60 } },
+        {
+          "type": "h263",
+          "profiles": "0",
+          "level": "70",
+          "max": { "res": "1080p", "fps": 30 }
+        }
+      ],
+      "hdr": [
+        { "type": "hdr10", "video": "h265" },
+        { "type": "hdr10+", "video": "h265" },
+        { "type": "hlg", "video": "h265" },
+        "dolby-vision"
       ],
       "drm": [
         { "type": "playready", "version": "3.3" },
@@ -520,14 +589,14 @@
             { "res": "4096x2160", "fps": 30 },
             { "res": "4K", "fps": 60 }
           ],
-          "containers": ["mp4", "mov", "mkv"]
+          "containers": ["mp4", "mov", "mkv", "ts"]
         },
         {
           "type": "h265",
           "profiles": "Main 10",
           "level": "5.1",
           "max": { "res": "4096x2160", "fps": 60 },
-          "containers": ["mp4", "mov", "mkv"]
+          "containers": ["mp4", "mov", "mkv", "ts"]
         },
         {
           "type": "vp8",
@@ -539,11 +608,24 @@
           "containers": "webm",
           "max": { "res": "4096x2160", "fps": 60 }
         },
-        "mpeg4",
-        "mpeg2",
-        "h263"
+        {
+          "type": "mpeg4",
+          "max": { "res": "1080p", "fps": 60 },
+          "containers": ["mp4", "mov", "mkv", "ts"]
+        },
+        {
+          "type": "mpeg2",
+          "max": { "res": "1080p", "fps": 60 },
+          "containers": ["mp4", "mov", "mkv", "ts"]
+        },
+        {
+          "type": "h263",
+          "max": { "res": "1080p", "fps": 30 },
+          "containers": ["mp4", "mov", "mkv", "ts"]
+        }
       ],
-      "containers": ["mp4", "mov", "mkv", "webm"],
+      "hdr": ["hdr10", "hdr10+"],
+      "containers": ["mp4", "mov", "mkv", "webm", "ts"],
       "audio": ["mp3", "lpcm", "he-aac", "aac", "ac3", "dts", "vorbis"],
       "streaming": [
         { "type": "hls", "drm": ["aes-128", "verimatrix"] },
@@ -560,7 +642,7 @@
     "versions": ["2018"],
     "inherits": "samsung-tv-premium-old",
     "references": [
-      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2019-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2018-tv-video-specifications.html",
       "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
     ],
     "support": {
@@ -976,29 +1058,12 @@
     }
   },
   {
-    "id": "iphone-new",
+    "id": "iphone-7",
     "family": "iPhone",
-    "versions": [
-      "7",
-      "7 Plus",
-      "8",
-      "8 Plus",
-      "X",
-      "XR",
-      "XS",
-      "XS Max",
-      "11",
-      "11 Pro",
-      "11 Pro Max",
-      "SE 2nd Gen",
-      "12 mini",
-      "12",
-      "12 Pro",
-      "12 Pro Max"
-    ],
+    "versions": ["7", "7 Plus"],
     "inherits": "iphone-6s",
     "references": [
-      "https://www.apple.com/iphone-12/specs/",
+      "https://support.apple.com/kb/SP743?locale=en_US",
       "https://support.apple.com/en-us/HT207022",
       "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
     ],
@@ -1014,15 +1079,39 @@
     }
   },
   {
+    "id": "iphone-new",
+    "family": "iPhone",
+    "versions": [
+      "8",
+      "8 Plus",
+      "X",
+      "XR",
+      "XS",
+      "XS Max",
+      "11",
+      "11 Pro",
+      "11 Pro Max",
+      "SE 2nd Gen",
+      "12 mini",
+      "12",
+      "12 Pro",
+      "12 Pro Max"
+    ],
+    "inherits": "iphone-7",
+    "references": [
+      "https://www.apple.com/iphone-12/specs/",
+      "https://support.apple.com/en-us/HT207022",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ],
+    "support": {
+      "hdr": ["hdr10", "dolby-vision"]
+    }
+  },
+  {
     "id": "ipad-5",
     "family": "iPad",
     "versions": ["5th Gen", "Air 2", "mini 4"],
-    "inherits": "iphone-6s",
-    "references": [
-      "https://support.apple.com/kb/SP751?locale=en_US",
-      "https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming",
-      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
-    ]
+    "inherits": "iphone-6s"
   },
   {
     "id": "ipad-new",
@@ -1033,18 +1122,15 @@
       "8th Gen",
       "Air 3rd Gen",
       "Air 4th Gen",
-      "mini 5th Gen",
-      "Pro 2nd Gen",
-      "Pro 3rd Gen",
-      "Pro 4th Gen",
-      "Pro 5th Gen"
+      "mini 5th Gen"
     ],
-    "inherits": "iphone-new",
-    "references": [
-      "https://support.apple.com/kb/SP822?locale=en_US",
-      "https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming",
-      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
-    ]
+    "inherits": "iphone-7"
+  },
+  {
+    "id": "ipad-pro",
+    "family": "iPad",
+    "versions": ["Pro 2nd Gen", "Pro 3rd Gen", "Pro 4th Gen", "Pro 5th Gen"],
+    "inherits": "iphone-new"
   },
   {
     "id": "android-3",

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   FAMILY_TYPE: {
     STREAMING_DEVICE: 'streaming-device',
     TV: 'tv',
@@ -11,6 +11,7 @@ module.exports = {
     MEDIA_CONTAINER: 'container',
     STREAMING_TECH: 'streaming',
     DRM_TECH: 'drm',
+    HDR_TECH: 'hdr',
     CAPTION_FORMAT: 'subtitle',
   },
 };
