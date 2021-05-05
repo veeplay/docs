@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Chromecast",
+    "type": "streaming-device",
+    "alias": ["google", "chromecast"]
+  },
+  { "name": "Roku", "type": "streaming-device", "alias": ["roku"] },
+  {
+    "name": "Apple TV",
+    "type": "streaming-device",
+    "alias": ["ios", "apple", "appletv", "apple tv"]
+  },
+  {
+    "name": "Fire TV",
+    "type": "streaming-device",
+    "alias": ["firetv", "fire tv"]
+  },
+  {
+    "name": "Samsung Smart TV Premium",
+    "type": "tv",
+    "alias": ["tv", "samsung"]
+  },
+  { "name": "Samsung Smart TV", "type": "tv", "alias": ["tv", "samsung"] },
+  { "name": "webOS TV", "type": "tv", "alias": ["tv", "webos", "lg"] },
+  {
+    "name": "Android TV",
+    "type": "tv",
+    "alias": ["android", "android tv", "tv", "google"],
+    "collapseVersions": true
+  },
+  {
+    "name": "iPhone",
+    "type": "handheld",
+    "alias": ["ios", "iphone", "apple", "phone"]
+  },
+  {
+    "name": "iPad",
+    "type": "handheld",
+    "alias": ["ios", "ipad", "apple", "tablet"]
+  },
+  {
+    "name": "Android",
+    "type": "handheld",
+    "alias": ["phone", "google", "android"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Internet Explorer",
+    "type": "browser",
+    "alias": ["browser", "internet explorer", "ie"],
+    "collapseVersions": true
+  },
+  { "name": "Edge", "type": "browser", "alias": ["browser", "edge"], "collapseVersions": true },
+  { "name": "Firefox", "type": "browser", "alias": ["browser", "firefox"], "collapseVersions": true },
+  {
+    "name": "Chrome",
+    "type": "browser",
+    "alias": ["browser", "google", "chrome"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Safari",
+    "type": "browser",
+    "alias": ["browser", "safari", "apple", "mac"],
+    "collapseVersions": true
+  },
+  { "name": "Opera", "type": "browser", "alias": ["browser", "opera"], "collapseVersions": true },
+  {
+    "name": "Safari iOS",
+    "type": "browser",
+    "alias": ["browser", "ios", "apple", "safari", "safari ios"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Android Browser",
+    "type": "browser",
+    "alias": ["browser", "android browser", "android", "google"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Opera Mobile",
+    "type": "browser",
+    "alias": ["browser", "opera", "opera mobile"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Chrome Android",
+    "type": "browser",
+    "alias": ["browser", "google", "chrome", "chrome android", "android"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Firefox Android",
+    "type": "browser",
+    "alias": ["browser", "firefox", "firefox android"],
+    "collapseVersions": true
+  },
+  {
+    "name": "UC Browser Android",
+    "type": "browser",
+    "alias": ["browser", "uc browser", "uc browser android", "android"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Samsung Internet",
+    "type": "browser",
+    "alias": ["browser", "samsung", "samsung internet"],
+    "collapseVersions": true
+  }
+]

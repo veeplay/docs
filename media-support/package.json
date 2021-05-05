@@ -1,0 +1,32 @@
+{
+  "name": "media-support",
+  "version": "1.0.0",
+  "description": "Retrieve info about media formats supported on various devices and OSs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veeplay/supported-media.git"
+  },
+  "keywords": [
+    "video",
+    "formats",
+    "codec",
+    "drm",
+    "streaming"
+  ],
+  "author": "Telepat <dev@telepat.io> (http://telepat.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/veeplay/supported-media/issues"
+  },
+  "homepage": "https://github.com/veeplay/supported-media#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "^2.2.1"
+  }
+}

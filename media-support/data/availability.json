@@ -1,0 +1,1518 @@
+[
+  {
+    "id": "chromecast-1",
+    "family": "Chromecast",
+    "versions": ["1st Gen"],
+    "references": ["https://developers.google.com/cast/docs/media"],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.1",
+          "max": [
+            { "res": "720p", "fps": 60 },
+            { "res": "1080p", "fps": 30 }
+          ]
+        },
+        {
+          "type": "vp8",
+          "max": [
+            { "res": "720p", "fps": 60 },
+            { "res": "1080p", "fps": 30 }
+          ]
+        }
+      ],
+      "containers": ["mp4", "webm", "m4a"],
+      "audio": [
+        "mp3",
+        "flac",
+        "he-aac",
+        "lc-aac",
+        "opus",
+        "vorbis",
+        "lpcm",
+        "ac3",
+        "eac3",
+        "mpeg-h"
+      ],
+      "streaming": [
+        { "type": "dash", "drm": ["playready", "widevine"] },
+        { "type": "ss", "drm": ["playready"] },
+        { "type": "hls", "drm": ["aes-128", "widevine"] }
+      ],
+      "drm": ["playready", "widevine", "aes-128"],
+      "subtitles": ["ttml", "webvtt", "cea-608", "cea-708"]
+    }
+  },
+  {
+    "id": "chromecast-2",
+    "inherits": "chromecast-1",
+    "family": "Chromecast",
+    "versions": ["2nd Gen"],
+    "support": {
+      "streaming": ["cmaf"],
+      "containers": ["fmp4"]
+    }
+  },
+  {
+    "id": "chromecast-3",
+    "inherits": "chromecast-2",
+    "family": "Chromecast",
+    "versions": ["3rd Gen"],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.2",
+          "max": { "res": "1080p", "fps": 60 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "chromecast-ultra",
+    "inherits": "chromecast-2",
+    "family": "Chromecast",
+    "versions": ["Ultra"],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.2",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        { "type": "vp8", "max": { "res": "4K", "fps": 30 } },
+        {
+          "type": "vp9",
+          "profiles": ["0", "2"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "chromecast-nest-hub",
+    "inherits": "chromecast-2",
+    "family": "Chromecast",
+    "versions": ["Google Nest Hub"],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.1",
+          "max": { "res": "720p", "fps": 60 }
+        },
+        { "type": "vp9", "level": "4.0", "max": { "res": "720p", "fps": 60 } },
+        { "type": "vp8", "enabled": false }
+      ]
+    }
+  },
+  {
+    "id": "chromecast-nest-hub-max",
+    "inherits": "chromecast-2",
+    "family": "Chromecast",
+    "versions": ["Nest Hub Max"],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.1",
+          "max": { "res": "720p", "fps": 30 }
+        },
+        { "type": "vp9", "level": "4.0", "max": { "res": "720p", "fps": 30 } },
+        { "type": "vp8", "enabled": false }
+      ]
+    }
+  },
+  {
+    "id": "roku",
+    "family": "Roku",
+    "versions": [],
+    "references": [
+      "https://developer.roku.com/en-gb/docs/specs/media/streaming-specifications.md"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Main", "High"],
+          "level": "4.2",
+          "max": { "res": "1080p", "fps": 60 },
+          "containers": ["mp4", "mov", "m4v", "mkv", "webm"]
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 },
+          "containers": ["mp4", "mov", "m4v", "mkv", "webm"]
+        },
+        {
+          "type": "vp9",
+          "profiles": ["0", "2"],
+          "max": { "res": "4K", "fps": 60 },
+          "containers": ["mkv", "webm"]
+        }
+      ],
+      "containers": [
+        "webm",
+        "mkv",
+        "mp4",
+        "mov",
+        "m4v",
+        "ogg",
+        { "type": "fmp4", "streaming": "dash" }
+      ],
+      "audio": [
+        "mp3",
+        "flac",
+        "opus",
+        "vorbis",
+        "pcm",
+        "he-aac",
+        "lc-aac",
+        "ac3",
+        "eac3",
+        "ac4",
+        "alac",
+        "dts"
+      ],
+      "streaming": [
+        "cmaf",
+        { "type": "dash", "drm": ["playready", "widevine"] },
+        { "type": "ss", "drm": "playready" },
+        { "type": "hls", "drm": ["aes-128", "widevine", "verimatrix"] }
+      ],
+      "drm": ["playready", "widevine", "aes-128", "verimatrix"],
+      "subtitles": ["ttml", "webvtt", "srt"]
+    }
+  },
+  {
+    "id": "appletv-hd",
+    "family": "Apple TV",
+    "versions": ["HD"],
+    "references": [
+      "https://www.apple.com/apple-tv-hd/specs/",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Baseline", "Main", "High"],
+          "level": "4.2",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "max": { "res": "1080p", "fps": 30 }
+        },
+        "mpeg4"
+      ],
+      "containers": [
+        "mp4",
+        "mov",
+        "m4v",
+        { "type": "fmp4", "notes": "tvOS 10+" },
+        "ts"
+      ],
+      "audio": ["mp3", "flac", "aiff", "pcm", "he-aac", "aac", "ac3", "eac3"],
+      "streaming": [
+        { "type": "cmaf", "notes": "tvOS 10+" },
+        { "type": "hls", "drm": ["aes-128", "fairplay"] }
+      ],
+      "drm": ["fairplay", "aes-128"],
+      "subtitles": ["webvtt", { "type": "imsc1", "container": "fmp4" }]
+    }
+  },
+  {
+    "id": "appletv-4k",
+    "inherits": "appletv-hd",
+    "family": "Apple TV",
+    "versions": ["4K"],
+    "references": ["https://www.apple.com/apple-tv-4k/specs/"],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Main", "Main 10"],
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "max": { "res": "4K", "fps": 30 }
+        }
+      ],
+      "audio": ["atmos"]
+    }
+  },
+  {
+    "id": "firetv-stick-1",
+    "family": "Fire TV",
+    "versions": ["Stick 1st Gen"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-stick.html?v=ftvstickgen1"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.0",
+          "max": [
+            { "res": "1080p", "fps": 30 },
+            { "res": "720p", "fps": 60 }
+          ]
+        },
+        "h263",
+        "mpeg2",
+        "mpeg4"
+      ],
+      "containers": ["mp4", "ogg", "ts"],
+      "audio": ["mp3", "flac", "pcm", "he-aac", "lc-aac", "ac3", "eac3"],
+      "streaming": ["hls", "dash"],
+      "drm": ["playready", "widevine", "hdcp"]
+    }
+  },
+  {
+    "id": "firetv-stick-basic",
+    "family": "Fire TV",
+    "versions": ["Stick Basic Edition"],
+    "inherits": "firetv-stick-1",
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-stick.html?v=ftvstickbasicedition"
+    ],
+    "support": {
+      "video": [
+        { "type": "mpeg2", "enabled": false },
+        {
+          "type": "h265",
+          "profiles": "Main",
+          "level": "4.0",
+          "max": { "res": "1080p", "fps": 30 }
+        }
+      ],
+      "audio": ["vorbis"]
+    }
+  },
+  {
+    "id": "firetv-stick-4k",
+    "family": "Fire TV",
+    "versions": ["Stick 4K"],
+    "inherits": "firetv-stick-basic",
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-stick.html?v=ftvstick4k"
+    ],
+    "support": {
+      "video": [
+        "mpeg2",
+        {
+          "type": "h264",
+          "profiles": "High 10",
+          "level": "5.2",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": "Main 10",
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "vp8",
+          "profiles": "Baseline",
+          "max": { "res": "1080p", "fps": 30 }
+        },
+        { "type": "vp9", "profiles": "2", "max": { "res": "4K", "fps": 60 } }
+      ],
+      "audio": ["atmos", "opus"],
+      "containers": ["webm"],
+      "drm": [
+        { "type": "playready", "version": "3.0" },
+        { "type": "hdcp", "version": "2.2" }
+      ]
+    }
+  },
+  {
+    "id": "firetv-stick-2",
+    "family": "Fire TV",
+    "versions": ["Stick 2nd Gen"],
+    "inherits": "firetv-stick-1",
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-stick.html?v=ftvstickgen2"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h265",
+          "profiles": "Main",
+          "level": "4.0",
+          "max": { "res": "1080", "fps": 30 }
+        }
+      ],
+      "audio": ["vorbis", "opus"]
+    }
+  },
+  {
+    "id": "firetv-stick-lite-1",
+    "family": "Fire TV",
+    "versions": ["Stick Lite 1st Gen"],
+    "inherits": "firetv-stick-4k",
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-stick.html?v=ftvsticklite"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.0",
+          "max": { "res": "1080", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": "Main 10",
+          "level": "4.1",
+          "max": { "res": "1080", "fps": 60 }
+        },
+        { "type": "vp9", "profiles": "2", "max": { "res": "1080", "fps": 60 } }
+      ]
+    }
+  },
+  {
+    "id": "firetv-stick-3",
+    "family": "Fire TV",
+    "versions": ["Stick 3rd Gen"],
+    "inherits": "firetv-stick-2",
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-stick.html?v=ftvstickgen3"
+    ],
+    "support": {
+      "containers": ["webm"],
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.0",
+          "max": { "res": "1080", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": "Main 10",
+          "level": "4.1",
+          "max": { "res": "1080", "fps": 60 }
+        },
+        {
+          "type": "vp8",
+          "profiles": "Baseline",
+          "max": { "res": "1080", "fps": 30 }
+        },
+        { "type": "vp9", "profiles": "2", "max": { "res": "1080", "fps": 60 } }
+      ],
+      "drm": [
+        { "type": "playready", "version": "3.0" },
+        { "type": "hdcp", "version": "2.2" }
+      ]
+    }
+  },
+  {
+    "id": "firetv-cube-1",
+    "family": "Fire TV",
+    "versions": ["Cube 1st Gen"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-cube.html?v=ftvcubegen1"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.1",
+          "max": [
+            { "res": "4K", "fps": 30 },
+            { "res": "1080p", "fps": 60 }
+          ]
+        },
+        {
+          "type": "h265",
+          "profiles": "Main 10",
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        { "type": "vp9", "profiles": "2", "max": { "res": "4K", "fps": 60 } },
+        "mpeg2"
+      ],
+      "containers": ["mp4", "ogg", "webm"],
+      "audio": [
+        "mp3",
+        "flac",
+        "pcm",
+        "he-aac",
+        "lc-aac",
+        "ac3",
+        "eac3",
+        "atmos",
+        "vorbis",
+        "opus"
+      ],
+      "streaming": ["hls", "dash"],
+      "drm": [
+        { "type": "playready", "version": "3.0" },
+        { "type": "widevine", "version": "3" },
+        { "type": "hdcp", "version": "2.2" }
+      ]
+    }
+  },
+  {
+    "id": "firetv-cube-2",
+    "family": "Fire TV",
+    "versions": ["Cube 2nd Gen"],
+    "inherits": "firetv-cube-1",
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-cube.html?v=ftvcubegen2"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "vp8",
+          "profiles": "Baseline",
+          "max": { "res": "1080p", "fps": 30 }
+        },
+        "mpeg4",
+        "h263"
+      ],
+      "drm": [
+        { "type": "playready", "version": "3.3" },
+        { "type": "widevine", "version": "1 v11" },
+        { "type": "hdcp", "enabled": false }
+      ]
+    }
+  },
+  {
+    "id": "samsung-tv-premium-old",
+    "family": "Samsung Smart TV Premium",
+    "versions": ["2015", "2016", "2017"],
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2017-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": [
+            { "res": "4096x2160", "fps": 30 },
+            { "res": "4K", "fps": 60 }
+          ],
+          "containers": ["mp4", "mov", "mkv"]
+        },
+        {
+          "type": "h265",
+          "profiles": "Main 10",
+          "level": "5.1",
+          "max": { "res": "4096x2160", "fps": 60 },
+          "containers": ["mp4", "mov", "mkv"]
+        },
+        {
+          "type": "vp8",
+          "containers": "webm",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "vp9",
+          "containers": "webm",
+          "max": { "res": "4096x2160", "fps": 60 }
+        },
+        "mpeg4",
+        "mpeg2",
+        "h263"
+      ],
+      "containers": ["mp4", "mov", "mkv", "webm"],
+      "audio": ["mp3", "lpcm", "he-aac", "aac", "ac3", "dts", "vorbis"],
+      "streaming": [
+        { "type": "hls", "drm": ["aes-128", "verimatrix"] },
+        { "type": "dash", "drm": ["playready", "widevine"] },
+        { "type": "ss", "drm": "playready" }
+      ],
+      "drm": ["playready", "widevine", "aes-128", "verimatrix"],
+      "subtitles": ["webvtt", "smpte-tt", "srt"]
+    }
+  },
+  {
+    "id": "samsung-tv-premium-2018",
+    "family": "Samsung Smart TV Premium",
+    "versions": ["2018"],
+    "inherits": "samsung-tv-premium-old",
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2019-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "vp9",
+          "containers": "webm",
+          "profiles": ["0", "2"],
+          "max": { "res": "4K", "fps": 60 }
+        }
+      ],
+      "audio": ["opus"],
+      "containers": [{ "type": "fmp4", "streaming": ["dash", "ss"] }]
+    }
+  },
+  {
+    "id": "samsung-tv-premium-2019",
+    "family": "Samsung Smart TV Premium",
+    "versions": ["2019"],
+    "inherits": "samsung-tv-premium-2018",
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2019-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "6.1",
+          "max": { "res": "8K", "fps": 60 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "samsung-tv-premium-new",
+    "family": "Samsung Smart TV Premium",
+    "versions": ["2020", "2021"],
+    "inherits": "samsung-tv-premium-2019",
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2021-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "av1",
+          "containers": "webm",
+          "max": { "res": "8K", "fps": 60 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "samsung-tv-standard-old",
+    "family": "Samsung Smart TV",
+    "versions": ["2015", "2016", "2017"],
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2017-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "inherits": "samsung-tv-premium-old",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "containers": ["mkv", "mp4", "mov"],
+          "profiles": ["Base", "Main", "High"],
+          "level": "4.1",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "containers": ["mkv", "mp4"],
+          "streaming": "hls",
+          "profiles": "Main 10",
+          "level": "5.1",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "vp8",
+          "containers": "webm",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        { "type": "vp9", "enabled": false }
+      ]
+    }
+  },
+  {
+    "id": "samsung-tv-standard-2018",
+    "family": "Samsung Smart TV",
+    "versions": ["2018"],
+    "inherits": "samsung-tv-standard-old",
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2019-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "containers": ["mkv", "mp4", "mov"],
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": [
+            { "res": "4K", "fps": 30 },
+            { "res": "1080p", "fps": 60 }
+          ]
+        },
+        {
+          "type": "h265",
+          "containers": ["mkv", "mp4"],
+          "streaming": "hls",
+          "profiles": "Main 10",
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "vp9",
+          "containers": "webm",
+          "profiles": ["0", "2"],
+          "max": { "res": "4K", "fps": 60 }
+        }
+      ],
+      "audio": ["opus"],
+      "containers": [{ "type": "fmp4", "streaming": ["dash", "ss"] }]
+    }
+  },
+  {
+    "id": "samsung-tv-standard-2019",
+    "family": "Samsung Smart TV",
+    "versions": ["2019"],
+    "inherits": "samsung-tv-standard-2018",
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2019-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "containers": ["mkv", "mp4", "mov"],
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": [
+            { "res": "4096x2160", "fps": 30 },
+            { "res": "4K", "fps": 60 }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "samsung-tv-standard-new",
+    "family": "Samsung Smart TV",
+    "versions": ["2020", "2021"],
+    "inherits": "samsung-tv-standard-2019",
+    "references": [
+      "https://developer.samsung.com/smarttv/develop/specifications/media-specifications/2021-tv-video-specifications.html",
+      "https://developer.samsung.com/smarttv/develop/specifications/general-specifications.html"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "av1",
+          "containers": "webm",
+          "max": { "res": "4K", "fps": 60 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "webos-tv-1",
+    "family": "webOS TV",
+    "versions": ["1.0"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-10/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "Main",
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 30 },
+          "containers": ["mp4", "mov", "m4v", "ts", "mkv"]
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 },
+          "containers": ["mp4", "ts", "mkv"]
+        },
+        "mpeg2",
+        "mpeg4",
+        { "type": "vp8", "containers": "mkv" }
+      ],
+      "containers": ["mp4", "mov", "m4v", "mkv", "ogg", "ts"],
+      "audio": ["mp3", "vorbis", "pcm", "aac", "ac3", "eac3", "dts"],
+      "streaming": [
+        {
+          "type": "hls",
+          "drm": ["aes-128", "widevine"],
+          "notes": "Version 7 only"
+        }
+      ],
+      "drm": [{ "type": "widevine", "version": "Classic v6" }, "aes-128"],
+      "subtitles": ["webvtt"]
+    }
+  },
+  {
+    "id": "webos-tv-2",
+    "family": "webOS TV",
+    "versions": ["2.0"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-20/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "inherits": "webos-tv-1",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": { "res": "4096x2160", "fps": 30 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "5.1",
+          "max": { "res": "4096x2160", "fps": 60 },
+          "containers": ["mp4", "m4v", "mov", "ts", "mkv"]
+        },
+        { "type": "vp9", "containers": "mkv", "notes": "Ultra HD models only" }
+      ],
+      "audio": ["he-aac"]
+    }
+  },
+  {
+    "id": "webos-tv-3",
+    "family": "webOS TV",
+    "versions": ["3.0"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-30/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "inherits": "webos-tv-2",
+    "support": {
+      "drm": [
+        { "type": "widevine", "version": "Classic v6, Modular v2.2" },
+        "playready"
+      ]
+    }
+  },
+  {
+    "id": "webos-tv-3.5",
+    "family": "webOS TV",
+    "versions": ["3.5"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-35/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "inherits": "webos-tv-3",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": { "res": "4096x2160", "fps": 60 }
+        }
+      ],
+      "drm": [
+        { "type": "widevine", "version": "Classic v6, Modular v3.0.5" },
+        { "type": "playready", "version": "3.0" }
+      ],
+      "audio": ["flac"]
+    }
+  },
+  {
+    "id": "webos-tv-4",
+    "family": "webOS TV",
+    "versions": ["4.0"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-40/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "inherits": "webos-tv-3.5",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        }
+      ],
+      "drm": [{ "type": "widevine", "version": "Classic v6, Modular v3.2.1" }],
+      "audio": ["ac4"]
+    }
+  },
+  {
+    "id": "webos-tv-4.5",
+    "family": "webOS TV",
+    "versions": ["4.5"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-45/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "inherits": "webos-tv-4",
+    "support": {
+      "drm": [{ "type": "widevine", "version": "Classic v6, Modular v14" }]
+    }
+  },
+  {
+    "id": "webos-tv-5",
+    "family": "webOS TV",
+    "versions": ["5.0"],
+    "references": [
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/webos-50/",
+      "https://webostv.developer.lge.com/discover/specifications/supported-media-formats/"
+    ],
+    "inherits": "webos-tv-4.5",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Base", "Main", "High"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 30 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "6.1",
+          "max": { "res": "8K", "fps": 60 }
+        },
+        {
+          "type": "vp9",
+          "containers": "mkv",
+          "max": { "res": "8K", "fps": 60 }
+        },
+        {
+          "type": "av1",
+          "containers": "mkv",
+          "max": { "res": "8K", "fps": 60 }
+        }
+      ],
+      "drm": [
+        { "type": "widevine", "version": "Classic v6, Modular v15" },
+        { "type": "playready", "version": "4.0" }
+      ],
+      "audio": ["mpeg-h"]
+    }
+  },
+  {
+    "id": "iphone-5-6",
+    "family": "iPhone",
+    "versions": ["5s", "6", "6 Plus"],
+    "references": [
+      "https://support.apple.com/kb/sp706?locale=en_US",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.2",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        "mpeg4"
+      ],
+      "containers": ["mp4", "mov", "m4v", "ts"],
+      "audio": ["mp3", "aac", "lc-aac", "he-aac", "pcm", "aiff"],
+      "streaming": [{ "type": "hls", "drm": ["fairplay", "aes-128"] }],
+      "drm": ["fairplay", "aes-128"],
+      "subtitles": ["webvtt", "imsc1", "cea-608", "cea-708"]
+    }
+  },
+  {
+    "id": "iphone-6s",
+    "family": "iPhone",
+    "versions": ["6s", "6s Plus", "SE"],
+    "inherits": "iphone-5-6",
+    "references": [
+      "https://support.apple.com/kb/sp727?locale=en_US",
+      "https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": "High",
+          "level": "4.2",
+          "max": { "res": "4K", "fps": 30 }
+        }
+      ],
+      "containers": [{ "type": "fmp4", "notes": "iOS 10+" }],
+      "streaming": [{ "type": "cmaf", "notes": "iOS 10+" }],
+      "audio": ["ac3", "eac3"]
+    }
+  },
+  {
+    "id": "iphone-new",
+    "family": "iPhone",
+    "versions": [
+      "7",
+      "7 Plus",
+      "8",
+      "8 Plus",
+      "X",
+      "XR",
+      "XS",
+      "XS Max",
+      "11",
+      "11 Pro",
+      "11 Pro Max",
+      "SE 2nd Gen",
+      "12 mini",
+      "12",
+      "12 Pro",
+      "12 Pro Max"
+    ],
+    "inherits": "iphone-6s",
+    "references": [
+      "https://www.apple.com/iphone-12/specs/",
+      "https://support.apple.com/en-us/HT207022",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h265",
+          "profiles": "Main 10",
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 30 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "ipad-5",
+    "family": "iPad",
+    "versions": ["5th Gen", "Air 2", "mini 4"],
+    "inherits": "iphone-6s",
+    "references": [
+      "https://support.apple.com/kb/SP751?locale=en_US",
+      "https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ]
+  },
+  {
+    "id": "ipad-new",
+    "family": "iPad",
+    "versions": [
+      "6th Gen",
+      "7th Gen",
+      "8th Gen",
+      "Air 3rd Gen",
+      "Air 4th Gen",
+      "mini 5th Gen",
+      "Pro 2nd Gen",
+      "Pro 3rd Gen",
+      "Pro 4th Gen",
+      "Pro 5th Gen"
+    ],
+    "inherits": "iphone-new",
+    "references": [
+      "https://support.apple.com/kb/SP822?locale=en_US",
+      "https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming",
+      "https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices"
+    ]
+  },
+  {
+    "id": "android-3",
+    "family": "Android",
+    "versions": ["3.0+"],
+    "references": [
+      "https://developer.android.com/guide/topics/media/media-formats"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["Baseline", "Main"],
+          "containers": ["mkv", "mp4", "ts"]
+        },
+        "h263",
+        "mpeg4"
+      ],
+      "containers": ["mp4", "mkv", "m4a", "ogg", "ts"],
+      "audio": ["lc-aac", "he-aac", "flac", "mp3", "pcm", "vorbis"]
+    }
+  },
+  {
+    "id": "android-4",
+    "family": "Android",
+    "versions": ["4.0+"],
+    "inherits": "android-3",
+    "references": ["https://exoplayer.dev/supported-formats.html"],
+    "support": {
+      "video": [{ "type": "vp8", "containers": ["webm", "mkv"] }],
+      "containers": ["webm", "fmp4"],
+      "streaming": [
+        { "type": "hls", "drm": ["aes-128", "widevine"] },
+        { "type": "dash", "drm": ["widevine", "clearkey"] },
+        "ss",
+        "cmaf"
+      ],
+      "drm": [
+        "aes-128",
+        {
+          "type": "widevine",
+          "notes": "API 19+ (“cenc” scheme) and 25+ (“cbcs” scheme)"
+        },
+        { "type": "clearkey", "notes": "API 21+, “cenc” scheme only" }
+      ],
+      "subtitles": [
+        { "type": "webvtt", "streaming": ["hls", "dash"] },
+        { "type": "cea-608", "streaming": ["hls", "dash"] },
+        { "type": "ttml", "streaming": ["dash", "ss"] }
+      ]
+    }
+  },
+  {
+    "id": "android-4.4",
+    "family": "Android",
+    "versions": ["4.4+"],
+    "inherits": "android-4",
+    "support": {
+      "video": [{ "type": "vp9", "containers": ["webm", "mkv"] }]
+    }
+  },
+  {
+    "id": "android-5",
+    "family": "Android",
+    "versions": ["5.0+"],
+    "inherits": "android-4.4",
+    "support": {
+      "video": [
+        {
+          "type": "h265",
+          "profiles": "Main",
+          "level": "3.0",
+          "containers": ["mp4", "mkv"]
+        }
+      ],
+      "audio": ["opus"]
+    }
+  },
+  {
+    "id": "android-10",
+    "family": "Android",
+    "versions": ["10+"],
+    "inherits": "android-5",
+    "support": {
+      "video": [{ "type": "av1", "containers": ["mp4", "mkv"] }]
+    }
+  },
+  {
+    "id": "android-tv-5",
+    "family": "Android TV",
+    "versions": ["5.0+"],
+    "inherits": "android-5",
+    "support": {
+      "drm": ["playready"],
+      "streaming": [
+        { "type": "hls", "drm": ["aes-128", "widevine", "playready"] }
+      ]
+    }
+  },
+  {
+    "id": "android-tv-10",
+    "family": "Android TV",
+    "versions": ["10+"],
+    "inherits": "android-tv-5",
+    "support": {
+      "video": [{ "type": "av1", "containers": ["mp4", "mkv"] }]
+    }
+  },
+  {
+    "id": "ie",
+    "family": "Internet Explorer",
+    "versions": ["9+"],
+    "support": {
+      "video": ["h264"]
+    }
+  },
+  {
+    "id": "edge",
+    "family": "Edge",
+    "versions": ["12+"],
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Plugins/Flash_to_HTML5/Video#browser_support"
+    ],
+    "support": {
+      "video": ["h264"],
+      "drm": [{ "type": "playready", "containers": "mp4", "via": "eme" }]
+    }
+  },
+  {
+    "id": "edge-14",
+    "family": "Edge",
+    "versions": ["14+"],
+    "inherits": "edge",
+    "support": {
+      "video": ["vp8"]
+    }
+  },
+  {
+    "id": "edge-79",
+    "family": "Edge",
+    "versions": ["79+"],
+    "inherits": "edge-14",
+    "support": {
+      "video": ["vp9", "av1"]
+    }
+  },
+  {
+    "id": "firefox",
+    "family": "Firefox",
+    "versions": ["4+"],
+    "support": {
+      "video": ["vp8"]
+    }
+  },
+  {
+    "id": "firefox-21",
+    "family": "Firefox",
+    "versions": ["21+"],
+    "inherits": "firefox",
+    "support": {
+      "video": ["h264"]
+    }
+  },
+  {
+    "id": "firefox-28",
+    "family": "Firefox",
+    "versions": ["28+"],
+    "inherits": "firefox-21",
+    "support": {
+      "video": ["vp9"]
+    }
+  },
+  {
+    "id": "firefox-38",
+    "family": "Firefox",
+    "versions": ["38+"],
+    "inherits": "firefox-28",
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Plugins/Flash_to_HTML5/Video#browser_support"
+    ],
+    "support": {
+      "drm": [{ "type": "widevine", "via": "eme" }]
+    }
+  },
+  {
+    "id": "firefox-67",
+    "family": "Firefox",
+    "versions": ["67+"],
+    "inherits": "firefox-38",
+    "support": {
+      "video": ["av1"]
+    }
+  },
+  {
+    "id": "chrome",
+    "family": "Chrome",
+    "versions": ["4+"],
+    "support": {
+      "video": ["h264"]
+    }
+  },
+  {
+    "id": "chrome-6",
+    "family": "Chrome",
+    "versions": ["6+"],
+    "inherits": "chrome",
+    "support": {
+      "video": ["vp8"]
+    }
+  },
+  {
+    "id": "chrome-25",
+    "family": "Chrome",
+    "versions": ["25+"],
+    "inherits": "chrome-6",
+    "support": {
+      "video": ["vp9"]
+    }
+  },
+  {
+    "id": "chrome-42",
+    "family": "Chrome",
+    "versions": ["42+"],
+    "inherits": "chrome-25",
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Plugins/Flash_to_HTML5/Video#browser_support"
+    ],
+    "support": {
+      "drm": [{ "type": "widevine", "via": "eme" }]
+    }
+  },
+  {
+    "id": "chrome-70",
+    "family": "Chrome",
+    "versions": ["70+"],
+    "inherits": "chrome-42",
+    "support": {
+      "video": ["av1"]
+    }
+  },
+  {
+    "id": "safari",
+    "family": "Safari",
+    "versions": ["3.2+"],
+    "support": {
+      "video": ["h264"]
+    }
+  },
+  {
+    "id": "safari-6",
+    "family": "Safari",
+    "versions": ["6+"],
+    "inherits": "safari",
+    "support": {
+      "streaming": ["hls"]
+    }
+  },
+  {
+    "id": "safari-11",
+    "family": "Safari",
+    "versions": ["11+"],
+    "inherits": "safari-6",
+    "support": {
+      "video": ["h265"]
+    }
+  },
+  {
+    "id": "safari-12",
+    "family": "Safari",
+    "versions": ["12.1+"],
+    "inherits": "safari-11",
+    "references": [
+      "https://developer.mozilla.org/en-US/docs/Plugins/Flash_to_HTML5/Video#browser_support"
+    ],
+    "support": {
+      "video": [{ "type": "vp8", "notes": "Supported in WebRTC" }],
+      "drm": [{ "type": "fairplay", "via": "eme", "containers": "m2ts" }]
+    }
+  },
+  {
+    "id": "safari-14",
+    "family": "Safari",
+    "versions": ["14.1+"],
+    "inherits": "safari-12",
+    "support": {
+      "video": [{ "type": "vp8", "notes": null }, "vp9"]
+    }
+  },
+  {
+    "id": "opera",
+    "family": "Opera",
+    "versions": ["11.5+"],
+    "support": {
+      "video": ["vp8"]
+    }
+  },
+  {
+    "id": "opera-16",
+    "family": "Opera",
+    "versions": ["16+"],
+    "inherits": "opera",
+    "support": {
+      "video": ["vp9"]
+    }
+  },
+  {
+    "id": "opera-25",
+    "family": "Opera",
+    "versions": ["25+"],
+    "inherits": "opera-16",
+    "support": {
+      "video": ["h264"]
+    }
+  },
+  {
+    "id": "opera-29",
+    "family": "Opera",
+    "versions": ["29+"],
+    "inherits": "opera-25",
+    "support": {
+      "drm": [{ "type": "widevine", "via": "eme" }]
+    }
+  },
+  {
+    "id": "opera-57",
+    "family": "Opera",
+    "versions": ["57+"],
+    "inherits": "opera-29",
+    "support": {
+      "video": ["av1"]
+    }
+  },
+  {
+    "id": "safari-ios",
+    "family": "Safari iOS",
+    "versions": ["3.2+"],
+    "support": {
+      "video": ["h264"],
+      "streaming": ["hls"]
+    }
+  },
+  {
+    "id": "safari-ios-11",
+    "family": "Safari iOS",
+    "versions": ["11+"],
+    "inherits": "safari-ios",
+    "support": {
+      "video": ["h265"]
+    }
+  },
+  {
+    "id": "safari-ios-11.3",
+    "family": "Safari iOS",
+    "versions": ["11.3+"],
+    "inherits": "safari-ios-11",
+    "support": {
+      "drm": [{ "type": "fairplay", "via": "eme" }]
+    }
+  },
+  {
+    "id": "safari-ios-12",
+    "family": "Safari iOS",
+    "versions": ["12.2+"],
+    "inherits": "safari-ios-11.3",
+    "support": {
+      "video": [{ "type": "vp8", "notes": "Supported in WebRTC" }]
+    }
+  },
+  {
+    "id": "safari-ios-14",
+    "family": "Safari iOS",
+    "versions": ["14.4+"],
+    "inherits": "safari-ios-12",
+    "support": {
+      "video": [
+        { "type": "vp9", "notes": "Supported in WebRTC (off by default)" }
+      ]
+    }
+  },
+  {
+    "id": "android-browser",
+    "family": "Android Browser",
+    "versions": ["4.4+"],
+    "support": {
+      "video": ["h264"],
+      "streaming": ["hls"]
+    }
+  },
+  {
+    "id": "android-browser-90",
+    "family": "Android Browser",
+    "versions": ["90+"],
+    "inherits": "android-browser",
+    "support": {
+      "video": ["vp8", "vp9", "av1"],
+      "drm": [{ "type": "widevine", "via": "eme" }]
+    }
+  },
+  {
+    "id": "opera-mobile",
+    "family": "Opera Mobile",
+    "versions": ["12+"],
+    "support": {
+      "video": ["h264"]
+    }
+  },
+  {
+    "id": "opera-mobile-62",
+    "family": "Opera Mobile",
+    "versions": ["62+"],
+    "inherits": "opera-mobile",
+    "support": {
+      "video": ["vp8", "av1"],
+      "streaming": ["hls"]
+    }
+  },
+  {
+    "id": "chrome-android",
+    "family": "Chrome Android",
+    "versions": ["90+"],
+    "support": {
+      "video": ["h264", "vp8", "vp9", "av1"],
+      "streaming": ["hls"],
+      "drm": [{ "type": "widevine", "via": "eme" }]
+    }
+  },
+  {
+    "id": "firefox-android",
+    "family": "Firefox Android",
+    "versions": ["87+"],
+    "support": {
+      "video": ["h264", "vp8", "vp9"]
+    }
+  },
+  {
+    "id": "uc-android",
+    "family": "UC Browser Android",
+    "versions": ["12.12+"],
+    "support": {
+      "video": ["h264", "vp8", "vp9"],
+      "streaming": ["hls"]
+    }
+  },
+  {
+    "id": "samsung-internet",
+    "family": "Samsung Internet",
+    "versions": ["4+"],
+    "support": {
+      "video": ["h264", "vp8"],
+      "streaming": ["hls"]
+    }
+  },
+  {
+    "id": "samsung-internet-5",
+    "family": "Samsung Internet",
+    "versions": ["5+"],
+    "inherits": "samsung-internet",
+    "support": {
+      "video": ["vp9"]
+    }
+  },
+  {
+    "id": "samsung-internet-12",
+    "family": "Samsung Internet",
+    "versions": ["12+"],
+    "inherits": "samsung-internet-5",
+    "support": {
+      "video": ["av1"]
+    }
+  }
+]

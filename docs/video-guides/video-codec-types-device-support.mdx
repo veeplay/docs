@@ -1,0 +1,107 @@
+---
+title: Video Codec Types & Device Support
+description: Specifications for the most popular video codec types, including exhaustive device & OS support.
+image: /img/video-guides/how-video-streaming-works.gif
+---
+
+import MediaSupport from '../../src/components/MediaSupport'
+
+## H.264 (AVC)
+- **Tech Specifications**: https://www.itu.int/rec/T-REC-H.264
+- **Launched**: In 2003, by [ITU-T Video Coding Experts Group](https://www.itu.int/en/ITU-T/studygroups/2017-2020/16/Pages/video/vceg.aspx) in conjunction with the [ISO/IEC JTC1 Moving Picture Experts Group](https://mpeg.chiariglione.org/)
+- **Licensing**:
+  - Protected by [multiple patents](https://www.mpegla.com/wp-content/uploads/avc-att1.pdf) owned by a number of different entities.
+  - The majority of these patents are handled by [MPEG LA](https://www.mpegla.com/).
+  - Video that is streamed freely to the end user [will not incur royalty fees](https://www.mpegla.com/wp-content/uploads/n-10-08-26.pdf), but any commercial use requires payment of fees and royalties.
+  - Priced at $0.20 per device up to an annual cap of $9.75 million (see an old [license terms summary](https://web.archive.org/web/20090304065500/http://www.mpegla.com/avc/AVC_TermsSummary.pdf) from MPEG LA).
+  - Content distribution fees might also apply.
+  - Cisco open-sourced its [H.264 implementation](https://github.com/cisco/openh264) and released it as a free binary that can be used for encoding or decoding.
+- **Performance**:
+  - Comparable to [VP8](#vp8) in terms of quality and compression rate.
+  - Excellent, hardware-based on most devices.
+  - Technology predecessor of [H.265 (HEVC)](#h265-hevc).
+  - Supported almost universally.
+- **Resolutions**:
+  - With Level 5.2, H.264 has a maximum frame size of 4,096 x 2,304 pixels @ 56 frames per second, or 4,096 x 2160 @ 60 frames per second.
+  - Non-standard H.264 video can support [8K UHD](https://www.mysterybox.us/blog/2017/2/21/delivering-8k-using-avch264), depending on player and decoder support.
+- **Containers**: 3GP, MP4, WebM, MPEG-TS, MKV
+- **HDR Suport**: [Up to 14 bits](https://en.wikipedia.org/wiki/Advanced_Video_Coding#Feature_support_in_particular_profiles), depending on profile and decoder support.
+- **Variable Bit Rate Support**: Yes
+- **WebRTC Support**: Yes
+
+<MediaSupport features="h264" />
+
+## H.265 (HEVC)
+- **Tech Specifications**: http://www.itu.int/rec/T-REC-H.265
+- **Launched**: In 2013, by the [Joint Collaborative Team on Video Coding](https://www.itu.int/en/ITU-T/studygroups/2017-2020/16/Pages/video/jctvc.aspx).
+- **Licensing**:
+  - Uses technologies covered by several patents and requires a license for use.
+  - Has three patent pools: [HEVC Advance](https://accessadvance.com/), [MPEG LA](https://www.mpegla.com/), and [Velos Media](http://velosmedia.com/).
+  - Priced at $0.20 per device up to an annual cap of $25 million (see rates from [MPEG LA](https://web.archive.org/web/20141006091331/http://www.mpegla.com/main/programs/HEVC/Documents/HEVCweb.pdf) and [HEVC Advance](https://accessadvance.com/pdfnew/RoyaltyRatesSummary.pdf)).
+  - Content distribution fees might also apply.
+- **Performance**:
+  - Technology successor of [H.264 (AVC)](#h264-avc).
+  - Comparable to [VP9](#vp9) in terms of quality and compression rate.
+  - Can achieve compressed file sizes half that of AVC with comparable image quality<sup>[ref](https://bitmovin.com/vp9-vs-hevc-h265/)</sup>.
+  - Around 10-20 times larger encoding run time than AVC<sup>[ref](https://blogs.gnome.org/rbultje/2015/09/28/vp9-encodingdecoding-performance-vs-hevch-264/)</sup>
+- **Resolutions**: Up to 8192x4320 along with 8K UHD.
+- **Containers**: MP4, MPEG-TS, MKV
+- **HDR Suport**: [Up to 16 bits](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding#Profiles) depending on profile and decoder support
+- **Variable Bit Rate Support**: Yes
+- **WebRTC Support**: No
+
+<MediaSupport features="h265" />
+
+## VP8
+- **Tech Specifications**: https://tools.ietf.org/html/rfc6386
+- **Launched**: In 2008, by On2 Technologies ([aquired by Google](https://www.on2.com/)).
+- **Licensing**: 
+  - [Free and open source](https://www.webmproject.org/cross-license/vp8/agreement/) via a Creative Commons Attribution 3.0 license.
+  - The reference implementation, [`libvpx`](https://chromium.googlesource.com/webm/libvpx/), is released under the revised BSD license.
+- **Performance**:
+  - In terms of quality and compression rate, VP8 is comparable to [AVC](#h264-avc).
+  - It offers high compression and low computational complexity.
+  - It is mainly used in connection with WebRTC, and is the video codec included with WebRTC.
+- **Containers**: 3GP, Ogg, WebM, MKV
+- **HDR Suport**: No
+- **Variable Bit Rate Support**: Yes
+- **WebRTC Support**: Yes
+
+<MediaSupport features="vp8" />
+
+## VP9
+- **Tech Specifications**: 
+- **Launched**: In 2009, by Google.
+- **Licensing**:
+  - Parts of the codec are covered by patents. The patent licensing process is complex.
+  - However, anyone may use the codec freely as long as they do not engage in patent litigation.
+- **Performance**:
+  - Technology successor of [VP8](#vp8).
+  - In terms of quality and compression rate, VP9 is comparable to [HEVC](#h265-hevc).
+  - The encoder has a multi-pass encoding mode, which results in improved rate-distortion (R-D) performance.
+  - Around 3-4 times larger encoding run time than HEVC<sup>[ref](https://bitmovin.com/vp9-vs-hevc-h265/)</sup>.
+  - Around 10-20 times larger encoding run time than AVC<sup>[ref](https://blogs.gnome.org/rbultje/2015/09/28/vp9-encodingdecoding-performance-vs-hevch-264/)</sup>
+  - 30% to 50% more efficient coding than AVC<sup>[ref](https://bitmovin.com/vp9-vs-hevc-h265/)</sup>.
+- **Containers**: MP4, Ogg, WebM, MKV
+- **HDR Suport**: Yes
+- **Variable Bit Rate Support**: Yes
+- **WebRTC Support**: Yes - VP9 is an [optional](https://developers.google.com/web/updates/2016/01/vp9-webrtc) codec in the WebRTC spec.
+
+<MediaSupport features="vp9" />
+
+
+## AV1
+- **Tech Specifications**: https://aomediacodec.github.io/av1-spec/av1-spec.pdf
+- **Launched**: in 2018, by the [Alliance for Open Media](http://aomedia.org/) (Amazon, Apple, ARM, Cisco, Facebook, Google, Huawei, IBM, Intel, Microsoft, Mozilla, Netflix, Nvidia, Samsung Electronics and Tencent)
+- **Licensing**:
+- **Performance**:
+  - Technology successor of [VP9](#vp9).
+  - It is designed with a low computational footprint with the goal of bringing consistent, high-quality video.
+  - Since hardware encoders are still unavailable, encoding is done via software, making it impractical. Encoding run time is about 6000 times bigger than AVC, and 700 times bigger than VP9<sup>[ref](https://engineering.fb.com/2018/04/10/video-engineering/av1-beats-x264-and-libvpx-vp9-in-practical-use-case/)</sup>.
+  - 50% more efficient coding than AVC and 30% more efficient than VP9<sup>[ref](https://engineering.fb.com/2018/04/10/video-engineering/av1-beats-x264-and-libvpx-vp9-in-practical-use-case/)</sup>.
+- **Containers**: MP4, WebM ISOBMFF, MPEG-TS, MKV
+- **HDR Suport**: Yes
+- **Variable Bit Rate Support**: Yes
+- **WebRTC Support**: Yes
+
+<MediaSupport features="av1" />
