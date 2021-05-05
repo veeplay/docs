@@ -1,3 +1,3 @@
-const MediaSupport = require('./src/MediaSupport');
+import MediaSupport from './src/MediaSupport';
 
 export default () => new MediaSupport();

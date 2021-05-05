@@ -1,4 +1,4 @@
-const { FAMILY_TYPE } = require('./constants');
+import { FAMILY_TYPE } from './constants';
 
 export default class MediaSupport {
   constructor() {
