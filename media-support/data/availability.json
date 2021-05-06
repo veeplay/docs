@@ -212,6 +212,12 @@
     }
   },
   {
+    "id": "roku-tv",
+    "family": "Roku TV",
+    "versions": [],
+    "inherits": "roku"
+  },
+  {
     "id": "appletv-hd",
     "family": "Apple TV",
     "versions": ["HD"],
@@ -569,6 +575,246 @@
         { "type": "widevine", "version": "1 v11" },
         { "type": "hdcp", "enabled": false }
       ]
+    }
+  },
+  {
+    "id": "firetv-edition-hd",
+    "family": "Fire TV Edition",
+    "versions": [
+      "Insignia HD",
+      "Toshiba HD",
+      "Onida HD",
+      "Onida HD/FHD (2020)",
+      "AmazonBasics HD/FHD"
+    ],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditioninsigniahd"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h263",
+          "max": { "res": "704x576p" }
+        },
+        {
+          "type": "h264",
+          "profiles": ["High"],
+          "level": "4.2",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "vp8",
+          "max": { "res": "720p", "fps": 30 }
+        },
+        {
+          "type": "vp9",
+          "profiles": ["0", "2"],
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        { "type": "mpeg2", "max": { "res": "1080p", "fps": 60 } },
+        { "type": "mpeg4", "max": { "res": "1080p", "fps": 60 } }
+      ],
+      "containers": ["mp4", "ogg", "webm"],
+      "audio": [
+        "mp3",
+        "flac",
+        "pcm",
+        "he-aac",
+        "lc-aac",
+        "ac3",
+        "eac3",
+        "vorbis",
+        "opus",
+        "amrnb",
+        "midi"
+      ],
+      "streaming": ["hls", "dash"],
+      "drm": [
+        { "type": "playready", "version": "2.5" },
+        { "type": "widevine", "version": "3" },
+        { "type": "hdcp", "version": "2.2" }
+      ]
+    }
+  },
+  {
+    "id": "firetv-edition-grundig",
+    "family": "Fire TV Edition",
+    "versions": ["Grundig Vision 6 HD"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditionde_grundigvision6"
+    ],
+    "inherits": "firetv-edition-hd",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["High"],
+          "level": "5.0",
+          "max": { "res": "4K", "fps": 30 }
+        },
+        {
+          "type": "vp9",
+          "profiles": ["0", "2"],
+          "max": { "res": "4K", "fps": 60 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "firetv-edition-element",
+    "family": "Fire TV Edition",
+    "versions": ["Element 4K"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditionelement"
+    ],
+    "support": {
+      "video": [
+        {
+          "type": "h263",
+          "max": { "res": "1080p", "fps": 60 }
+        },
+        {
+          "type": "h264",
+          "profiles": ["Main", "High"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "h265",
+          "profiles": ["Main", "Main 10"],
+          "level": "5.1",
+          "max": { "res": "4K", "fps": 60 }
+        },
+        {
+          "type": "vp8",
+          "max": { "res": "1080p", "fps": 30 }
+        },
+        {
+          "type": "vp9",
+          "profiles": ["0", "2"],
+          "max": { "res": "4K", "fps": 60 }
+        },
+        { "type": "mpeg2", "max": { "res": "1080p", "fps": 60 } },
+        { "type": "mpeg4", "max": { "res": "1080p", "fps": 30 } }
+      ],
+      "containers": ["mp4", "ogg", "webm"],
+      "audio": [
+        "mp3",
+        "flac",
+        "pcm",
+        "he-aac",
+        "lc-aac",
+        "ac3",
+        "eac3",
+        "atmos",
+        "vorbis",
+        "opus",
+        "amrnb",
+        "midi"
+      ],
+      "streaming": ["hls", "dash"],
+      "drm": [
+        { "type": "playready", "version": "2.5" },
+        { "type": "widevine", "version": "3" },
+        { "type": "hdcp", "version": "2.2" }
+      ]
+    }
+  },
+  {
+    "id": "firetv-edition-insignia4k",
+    "family": "Fire TV Edition",
+    "versions": ["Insignia 4K"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditioninsignia4k"
+    ],
+    "inherits": "firetv-edition-element",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["High"],
+          "level": "5.0",
+          "max": { "res": "4K", "fps": 30 }
+        },
+        {
+          "type": "vp8",
+          "max": { "res": "1080p", "fps": 60 }
+        }
+      ],
+      "hdr": [{ "type": "hdr10", "video": "h265" }]
+    }
+  },
+  {
+    "id": "firetv-edition-grundig4k",
+    "family": "Fire TV Edition",
+    "versions": ["Grundig Vision 7 4K"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditionde_grundigvision7"
+    ],
+    "inherits": "firetv-edition-insignia4k",
+    "support": {
+      "video": [
+        {
+          "type": "h264",
+          "profiles": ["High"],
+          "level": "5.0",
+          "max": { "res": "4K", "fps": 30 }
+        },
+        {
+          "type": "vp8",
+          "max": { "res": "1080p", "fps": 60 }
+        }
+      ],
+      "hdr": [{ "type": "hlg", "video": "h265" }],
+      "audio": ["dts"]
+    }
+  },
+  {
+    "id": "firetv-edition-4k",
+    "family": "Fire TV Edition",
+    "versions": [
+      "Toshiba 4K",
+      "JVC 4K",
+      "Grundig OLED 4K",
+      "Technika 4K",
+      "ok 4K"
+    ],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditioninsignia4k"
+    ],
+    "inherits": "firetv-edition-grundig4k",
+    "support": {
+      "hdr": [{ "type": "dolby-vision", "video": ["h264", "h265"] }]
+    }
+  },
+  {
+    "id": "firetv-edition-4k-newinsignia",
+    "family": "Fire TV Edition",
+    "versions": ["Insignia 4K UHD (2020)"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditioninsignia4k_2020"
+    ],
+    "inherits": "firetv-edition-grundig4k",
+    "support": {
+      "video": ["av1"],
+      "drm": [{ "type": "playready", "version": "3.3" }]
+    }
+  },
+  {
+    "id": "firetv-edition-4k-new",
+    "family": "Fire TV Edition",
+    "versions": ["Toshiba 4K UHD (2020)", "AmazonBasics 4K"],
+    "references": [
+      "https://developer.amazon.com/docs/fire-tv/device-specifications-fire-tv-edition-smart-tv.html?v=ftveditioninsignia4k_2020"
+    ],
+    "inherits": "firetv-edition-newinsignia",
+    "support": {
+      "hdr": [{ "type": "dolby-vision", "video": ["h264", "h265"] }]
     }
   },
   {
@@ -1244,7 +1490,8 @@
     "family": "Internet Explorer",
     "versions": ["9+"],
     "support": {
-      "video": ["h264"]
+      "video": ["h264"],
+      "containers": ["mp4"]
     }
   },
   {
@@ -1256,6 +1503,7 @@
     ],
     "support": {
       "video": ["h264"],
+      "containers": ["mp4"],
       "drm": [{ "type": "playready", "containers": "mp4", "via": "eme" }]
     }
   },
@@ -1274,7 +1522,8 @@
     "versions": ["79+"],
     "inherits": "edge-14",
     "support": {
-      "video": ["vp9", "av1"]
+      "video": ["vp9", "av1"],
+      "containers": ["webm"]
     }
   },
   {
@@ -1282,7 +1531,8 @@
     "family": "Firefox",
     "versions": ["4+"],
     "support": {
-      "video": ["vp8"]
+      "video": ["vp8"],
+      "containers": ["webm"]
     }
   },
   {
@@ -1291,7 +1541,8 @@
     "versions": ["21+"],
     "inherits": "firefox",
     "support": {
-      "video": ["h264"]
+      "video": ["h264"],
+      "containers": ["mp4"]
     }
   },
   {
@@ -1329,7 +1580,8 @@
     "family": "Chrome",
     "versions": ["4+"],
     "support": {
-      "video": ["h264"]
+      "video": ["h264"],
+      "containers": ["mp4"]
     }
   },
   {
@@ -1338,7 +1590,8 @@
     "versions": ["6+"],
     "inherits": "chrome",
     "support": {
-      "video": ["vp8"]
+      "video": ["vp8"],
+      "containers": ["webm"]
     }
   },
   {
@@ -1376,7 +1629,8 @@
     "family": "Safari",
     "versions": ["3.2+"],
     "support": {
-      "video": ["h264"]
+      "video": ["h264"],
+      "containers": ["mp4"]
     }
   },
   {
@@ -1385,7 +1639,8 @@
     "versions": ["6+"],
     "inherits": "safari",
     "support": {
-      "streaming": ["hls"]
+      "streaming": ["hls"],
+      "containers": ["ts"]
     }
   },
   {
@@ -1407,7 +1662,7 @@
     ],
     "support": {
       "video": [{ "type": "vp8", "notes": "Supported in WebRTC" }],
-      "drm": [{ "type": "fairplay", "via": "eme", "containers": "m2ts" }]
+      "drm": [{ "type": "fairplay", "via": "eme", "containers": "ts" }]
     }
   },
   {
@@ -1416,7 +1671,11 @@
     "versions": ["14.1+"],
     "inherits": "safari-12",
     "support": {
-      "video": [{ "type": "vp8", "notes": null }, "vp9"]
+      "video": [
+        { "type": "vp8", "notes": "macOS 11.3+" },
+        { "type": "vp9", "notes": "macOS 11.3+" }
+      ],
+      "containers": [{ "type": "webm", "notes": "macOS 11.3+" }]
     }
   },
   {
@@ -1424,7 +1683,8 @@
     "family": "Opera",
     "versions": ["11.5+"],
     "support": {
-      "video": ["vp8"]
+      "video": ["vp8"],
+      "containers": ["webm"]
     }
   },
   {
@@ -1442,7 +1702,8 @@
     "versions": ["25+"],
     "inherits": "opera-16",
     "support": {
-      "video": ["h264"]
+      "video": ["h264"],
+      "containers": ["mp4"]
     }
   },
   {
@@ -1469,7 +1730,8 @@
     "versions": ["3.2+"],
     "support": {
       "video": ["h264"],
-      "streaming": ["hls"]
+      "streaming": ["hls"],
+      "containers": ["mp4", "ts"]
     }
   },
   {
@@ -1516,7 +1778,8 @@
     "versions": ["4.4+"],
     "support": {
       "video": ["h264"],
-      "streaming": ["hls"]
+      "streaming": ["hls"],
+      "containers": ["mp4", "ts"]
     }
   },
   {
@@ -1526,6 +1789,7 @@
     "inherits": "android-browser",
     "support": {
       "video": ["vp8", "vp9", "av1"],
+      "containers": ["webm"],
       "drm": [{ "type": "widevine", "via": "eme" }]
     }
   },
@@ -1534,7 +1798,8 @@
     "family": "Opera Mobile",
     "versions": ["12+"],
     "support": {
-      "video": ["h264"]
+      "video": ["h264"],
+      "containers": ["mp4"]
     }
   },
   {
@@ -1544,7 +1809,8 @@
     "inherits": "opera-mobile",
     "support": {
       "video": ["vp8", "av1"],
-      "streaming": ["hls"]
+      "streaming": ["hls"],
+      "containers": ["ts", "webm"]
     }
   },
   {
@@ -1554,6 +1820,7 @@
     "support": {
       "video": ["h264", "vp8", "vp9", "av1"],
       "streaming": ["hls"],
+      "containers": ["mp4", "ts", "webm"],
       "drm": [{ "type": "widevine", "via": "eme" }]
     }
   },
@@ -1562,7 +1829,8 @@
     "family": "Firefox Android",
     "versions": ["87+"],
     "support": {
-      "video": ["h264", "vp8", "vp9"]
+      "video": ["h264", "vp8", "vp9"],
+      "containers": ["mp4", "webm"]
     }
   },
   {
@@ -1571,7 +1839,8 @@
     "versions": ["12.12+"],
     "support": {
       "video": ["h264", "vp8", "vp9"],
-      "streaming": ["hls"]
+      "streaming": ["hls"],
+      "containers": ["mp4", "ts", "webm"]
     }
   },
   {
@@ -1580,7 +1849,8 @@
     "versions": ["4+"],
     "support": {
       "video": ["h264", "vp8"],
-      "streaming": ["hls"]
+      "streaming": ["hls"],
+      "containers": ["mp4", "ts", "webm"]
     }
   },
   {
@@ -1600,5 +1870,277 @@
     "support": {
       "video": ["av1"]
     }
+  },
+  {
+    "id": "panasonic-lbvNCu8Hb",
+    "family": "Panasonic",
+    "versions": ["JZ2000", "JZ1500", "JZ1000", "JZ980", "JX940"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "av1", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hdr10+", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "panasonic-NfC13a1ytU",
+    "family": "Panasonic",
+    "versions": [
+      "JX850",
+      "HZ2000",
+      "HZ1500",
+      "HZ1000",
+      "HZ980",
+      "HX940",
+      "HX900",
+      "HX800",
+      "GZ2000",
+      "GZ1500",
+      "GZ1000",
+      "GZ950",
+      "GX940",
+      "GX900",
+      "GX800"
+    ],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hdr10+", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "philips-ykXduyhFR7",
+    "family": "Philips",
+    "versions": [
+      "PUS7506",
+      "PUS8105",
+      "PUS7805",
+      "PUS7505",
+      "OLED754",
+      "PUS6814",
+      "PUS6704",
+      "PUS6504"
+    ],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hdr10+", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "sony-fI3AEV4V2D",
+    "family": "Sony",
+    "versions": ["Z9J", "A90J", "A80J", "X95J", "X90J", "X85J", "X80J"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "av1", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "vizio-RrPvfaD_AD",
+    "family": "Vizio",
+    "versions": [
+      "OLED 2020",
+      "P-Series Quantum X 2020",
+      "P-Series 2020",
+      "M-Series M8 2020",
+      "M-Series M7 2020",
+      "V-Series 2020",
+      "P-Series Quantum X 2019",
+      "P-Series 2019",
+      "M-Series M8 2019",
+      "M-Series M7 2019"
+    ],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hdr10+", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "sony-weFI6jusCgB",
+    "family": "Sony",
+    "versions": ["X750H / X70", "XG70", "X700F / XF70"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "tcl-jA78T6xmn6f",
+    "family": "TCL",
+    "versions": [
+      "6-Series R635",
+      "5-Series S535",
+      "8-Series Q825",
+      "6-Series R625",
+      "5-Series S525"
+    ],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "sony-yrQEzQOeQTV",
+    "family": "Sony",
+    "versions": [
+      "WG66",
+      "WF66",
+      "RF45",
+      "X720E / XE70",
+      "WE75",
+      "WE66",
+      "RE45"
+    ],
+    "support": {
+      "video": ["h264", "h265", "mpeg4"],
+      "containers": ["mp4"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "vizio-a_gd0JCjga0",
+    "family": "Vizio",
+    "versions": ["V-Series 2019"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "vizio-fyo1HgXPyyT",
+    "family": "Vizio",
+    "versions": ["D-Series 2019"],
+    "support": {
+      "video": ["h264", "h265", "mpeg4"],
+      "containers": ["mp4"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "tcl-otOE85YmH60",
+    "family": "TCL",
+    "versions": ["S425"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10"]
+    }
+  },
+  {
+    "id": "tcl-8uDDIw0ncvY",
+    "family": "TCL",
+    "versions": ["S325"],
+    "support": {
+      "video": ["h264", "h265", "mpeg4"],
+      "containers": ["mp4"],
+      "hdr": []
+    }
+  },
+  {
+    "id": "panasonic-SLBDAgz6i3T",
+    "family": "Panasonic",
+    "versions": ["FZ950", "FZ800", "FX750 / FX780", "FX700", "FX600 / FX650"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hdr10+", "hlg"]
+    }
+  },
+  {
+    "id": "philips--Wx1QKe1ch-",
+    "family": "Philips",
+    "versions": ["PUS6703"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hdr10+", "hlg"]
+    }
+  },
+  {
+    "id": "philips-ujTgnVJjEvM",
+    "family": "Philips",
+    "versions": ["PUS6503"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": []
+    }
+  },
+  {
+    "id": "tcl-l77wSt4RZ1-",
+    "family": "TCL",
+    "versions": ["DP600"],
+    "support": {
+      "video": ["h264", "h265", "mpeg4"],
+      "containers": ["mp4"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "tcl-nKL2clxhMs3",
+    "family": "TCL",
+    "versions": ["P6006"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "panasonic-z66Rw5x0s4d",
+    "family": "Panasonic",
+    "versions": ["EZ1000", "EZ950", "EX750 / EX780", "EX730", "EX700", "EX600"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "panasonic-Qr98pVBfm9L",
+    "family": "Panasonic",
+    "versions": ["ES500", "ES400"],
+    "support": { "video": ["h264", "mpeg4"], "containers": ["mp4"], "hdr": [] }
+  },
+  {
+    "id": "philips-nnKrnfpvfIX",
+    "family": "Philips",
+    "versions": ["PUS6262", "PUS6162"],
+    "support": {
+      "video": ["h264", "h265", "vp9", "mpeg4"],
+      "containers": ["mp4", "webm"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "loewe-3rPytoft3xp",
+    "family": "Loewe",
+    "versions": ["bild 3", "bild 4", "bild 5", "bild 7", "bild 9"],
+    "support": {
+      "video": ["h264", "h265", "mpeg4"],
+      "containers": ["mp4"],
+      "hdr": ["hdr10", "dolby-vision", "hlg"]
+    }
+  },
+  {
+    "id": "loewe-C1H1BcyAqRe",
+    "family": "Loewe",
+    "versions": ["bild 3 LCD"],
+    "support": {
+      "video": ["h264", "h265", "mpeg4"],
+      "containers": ["mp4"],
+      "hdr": ["hdr10", "hlg"]
+    }
+  },
+  {
+    "id": "loewe-mPxG0YsG7yF",
+    "family": "Loewe",
+    "versions": ["bild 1"],
+    "support": { "video": ["h264", "mpeg4"], "containers": ["mp4"], "hdr": [] }
   }
 ]

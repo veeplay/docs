@@ -5,6 +5,7 @@
     "alias": ["google", "chromecast"]
   },
   { "name": "Roku", "type": "streaming-device", "alias": ["roku"] },
+  { "name": "Roku TV", "type": "tv", "alias": ["roku"] },
   {
     "name": "Apple TV",
     "type": "streaming-device",
@@ -16,11 +17,46 @@
     "alias": ["firetv", "fire tv"]
   },
   {
+    "name": "Fire TV Edition",
+    "type": "tv",
+    "alias": ["firetv", "fire tv"]
+  },
+  {
     "name": "Samsung Smart TV Premium",
     "type": "tv",
     "alias": ["tv", "samsung"]
   },
   { "name": "Samsung Smart TV", "type": "tv", "alias": ["tv", "samsung"] },
+  {
+    "name": "Panasonic",
+    "type": "tv",
+    "alias": ["tv", "panasonic"]
+  },
+  {
+    "name": "Philips",
+    "type": "tv",
+    "alias": ["tv", "philips"]
+  },
+  {
+    "name": "Sony",
+    "type": "tv",
+    "alias": ["tv", "sony"]
+  },
+  {
+    "name": "Vizio",
+    "type": "tv",
+    "alias": ["tv", "vizio"]
+  },
+  {
+    "name": "TCL",
+    "type": "tv",
+    "alias": ["tv", "tcl"]
+  },
+  {
+    "name": "Loewe",
+    "type": "tv",
+    "alias": ["tv", "loewe"]
+  },
   { "name": "webOS TV", "type": "tv", "alias": ["tv", "webos", "lg"] },
   {
     "name": "Android TV",
@@ -50,8 +86,18 @@
     "alias": ["browser", "internet explorer", "ie"],
     "collapseVersions": true
   },
-  { "name": "Edge", "type": "browser", "alias": ["browser", "edge"], "collapseVersions": true },
-  { "name": "Firefox", "type": "browser", "alias": ["browser", "firefox"], "collapseVersions": true },
+  {
+    "name": "Edge",
+    "type": "browser",
+    "alias": ["browser", "edge"],
+    "collapseVersions": true
+  },
+  {
+    "name": "Firefox",
+    "type": "browser",
+    "alias": ["browser", "firefox"],
+    "collapseVersions": true
+  },
   {
     "name": "Chrome",
     "type": "browser",
@@ -64,7 +110,12 @@
     "alias": ["browser", "safari", "apple", "mac"],
     "collapseVersions": true
   },
-  { "name": "Opera", "type": "browser", "alias": ["browser", "opera"], "collapseVersions": true },
+  {
+    "name": "Opera",
+    "type": "browser",
+    "alias": ["browser", "opera"],
+    "collapseVersions": true
+  },
   {
     "name": "Safari iOS",
     "type": "browser",
