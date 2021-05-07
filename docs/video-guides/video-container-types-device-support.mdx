@@ -1,0 +1,47 @@
+---
+title: Video Container Types & Device Support
+description: Specifications for the most popular video container formats, including exhaustive device & OS support.
+---
+
+import MediaSupport from '../../src/components/MediaSupport'
+
+## MP4
+- **Based On**: ISO Base Media File Format (MPEG-4 Part 12)
+- **Specs**: [ISO/IEC 14496-14](https://www.iso.org/standard/75929.html)
+- **Video Codecs**: [H.264/AVC](/docs/video-guides/video-codec-types-device-support#h264-avc), [H.265/HEVC](/docs/video-guides/video-codec-types-device-support#h265-hevc), H.263, [VP9](/docs/video-guides/video-codec-types-device-support#vp9), [AV1](/docs/video-guides/video-codec-types-device-support#av1)
+- **Audio Codecs**: AAC, FLAC, MP3, Opus
+- **Streaming Support**: DASH, HLS, via fragmented MP4
+- **Fragmentation Support**: Yes, via fragmented MP4
+
+<MediaSupport features="mp4" />
+
+## WebM
+
+- **Based On**: [Matroska](#matroska)
+- **Specs**: [Container guidelines](https://www.webmproject.org/docs/container/)
+- **Video Codecs**: [VP8](/docs/video-guides/video-codec-types-device-support#vp8), [VP9](/docs/video-guides/video-codec-types-device-support#vp9), [AV1](/docs/video-guides/video-codec-types-device-support#av1)
+- **Audio Codecs**: Opus, Vorbis
+- **Streaming Support**: [DASH](http://wiki.webmproject.org/adaptive-streaming/instructions-to-do-webm-live-streaming-via-dash)
+- **Fragmentation Support**: Yes, via [chunked WebM](http://wiki.webmproject.org/adaptive-streaming/webm-vod-baseline-format)
+- **Licensing**: BSD License
+
+<MediaSupport features="webm" />
+
+## MPEG-TS
+- **Specs**: [Latest free copy](https://www.itu.int/rec/T-REC-H.222.0-201410-S/en)
+- **Video Codecs**: [H.264/AVC](/docs/video-guides/video-codec-types-device-support#h264-avc), [H.265/HEVC](/docs/video-guides/video-codec-types-device-support#h265-hevc)
+- **Audio Codecs**: AAC, Opus, lPCM, DTS, AC-3, AC-3+
+- **Streaming Support**: HLS
+- **Fragmentation Support**: Intrinsically fragmented
+
+<MediaSupport features="ts" />
+
+## Matroska
+- **Based On**: The Extensible Binary Meta Language (EBML)
+- **Specs**: [Matroska Specifications](https://matroska.org/technical/specs/index.html)
+- **Codecs**: Any - Matroska is codec agnostic
+- **Streaming Support**: No
+- **Fragmentation Support**: No
+- **License**: [Open and free](https://www.matroska.org/legal.html)
+
+<MediaSupport features="mkv" />

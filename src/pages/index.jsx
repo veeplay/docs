@@ -97,6 +97,8 @@ export default function Home() {
           </h2>
           <ul>
             <li><a href="/docs/video-guides/how-video-streaming-works">How Video Streaming Works</a></li>
+            <li><a href="/docs/video-guides/video-codec-types-device-support">Video Codec Guide</a></li>
+            <li><a href="/docs/video-guides/video-container-types-device-support">Video Container Guide</a></li>
           </ul>
         </div>
       </div>

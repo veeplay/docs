@@ -25,6 +25,7 @@ module.exports = {
       items: [
         'video-guides/how-video-streaming-works',
         'video-guides/video-codec-types-device-support',
+        'video-guides/video-container-types-device-support',
       ],
     },
   ],

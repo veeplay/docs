@@ -940,7 +940,8 @@
           "containers": "webm",
           "max": { "res": "8K", "fps": 60 }
         }
-      ]
+      ],
+      "streaming": ["cmaf"]
     }
   },
   {
@@ -1411,8 +1412,7 @@
       "streaming": [
         { "type": "hls", "drm": ["aes-128", "widevine"] },
         { "type": "dash", "drm": ["widevine", "clearkey"] },
-        "ss",
-        "cmaf"
+        "ss"
       ],
       "drm": [
         "aes-128",
@@ -1456,10 +1456,19 @@
     }
   },
   {
+    "id": "android-7.1",
+    "family": "Android",
+    "versions": ["7.1+"],
+    "inherits": "android-5",
+    "support": {
+      "streaming": ["cmaf"]
+    }
+  },
+  {
     "id": "android-10",
     "family": "Android",
     "versions": ["10+"],
-    "inherits": "android-5",
+    "inherits": "android-7.1",
     "support": {
       "video": [{ "type": "av1", "containers": ["mp4", "mkv"] }]
     }
@@ -1477,10 +1486,19 @@
     }
   },
   {
+    "id": "android-tv-7.1",
+    "family": "Android TV",
+    "versions": ["7.1+"],
+    "inherits": "android-tv-5",
+    "support": {
+      "streaming": ["cmaf"]
+    }
+  },
+  {
     "id": "android-tv-10",
     "family": "Android TV",
     "versions": ["10+"],
-    "inherits": "android-tv-5",
+    "inherits": "android-tv-7.1",
     "support": {
       "video": [{ "type": "av1", "containers": ["mp4", "mkv"] }]
     }
