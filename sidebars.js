@@ -24,6 +24,7 @@ module.exports = {
       label: 'Guides to Web Video',
       items: [
         'video-guides/how-video-streaming-works',
+        'video-guides/video-streaming-formats-device-support',
         'video-guides/video-codec-types-device-support',
         'video-guides/video-container-types-device-support',
       ],

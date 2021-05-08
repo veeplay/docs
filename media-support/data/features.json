@@ -56,5 +56,6 @@
   { "id": "hdr10", "name": "HDR10", "type": "hdr" },
   { "id": "hdr10+", "name": "HDR10+", "type": "hdr" },
   { "id": "hlg", "name": "HLG", "type": "hdr" },
-  { "id": "dolby-vision", "name": "Dolby Vision", "type": "hdr" }
+  { "id": "dolby-vision", "name": "Dolby Vision", "type": "hdr" },
+  { "id": "cbcs", "name": "CBCS Encryption", "type": "drm" }
 ]

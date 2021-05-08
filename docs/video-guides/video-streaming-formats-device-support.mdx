@@ -1,0 +1,66 @@
+---
+title: Video Streaming Formats & Device Support
+description: Specifications for the most popular video streaming formats, including exhaustive device & OS support.
+---
+
+import MediaSupport from '../../src/components/MediaSupport'
+
+## HTTP Live Streaming (HLS)
+- **Specs**
+  - [HTTP Live Streaming 2nd Edition](https://tools.ietf.org/html/draft-pantos-hls-rfc8216bis-09)
+  - [HLS Authoring Specification for Apple Devices](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices)
+- **Containers**: [MPEG-TS](/docs/video-guides/video-container-types-device-support#mpeg-ts), [fMP4](/docs/video-guides/video-container-types-device-support#mp4)
+- **Can Deploy on Static Storage (Regular HTTP Servers)**: Yes
+- **Fast Channel Switching**: No
+- **Low Latency**:
+  - [Community L-HLS](https://medium.com/@periscopecode/introducing-lhls-media-streaming-eb6212948bef)
+  - [Official LL-HLS](https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls)
+- **Multi-CDN Support**: No
+- **Supported Codecs**: [H.264/AVC](/docs/video-guides/video-codec-types-device-support#h264-avc), [H.265/HEVC](/docs/video-guides/video-codec-types-device-support#h265-hevc) in fMP4, AAC, MP3, AC-3, Enhanced AC-3
+- **Supported Caption Formats**: CEA-608, CEA-708, WebVTT, IMSC1, TTML, SRT
+- **Content Multiplexing**: Both multiplexed and non-multiplexed
+- **Encryption Mode**: AES-CBCS
+
+<MediaSupport features="hls" />
+
+## Dynamic Adaptive Streaming over HTTP (DASH)
+- **Specs**: [Standards](https://mpeg.chiariglione.org/standards/mpeg-dash)
+- **Containers**: [fMP4](/docs/video-guides/video-container-types-device-support#mp4), [WebM](/docs/video-guides/video-container-types-device-support#webm), [MPEG-TS](/docs/video-guides/video-container-types-device-support#mpeg-ts)
+- **Can Deploy on Static Storage (Regular HTTP Servers)**: Yes
+- **Fast Channel Switching**: Yes
+- **Low Latency**: [LL-DASH](https://dashif.org/docs/CR-Low-Latency-Live-r8.pdf)
+- **Multi-CDN Support**: Yes
+- **Supported Codecs**: Any
+- **Supported Caption Formats**: WebVTT, TTML, CEA-608, CEA-708, SRT
+- **Content Multiplexing**: Both multiplexed and non-multiplexed
+- **Encryption Mode**: AES-CBCS, AES-CTR
+
+<MediaSupport features="dash" />
+
+## Smooth Streaming
+- **Specs**: [SS Protocol](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
+- **Containers**: [fMP4](/docs/video-guides/video-container-types-device-support#mp4)
+- **Can Deploy on Static Storage (Regular HTTP Servers)**: No
+- **Fast Channel Switching**: Yes
+- **Low Latency**: No
+- **Multi-CDN Support**: No
+- **Supported Codecs**: [H.264/AVC](/docs/video-guides/video-codec-types-device-support#h264-avc), AAC-LC
+- **Supported Caption Formats**: TTML
+- **Content Multiplexing**: Non-multiplexed
+- **Encryption Mode**: AES-CBCS, AES-CTR
+
+<MediaSupport features="ss" />
+
+## CMAF
+- **Specs**: [CMAF Protocol](https://mpeg.chiariglione.org/standards/mpeg-a/common-media-application-format)
+- **Containers**: [fMP4](/docs/video-guides/video-container-types-device-support#mp4)
+- **Can Deploy on Static Storage (Regular HTTP Servers)**: Yes
+- **Fast Channel Switching**: Yes
+- **Low Latency**: Chunked CMAF
+- **Multi-CDN Support**: Yes, via DASH manifest
+- **Supported Codecs**: Any
+- **Supported Caption Formats**: WebVTT, IMSC1
+- **Content Multiplexing**: Non-multiplexed
+- **Encryption Mode**: AES-CBCS, AES-CTR
+
+<MediaSupport features="cmaf" />

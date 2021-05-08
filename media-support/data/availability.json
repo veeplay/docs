@@ -52,6 +52,7 @@
     "versions": ["2nd Gen"],
     "support": {
       "streaming": ["cmaf"],
+      "drm": ["cbcs"],
       "containers": ["fmp4"]
     }
   },
@@ -207,7 +208,7 @@
         { "type": "ss", "drm": "playready" },
         { "type": "hls", "drm": ["aes-128", "widevine", "verimatrix"] }
       ],
-      "drm": ["playready", "widevine", "aes-128", "verimatrix"],
+      "drm": ["playready", "widevine", "aes-128", "verimatrix", "cbcs"],
       "subtitles": ["ttml", "webvtt", "srt"]
     }
   },
@@ -262,7 +263,7 @@
         { "type": "cmaf", "notes": "tvOS 10+" },
         { "type": "hls", "drm": ["aes-128", "fairplay"] }
       ],
-      "drm": ["fairplay", "aes-128"],
+      "drm": ["fairplay", "aes-128", "cbcs"],
       "subtitles": ["webvtt", { "type": "imsc1", "container": "fmp4" }]
     }
   },
@@ -941,6 +942,7 @@
           "max": { "res": "8K", "fps": 60 }
         }
       ],
+      "drm": ["cbcs"],
       "streaming": ["cmaf"]
     }
   },
@@ -1301,7 +1303,8 @@
       ],
       "containers": [{ "type": "fmp4", "notes": "iOS 10+" }],
       "streaming": [{ "type": "cmaf", "notes": "iOS 10+" }],
-      "audio": ["ac3", "eac3"]
+      "audio": ["ac3", "eac3"],
+      "drm": ["cbcs"]
     }
   },
   {
@@ -1321,6 +1324,11 @@
           "profiles": "Main 10",
           "level": "5.1",
           "max": { "res": "4K", "fps": 30 }
+        },
+        {
+          "type": "vp9",
+          "max": { "res": "4K", "fps": 60 },
+          "notes": "iOS 14+"
         }
       ]
     }
@@ -1461,6 +1469,7 @@
     "versions": ["7.1+"],
     "inherits": "android-5",
     "support": {
+      "drm": ["cbcs"],
       "streaming": ["cmaf"]
     }
   },
@@ -1491,6 +1500,7 @@
     "versions": ["7.1+"],
     "inherits": "android-tv-5",
     "support": {
+      "drm": ["cbcs"],
       "streaming": ["cmaf"]
     }
   },
@@ -1522,6 +1532,10 @@
     "support": {
       "video": ["h264"],
       "containers": ["mp4"],
+      "streaming": [
+        { "type": "hls", "notes": "Via MSE" },
+        { "type": "dash", "notes": "Via MSE" }
+      ],
       "drm": [{ "type": "playready", "containers": "mp4", "via": "eme" }]
     }
   },
@@ -1535,10 +1549,20 @@
     }
   },
   {
+    "id": "edge-18",
+    "family": "Edge",
+    "versions": ["18+"],
+    "inherits": "edge-14",
+    "support": {
+      "drm": ["cbcs"],
+      "streaming": [{ "type": "cmaf", "notes": "Via MSE" }]
+    }
+  },
+  {
     "id": "edge-79",
     "family": "Edge",
     "versions": ["79+"],
-    "inherits": "edge-14",
+    "inherits": "edge-18",
     "support": {
       "video": ["vp9", "av1"],
       "containers": ["webm"]
@@ -1585,10 +1609,32 @@
     }
   },
   {
+    "id": "firefox-42",
+    "family": "Firefox",
+    "versions": ["42+"],
+    "inherits": "firefox-38",
+    "support": {
+      "streaming": [
+        { "type": "hls", "notes": "Via MSE" },
+        { "type": "dash", "notes": "Via MSE" }
+      ]
+    }
+  },
+  {
+    "id": "firefox-60",
+    "family": "Firefox",
+    "versions": ["60+"],
+    "inherits": "firefox-42",
+    "support": {
+      "drm": ["cbcs"],
+      "streaming": [{ "type": "cmaf", "notes": "Via MSE" }]
+    }
+  },
+  {
     "id": "firefox-67",
     "family": "Firefox",
     "versions": ["67+"],
-    "inherits": "firefox-38",
+    "inherits": "firefox-60",
     "support": {
       "video": ["av1"]
     }
@@ -1613,10 +1659,22 @@
     }
   },
   {
+    "id": "chrome-23",
+    "family": "Chrome",
+    "versions": ["23+"],
+    "inherits": "chrome-6",
+    "support": {
+      "streaming": [
+        { "type": "hls", "notes": "Via MSE" },
+        { "type": "dash", "notes": "Via MSE" }
+      ]
+    }
+  },
+  {
     "id": "chrome-25",
     "family": "Chrome",
     "versions": ["25+"],
-    "inherits": "chrome-6",
+    "inherits": "chrome-23",
     "support": {
       "video": ["vp9"]
     }
@@ -1634,10 +1692,23 @@
     }
   },
   {
+    "id": "chrome-68",
+    "family": "Chrome",
+    "versions": ["68+"],
+    "inherits": "chrome-42",
+    "references": [
+      "https://www.axinom.com/article-encoding-one-format"
+    ],
+    "support": {
+      "drm": ["cbcs", "cenc"],
+      "streaming": [{ "type": "cmaf", "notes": "Via MSE" }]
+    }
+  },
+  {
     "id": "chrome-70",
     "family": "Chrome",
     "versions": ["70+"],
-    "inherits": "chrome-42",
+    "inherits": "chrome-68",
     "support": {
       "video": ["av1"]
     }
@@ -1662,10 +1733,21 @@
     }
   },
   {
+    "id": "safari-8",
+    "family": "Safari",
+    "versions": ["8+"],
+    "inherits": "safari-6",
+    "support": {
+      "streaming": [
+        { "type": "dash", "notes": "Via MSE" }
+      ]
+    }
+  },
+  {
     "id": "safari-11",
     "family": "Safari",
     "versions": ["11+"],
-    "inherits": "safari-6",
+    "inherits": "safari-8",
     "support": {
       "video": ["h265"]
     }
@@ -1680,7 +1762,8 @@
     ],
     "support": {
       "video": [{ "type": "vp8", "notes": "Supported in WebRTC" }],
-      "drm": [{ "type": "fairplay", "via": "eme", "containers": "ts" }]
+      "drm": [{ "type": "fairplay", "via": "eme", "containers": "ts" }, "cbcs"],
+      "streaming": ["cmaf"]
     }
   },
   {
@@ -1706,10 +1789,22 @@
     }
   },
   {
+    "id": "opera-15",
+    "family": "Opera",
+    "versions": ["15+"],
+    "inherits": "opera",
+    "support": {
+      "streaming": [
+        { "type": "hls", "notes": "Via MSE" },
+        { "type": "dash", "notes": "Via MSE" }
+      ]
+    }
+  },
+  {
     "id": "opera-16",
     "family": "Opera",
     "versions": ["16+"],
-    "inherits": "opera",
+    "inherits": "opera-15",
     "support": {
       "video": ["vp9"]
     }
@@ -1796,7 +1891,7 @@
     "versions": ["4.4+"],
     "support": {
       "video": ["h264"],
-      "streaming": ["hls"],
+      "streaming": ["hls", { "type": "dash", "notes": "Via MSE" }],
       "containers": ["mp4", "ts"]
     }
   },
@@ -1827,7 +1922,7 @@
     "inherits": "opera-mobile",
     "support": {
       "video": ["vp8", "av1"],
-      "streaming": ["hls"],
+      "streaming": ["hls", { "type": "dash", "notes": "Via MSE" }],
       "containers": ["ts", "webm"]
     }
   },
@@ -1837,7 +1932,7 @@
     "versions": ["90+"],
     "support": {
       "video": ["h264", "vp8", "vp9", "av1"],
-      "streaming": ["hls"],
+      "streaming": ["hls", { "type": "dash", "notes": "Via MSE" }],
       "containers": ["mp4", "ts", "webm"],
       "drm": [{ "type": "widevine", "via": "eme" }]
     }
@@ -1848,7 +1943,11 @@
     "versions": ["87+"],
     "support": {
       "video": ["h264", "vp8", "vp9"],
-      "containers": ["mp4", "webm"]
+      "containers": ["mp4", "webm"],
+      "streaming": [
+        { "type": "hls", "notes": "Via MSE" },
+        { "type": "dash", "notes": "Via MSE" }
+      ]
     }
   },
   {
@@ -1857,7 +1956,7 @@
     "versions": ["12.12+"],
     "support": {
       "video": ["h264", "vp8", "vp9"],
-      "streaming": ["hls"],
+      "streaming": ["hls", { "type": "dash", "notes": "Via MSE" }],
       "containers": ["mp4", "ts", "webm"]
     }
   },
@@ -1881,10 +1980,19 @@
     }
   },
   {
+    "id": "samsung-internet-9.2",
+    "family": "Samsung Internet",
+    "versions": ["9.2+"],
+    "inherits": "samsung-internet-5",
+    "support": {
+      "streaming": [{ "type": "dash", "notes": "Via MSE" }]
+    }
+  },
+  {
     "id": "samsung-internet-12",
     "family": "Samsung Internet",
     "versions": ["12+"],
-    "inherits": "samsung-internet-5",
+    "inherits": "samsung-internet-9.2",
     "support": {
       "video": ["av1"]
     }

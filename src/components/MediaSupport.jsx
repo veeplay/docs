@@ -49,7 +49,7 @@ export default ({ features }) => {
         <li>
           <strong>
             {familyName(type)}
-            &nbsp;Support:
+            &nbsp;Native Support:
           </strong>
           <ul>
             {Object.keys(specs[type] || {}).map((family) => (
