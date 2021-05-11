@@ -100,7 +100,9 @@ In the case of live events, the streaming process looks very similar to what we 
 ![How live video streaming works](/img/video-guides/how-live-video-streaming-works.gif)
 > Encoding, delivery, and rendering are continuous for live streams.
 
-Stream latency can vary between **30+ seconds** for baseline HLS or DASH implementations to around **5 seconds** for tuned configurations of the same protocols.
+Stream latency can vary between **30+ seconds** for baseline HLS or DASH implementations to around **5 seconds** for tuned configurations of the same protocols. Latency can be improved by reducing the amount of buffer required, with the downside of potentially impacting playback robustness.
+
+![Video streaming latency](/img/video-guides/video-streaming-latency-options.png)
 
 ## Low Latency Streaming
 
