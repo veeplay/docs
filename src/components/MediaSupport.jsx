@@ -18,62 +18,62 @@ export default ({ features }) => {
   };
   const details = (versions, data) => (
     <>
-      {versions.join(', ')}
-      {(
-        data.profiles
+      <td>
+        {versions.join(', ')}
+      </td>
+      <td width="50%" className="notes">
+        {(
+          data.profiles
         || data.level
         || data.max
         || data.containers
         || data.notes
-      ) && (
-        <em>
-          &nbsp;(
-            {
-              [
-                data.profiles && `Profiles: ${Array.isArray(data.profiles) ? data.profiles.join(', ') : data.profiles}`,
-                data.level && `Up to level ${data.level}`,
-                data.max && `Up to: ${Array.isArray(data.max) ? data.max.map((m) => `${m.res}@${m.fps}fps`).join(' or ') : `${data.max.res}@${data.max.fps}fps`}`,
-                data.containers && `Containers: ${Array.isArray(data.containers) ? data.containers.join(', ') : data.containers}`,
-                data.notes,
-              ].filter((s) => !!s).join('; ')
-            }
-          )
-        </em>
-      )}
+        ) && [
+          data.profiles && `Profiles: ${Array.isArray(data.profiles) ? data.profiles.join(', ') : data.profiles}`,
+          data.level && `Up to level ${data.level}`,
+          data.max && `Up to: ${Array.isArray(data.max) ? data.max.map((m) => `${m.res}@${m.fps}fps`).join(' or ') : `${data.max.res}@${data.max.fps}fps`}`,
+          data.containers && `Containers: ${Array.isArray(data.containers) ? data.containers.join(', ') : data.containers}`,
+          data.notes,
+        ].filter((s) => !!s).map((s) => (
+          <>
+            {s}
+            <br />
+          </>
+        ))}
+      </td>
     </>
   );
 
   return (
-    <ul>
+    <>
       {['streaming-device', 'tv', 'handheld', 'browser'].map((type) => (
-        <li>
-          <strong>
-            {familyName(type)}
-            &nbsp;Native Support:
-          </strong>
-          <ul>
-            {Object.keys(specs[type] || {}).map((family) => (
-              <li>
-                ☑&nbsp;
-                {family}
-                &nbsp;
-                {specs[type][family].length === 1 && (
-                  details(specs[type][family][0].versions, specs[type][family][0].support[0])
-                )}
-                {specs[type][family].length > 1 && (
-                  <ul>
-                    {specs[type][family].map(({ versions, support }) => (
-                      <li>
-                        {details(versions, support[0])}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        </li>
+        <table className="support-matrix">
+          <tr>
+            <th colSpan={3} align="left">
+              <strong>
+                {familyName(type)}
+                &nbsp;Native Support
+              </strong>
+            </th>
+          </tr>
+          {Object.keys(specs[type] || {}).map((family) => (
+            <>
+              <tr>
+                <td className="device-family" rowSpan={specs[type][family].length}>
+                  ☑&nbsp;
+                  {family}
+                </td>
+                {details(specs[type][family][0].versions, specs[type][family][0].support[0])}
+              </tr>
+              {specs[type][family].slice(1).map(({ versions, support }) => (
+                <tr>
+                  {details(versions, support[0])}
+                </tr>
+              ))}
+            </>
+          ))}
+        </table>
       ))}
-    </ul>
+    </>
   );
 };
