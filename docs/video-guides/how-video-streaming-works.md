@@ -100,7 +100,7 @@ In the case of live events, the streaming process looks very similar to what we 
 ![How live video streaming works](/img/video-guides/how-live-video-streaming-works.gif)
 > Encoding, delivery, and rendering are continuous for live streams.
 
-Stream latency can vary between 30+ seconds for baseline HLS or DASH implementations to around 5 seconds for tuned configurations of the same protocols.
+Stream latency can vary between **30+ seconds** for baseline HLS or DASH implementations to around **5 seconds** for tuned configurations of the same protocols.
 
 ## Low Latency Streaming
 
@@ -108,3 +108,8 @@ An effort to implement low-latency streaming is underway for both [HLS](https://
 
 ![How streaming latency works](/img/video-guides/how-streaming-latency-works.gif)
 ![How low-latency streaming works](/img/video-guides/how-streaming-low-latency-works.gif)
+
+There are some disadvantages to this approach, though:
+- More chunks mean more HTTP requests that video players need to do to get the files, each request incurring additional network overhead;
+- HLS is susceptible to playlist bloat, as the list of chunks included in the playlist may become very long for events with large live rewind windows;
+- Smaller chunk durations reduce the efficiency of the video codec, as temporal similarities can't be exploited as well.
