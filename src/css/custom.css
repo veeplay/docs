@@ -175,6 +175,18 @@
   font-size: var(--ifm-h1-font-size);
 }
 
+.redocusaurus table tr td:first-child {
+  border-left: 1px solid rgb(108, 108, 108);
+}
+
+.redocusaurus table tr:first-child>td, .redocusaurus table tr:last-child>td, .redocusaurus table tr.last.expanded td {
+  border-left: 0;
+}
+
+.redoc-markdown a {
+  text-decoration: underline !important;
+}
+
 div[class^="sidebar_"] .menu {
   background: #282c34;
 }
@@ -258,4 +270,16 @@ div[class^="sidebar_"] .menu .menu__link {
 #android-sdk-content iframe {
   width: 100%;
   height: 100%;
+}
+
+.support-matrix td.device-family {
+  background-color: #eee;
+}
+
+.support-matrix td.notes {
+  font-size: 0.9em;
+}
+
+.support-matrix td, .support-matrix th {
+  border: 1px solid darkgray;
 }

@@ -8,7 +8,7 @@ info:
   description: |
     # Introduction
     The Veeplay Video API makes media transcoding and cross-device delivery easy for developers looking to integrate video into their apps.
-    Simply provide a mezzanine input of your video, and Veeplay will create HLS and DASH renderings ready to play on any device, delivered via a global CDN.
+    Simply provide a mezzanine input of your video, and Veeplay will create [HLS](https://docs.veeplay.com/docs/video-guides/video-streaming-formats-device-support#http-live-streaming-hls) and [DASH](https://docs.veeplay.com/docs/video-guides/video-streaming-formats-device-support#dynamic-adaptive-streaming-over-http-dash) renderings ready to play on any device, delivered via a global CDN.
 
     <div class="alert alert-info" role="alert">
       <i class="fa fa-info-circle"></i>
@@ -158,13 +158,17 @@ tags:
     - most web browsers, like Chrome, Safari, Firefox, and Edge
     - set-top boxes like Roku & smart TVs
 
+    [See the HLS device compatibility matrix >](https://docs.veeplay.com/docs/video-guides/video-streaming-formats-device-support#http-live-streaming-hls)
+
     DASH is not supported by Safari, but is compatible with:
     - Android devices (native support, recommended)
     - LG, Samsung, Panasonic, Philips, and Sony TVs
     - Chromecast
     - web browsers, implemented via Media Source Extensions (MSEs) and Javascript
 
-    All assets are encoded using CMAF with H264 video and AAC audio. CMAF is a modern, HTTP-based standard that simplifies the delivery of streaming media by using a common media format for video streams, reducing costs, complexity, and latency. This allows us to maximise support coverage while also keeping encoding and delivery costs low.
+    [See the DASH device compatibility matrix >](https://docs.veeplay.com/docs/video-guides/video-streaming-formats-device-support#dynamic-adaptive-streaming-over-http-dash)
+
+    All assets are encoded using CMAF with [H264](https://docs.veeplay.com/docs/video-guides/video-codec-types-device-support#h264-avc) video and AAC audio. CMAF is a modern, HTTP-based standard that simplifies the delivery of streaming media by using a common media format for video streams, reducing costs, complexity, and latency. This allows us to maximise support coverage while also keeping encoding and delivery costs low.
 
     [Read more about the CMAF format here](https://developer.apple.com/documentation/http_live_streaming/about_the_common_media_application_format_with_http_live_streaming).
 
@@ -181,7 +185,7 @@ tags:
     </div>
 
     ## Download & Offline View
-    All assets ingested by the Veeplay API are also converted into a series of MP4 renditions. This is useful if you plan to support downloads or offline viewing, or if you need a simple, straightforward version that you can use, for example, for Open Graph tags.
+    All assets ingested by the Veeplay API are also converted into a series of static MP4 renditions. This is useful if you plan to support downloads or offline viewing, or if you need a simple, straightforward version that you can use, for example, for Open Graph tags.
 
     <div class="alert alert-info" role="alert">
       <i class="fa fa-info-circle"></i>
@@ -199,7 +203,7 @@ tags:
     </div>
 
     ## Image Overlays
-    When creating a new asset with the Veeplay Video API, you can provide a series of image URLs to overlay on top of your input video during the encoding process. A series of configuration options are available, including:
+    When creating a new asset with the Veeplay Video API, you can provide a series of image URLs to overlay on top of your input video during the encoding process. Configuration options are available, including:
     - Specifying a start time and a duration;
     - Defining horizontal and vertical alignments and margins for the overlay;
     - Setting the overlay opacity, as well as fade-in and fade-out durations.
