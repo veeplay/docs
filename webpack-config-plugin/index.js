@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const { ProvidePlugin, DefinePlugin } = require('webpack');
 
 module.exports = () => ({
