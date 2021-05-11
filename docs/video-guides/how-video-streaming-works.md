@@ -32,21 +32,21 @@ Another issue with choosing the right quality vs. size for progressive download 
 
 ## Streaming
 
-The first step to fixing the problems with progressive downloads described above is to generate **multiple renderings of the original media**, different in resolution and quality. This is a process generally called encoding. Depending on the selected codec and configuration, a source file can be converted to a series of individual outputs of different qualities and sizes.
+The first step to fixing the problems with progressive downloads described above is to generate **multiple renderings of the original media**, with different bitrates. This is a process generally called encoding (or transcoding, since an already-encoded input is converted to one or more differently encoded outputs). Depending on the selected codec and configuration, a source file can be converted to a series of individual outputs of different qualities and sizes.
 
-Additionally, each rendering might be broken up into same-length pieces called **segments**. This will allow players to granularly buffer content relative to the current playhead, rather than downloading an entire file blob. An alternative to segments is using HTTP range requests or a similar mechanism, depending on player and server feature availability.
+Each rendering might be broken up into same-length pieces called **segments** or **fragments**. This increases efficiency, as it allows players to granularly buffer content relative to the current playhead, rather than downloading an entire file blob. An alternative to segmentation is using [HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests) or a similar mechanism, depending on player and server feature availability. This allows a specific range of a file to be requested and downloaded, making it feasible to have a single, solid file output - however, the file must be encoded in such a way that each individual range allows for standalone rendering.
 
 Video processing workflows can be implemented using many different products and solutions, but the easiest way to get started is to make use of a web service for video transcoding and management, like the [Veeplay Video API](https://veeplay.com/video-api-cloud/).
 
 ![Transcoding a video to multiple qualities](/img/video-guides/video-transcoding-multiple-quality.png)
 
-The resulting rendering segments are then all uploaded to storage, cached on a CDN, and made available to players. A playlist index file is also generated, connecting each individual segment to a specific playback time interval and exposing metadata like information about bitrate and quality.
+The resulting rendering segments are then all uploaded to storage, cached on a CDN, and made available to players. A playlist index file is also generated, connecting each individual segment to a specific playback time interval and exposing metadata like information about bitrate and quality. Several protocols exist for managing the entire streaming process, the most popular being HLS and DASH.
 
 ## HTTP Streaming Protocols
 
-**HLS (HTTP Live Streaming)** and **DASH (Dynamic Adaptive Streaming over HTTP)** are the two main competing standards for implementing live streaming. [HLS](https://developer.apple.com/streaming/) was released by Apple in 2009 and is currently the market leader, while [DASH](https://dashif.org/) was published in 2012 and is promoted by the DASH Industry Forum (Microsoft, Netflix, Google, Ericsson, Samsung, Adobe, etc.)
+**[HLS (HTTP Live Streaming)](/docs/video-guides/video-streaming-formats-device-support#http-live-streaming-hls)** and **[DASH (Dynamic Adaptive Streaming over HTTP)](/docs/video-guides/video-streaming-formats-device-support#dynamic-adaptive-streaming-over-http-dash)** are the two main competing standards for implementing live streaming. [HLS](https://developer.apple.com/streaming/) was released by Apple in 2009 and is currently the market leader, while [DASH](https://dashif.org/) was published in 2012 and is promoted by the DASH Industry Forum (Microsoft, Netflix, Google, Ericsson, Samsung, Adobe, etc.)
 
-A master HLS m3u8 playlist that references multiple renderings might look like the example below. Notice the links to other playlist files for each individual render, connected to a specific bandwidth requirement and other metadata like resolution. Four video renditions are referenced, with varying resolutions and bandwidths, encoded with H.264 (AVC). One audio track is also referenced, as audio and video tracks are generally separated as part of the transcoding process.
+A master HLS m3u8 playlist that references multiple renderings might look like the example below. Notice the links to other playlist files for each individual render, connected to a specific bandwidth requirement and other metadata like resolution. Four video renditions are referenced, with varying resolutions and bandwidths, encoded with [H.264 (AVC)](/docs/video-guides/video-codec-types-device-support#h264-avc). One audio track is also referenced, as audio and video tracks are generally separated as part of the transcoding process.
 
 :::note
 Multiple audio tracks can be included, as well as subtitle tracks and other metadata.
@@ -90,7 +90,7 @@ A context-aware player can now download the playlist file, evaluate a series of 
 > Video streaming fixes the issues with progressive downloads.
 
 :::note
-We've simplified things for this representation. In real life, at least an audio track would also be included in the playlist and downloaded separately. Subtitle tracks or alternate audio might also be included - the player could then allow the user to choose to change the audio to another language or display any of the available subtitles.
+We've simplified things for this representation. In real life, at least an audio track would also be included in the playlist and downloaded separately. Subtitle tracks or alternate audio might also be included, enabling the user to change the audio to another language or display any of the available subtitles.
 :::
 
 ## Live Broadcast Streaming
@@ -102,6 +102,9 @@ In the case of live events, the streaming process looks very similar to what we 
 
 Stream latency can vary between 30+ seconds for baseline HLS or DASH implementations to around 5 seconds for tuned configurations of the same protocols.
 
-:::note
+## Low Latency Streaming
+
 An effort to implement low-latency streaming is underway for both [HLS](https://developer.apple.com/documentation/http_live_streaming/enabling_low-latency_hls) and [DASH](https://dashif.org/guidelines/) by splitting up the video segments into even smaller, independent pieces called chunks. These can be retrieved and rendered by the player as soon as they are available on the CDN, without needing to wait for a full segment to finish encoding. When supported by the CDN and players, this can reduce latency into the 1-5 seconds range.
-:::
+
+![How streaming latency works](/img/video-guides/how-streaming-latency-works.gif)
+![How low-latency streaming works](/img/video-guides/how-streaming-low-latency-works.gif)
