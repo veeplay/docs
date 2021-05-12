@@ -10,6 +10,8 @@ info:
     The Veeplay Video API makes media transcoding and cross-device delivery easy for developers looking to integrate video into their apps.
     Simply provide a mezzanine input of your video, and Veeplay will create [HLS](https://docs.veeplay.com/docs/video-guides/video-streaming-formats-device-support#http-live-streaming-hls) and [DASH](https://docs.veeplay.com/docs/video-guides/video-streaming-formats-device-support#dynamic-adaptive-streaming-over-http-dash) renderings ready to play on any device, delivered via a global CDN.
 
+    Read our [guide on video streaming](https://docs.veeplay.com/docs/video-guides/how-video-streaming-works) for a visually illustrated explanation of automating your video processing workflow with the Veeplay API.
+
     <div class="alert alert-info" role="alert">
       <i class="fa fa-info-circle"></i>
       All API calls in this document should be performed against our production endpoint: <strong><code>https://panel.veeplay.com/stream/</code></strong>
