@@ -122,7 +122,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Veeplay. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Veeplay.`,
     },
   },
   presets: [
@@ -158,5 +158,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: [path.resolve(__dirname, 'webpack-config-plugin')],
+  plugins: [
+    path.resolve(__dirname, 'plugins', 'webpack-config-plugin'),
+    path.resolve(__dirname, 'plugins', 'script-inject-plugin'),
+  ],
 };
