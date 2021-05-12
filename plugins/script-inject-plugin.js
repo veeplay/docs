@@ -11,11 +11,7 @@ module.exports = () => ({
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-114384176-1', {
-    'linker': {
-      'domains': ['veeplay.com', 'docs.veeplay.com', 'panel.veeplay.com']
-    }
-  });
+  gtag('config', 'UA-114384176-1', { cookieDomain: 'auto' });
 </script>
         `,
       ],
