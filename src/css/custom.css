@@ -272,6 +272,10 @@ div[class^="sidebar_"] .menu .menu__link {
   height: 100%;
 }
 
+.support-matrix {
+  table-layout: fixed;
+}
+
 .support-matrix td.device-family {
   background-color: #eee;
 }
@@ -282,4 +286,8 @@ div[class^="sidebar_"] .menu .menu__link {
 
 .support-matrix td, .support-matrix th {
   border: 1px solid darkgray;
+}
+
+.support-matrix tr {
+  vertical-align: top;
 }

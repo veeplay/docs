@@ -1,9 +1,9 @@
 import React from 'react';
 import MediaSupport from '../../media-support';
 
-export default ({ features }) => {
+export default ({ features = [], families = [] }) => {
   const ms = MediaSupport();
-  const specs = ms.for(features).byDevice();
+  const specs = ms.for(features).on(families).byDevice();
   const familyName = (family) => {
     if (family === 'streaming-device') {
       return 'Device';
@@ -54,34 +54,44 @@ export default ({ features }) => {
 
   return (
     <>
-      {['streaming-device', 'tv', 'handheld', 'browser'].map((type) => (
-        <table className="support-matrix">
-          <tr>
-            <th colSpan={3} align="left">
-              <strong>
-                {familyName(type)}
-                &nbsp;Native Support
-              </strong>
-            </th>
-          </tr>
-          {Object.keys(specs[type] || {}).map((family) => (
-            <>
-              <tr>
-                <td className="device-family" rowSpan={specs[type][family].length}>
-                  ☑&nbsp;
-                  {family}
-                </td>
-                {details(specs[type][family][0].versions, specs[type][family][0].support)}
-              </tr>
-              {specs[type][family].slice(1).map(({ versions, support }) => (
+      {['streaming-device', 'tv', 'handheld', 'browser'].map((type) => {
+        if (Object.keys(specs[type] || {}).length === 0) {
+          return (<></>);
+        }
+        return (
+          <table className="support-matrix">
+            <colgroup>
+              <col style={{ width: '25%' }} />
+              <col style={{ width: '25%' }} />
+              <col />
+            </colgroup>
+            <tr>
+              <th colSpan={3} align="left">
+                <strong>
+                  {familyName(type)}
+                  &nbsp;Native Support
+                </strong>
+              </th>
+            </tr>
+            {Object.keys(specs[type] || {}).map((family) => (
+              <>
                 <tr>
-                  {details(versions, support)}
+                  <td className="device-family" rowSpan={specs[type][family].length}>
+                    ☑&nbsp;
+                    {family}
+                  </td>
+                  {details(specs[type][family][0].versions, specs[type][family][0].support)}
                 </tr>
-              ))}
-            </>
-          ))}
-        </table>
-      ))}
+                {specs[type][family].slice(1).map(({ versions, support }) => (
+                  <tr>
+                    {details(versions, support)}
+                  </tr>
+                ))}
+              </>
+            ))}
+          </table>
+        );
+      })}
     </>
   );
 };

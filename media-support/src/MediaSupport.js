@@ -102,7 +102,7 @@ export default class MediaSupport {
   }
 
   feature(id) {
-    return this.features.find((f) => f.id === id);
+    return this.features.find((f) => f.id === id) || {};
   }
 
   family(name) {

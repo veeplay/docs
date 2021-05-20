@@ -28,6 +28,7 @@ module.exports = {
         { type: 'doc', id: 'video-guides/video-streaming-formats-device-support', label: 'Streaming Formats' },
         { type: 'doc', id: 'video-guides/video-codec-types-device-support', label: 'Video Codecs' },
         { type: 'doc', id: 'video-guides/video-container-types-device-support', label: 'Video Containers' },
+        { type: 'doc', id: 'video-guides/supported-media-by-device', label: 'Device Media Support' },
       ],
     },
   ],
