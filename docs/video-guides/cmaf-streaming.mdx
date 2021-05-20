@@ -1,0 +1,65 @@
+---
+title: Common Media Application Format (CMAF) Streaming
+description: CMAF reduces streaming latency and delivery cost by providing a single standard that works on all devices and is compatible with existing HLS and DASH implementations.
+image: /img/video-guides/cmaf-unified-video-streaming.png
+---
+
+import MediaSupport from '../../src/components/MediaSupport'
+
+## Video Streaming Support Fragmentation
+
+Modern **HTTP video streaming** is built as a **layered stack of technologies, standards, and protocols** that need to be supported from top to bottom by any device attempting to playback a stream. The most important layers are:
+- **[The streaming protocol](/docs/video-guides/video-streaming-formats-device-support)** (DASH, HLS, SmoothStreaming); this governs the use of manifests or playlists, synchronization, and how media segments are delivered to the player;
+- **[The media container](/docs/video-guides/video-container-types-device-support)** (TS, MP4, CMAF, etc.); this wraps the underlying media (video, audio, subtitles etc.) into individual segments or fragments that can be rendered by the player;
+- **The Encryption layer** (Widevine, FairPlay, PlayReady); this provides a way for the encoder to encrypt the underlying media, and for the player to retrieve valid keys and decrypt the content before rendering;
+- **[The codec](/docs/video-guides/video-codec-types-device-support)** (AVC, HEVC, AV1, etc.); this dictates how the actual video data is compressed and represented on the device.
+
+![The structure of a video stream](/img/video-guides/video-streaming-structure.png)
+
+**[Apple's HTTP Live Streaming](/docs/video-guides/video-streaming-formats-device-support#http-live-streaming-hls)** was, historically, the first industry effort (launched in 2009) to apply a standard tech layer against video streaming. This includes `.m3u8` manifest files, referencing `TS` containers with `CBC`-based encryption and `H.264/AVC` data encoding. This stack is, to date, the **most widely supported** against legacy as well as modern devices.
+
+**[MPEG-DASH](/docs/video-guides/video-streaming-formats-device-support#dynamic-adaptive-streaming-over-http-dash)** was introduced in 2012, featured a series of improvements over traditional HLS, and aimed to be adopted as **the new global standard** for streaming. It uses `.mpd` manifest files that usually reference fragmented `MP4` containers that can use any underlying encryption or codec.
+
+The HLS vs. DASH battle has shaped publisher video workflows for many years, with the following constrains needing to be addressed:
+- Apple devices do not support DASH. Same for Safari under iOS.
+- No DASH support for legacy devices like older TVs and streaming boxes.
+- No DASH support on any WebOS device.
+- Apple devices only support Apple's FairPlay DRM and CBC-based encryption. Most other devices only support Google's Widevine DRM and CTR-based encryption.
+
+To be able to support the widest range of devices, video processing workflows needed to include **at least two outputs**, one for HLS and one for DASH. This is inconvenient, because:
+- More CPU is required to create two basically identical renditions but in different containers, increasing the cost of encoding;
+- The renditions will battle for cache space on the CDN, increasing the cost and decreasing the quality of delivery.
+
+![Pre-CMAF streaming support fragmentation: HLS and DASH](/img/video-guides/video-streaming-support-fragmentation.png)
+
+## Convergence Towards CMAF
+
+**CMAF** was created with the aim to become the **universal streaming container** that can render across all modern devices, and can be referenced in both HLS and DASH manifests, thus eliminating the need for multiple transcodings of the same content. Instead of generating TS segments for HLS and fMP4 fragments for DASH, a single fMP4 set of renderings can be referenced **inside both HLS and DASH playlists**.
+
+![CMAF unified streaming support](/img/video-guides/cmaf-unified-video-streaming.png)
+
+The CMAF container is derived from **ISO Base Media File Format (ISOBMFF)**, and is synonymous with fragmented MP4. It uses movie fragments with relative byte range addressing and a decode timestamp to sequence and synchronize each movie fragment. CMAF Media Objects enables splicing and parsing of CMAF Fragments independent of its storage and delivery.
+
+CMAF enables each player to select and combine tracks during playback by storing each media component in a separate CMAF track, and specifying how CMAF tracks are to be start aligned and synchronized. Each player can select and download different components, such as **alternative languages, codecs, bitrates, and video resolutions; optimized for different users, devices, and network conditions**.
+
+- CMAF uses **[Common Encryption (MPEG-CENC)](https://www.w3.org/TR/eme-stream-mp4/)** which enables the same encrypted output to be protected by different DRM systems built into different devices. This also works for standard HTML5 APIs, enabling browser support.
+- CMAF is extensible and supports any codec and encoding constraint defined in CMAF Media Profiles.
+- CMAF Fragments can be packaged in larger or smaller CMAF objects for delivery purposes. Larger CMAF Segments can be used to optimize network efficiency where added delay is acceptable, or smaller **CMAF Chunks** can be used to stream the media samples in a fragment before the entire fragment has been encoded to reduce presentation delay in live streaming.
+- CMAF content can seamlessly switch between versions (qualities), as it makes use of a single-track buffer and decoder for each switching set.
+
+## DRM Fragmentation
+
+While support for fragmented MP4 containers has been present in Apple devices since iOS 10, Apple has decided to only support CBC-based encryption in its FairPlay DRM. Historically, on the other hand, Widevine and PlayReady have only supported CTR-based encryption, and have only recently decided to ship updates that also support CBC mode for compatibility.
+
+As a result, even though CMAF held the promise of unified streaming across all platforms, in practice, if legacy devices need to be supported and DRM needs to be implemented, video processing workflows still need to deliver at least two outputs: one CMAF with CENC encryption and one CMAF with CBSC encryption.
+
+| Block cipher mode | Encryption | DRM Support                                         |
+|-------------------|------------|-----------------------------------------------------|
+| AES-CTR           | **CENC**   | Legacy & Modern Widevine, Legacy & Modern PlayReady |
+| AES-CBC           | **CBSC**   | Modern Widevine, Modern PlayReady, FairPlay         |
+
+## Device Support
+
+[See the technical specs](/docs/video-guides/video-container-types-device-support#cmaf).
+
+<MediaSupport features="cmaf" />

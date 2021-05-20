@@ -16,29 +16,37 @@ export default ({ features }) => {
     }
     return 'Browser';
   };
-  const details = (versions, data) => (
+  const details = (versions, datas) => (
     <>
       <td>
         {versions.join(', ')}
       </td>
       <td width="50%" className="notes">
-        {(
-          data.profiles
-        || data.level
-        || data.max
-        || data.containers
-        || data.notes
-        ) && [
-          data.profiles && `Profiles: ${Array.isArray(data.profiles) ? data.profiles.join(', ') : data.profiles}`,
-          data.level && `Up to level ${data.level}`,
-          data.max && `Up to: ${Array.isArray(data.max) ? data.max.map((m) => `${m.res}@${m.fps}fps`).join(' or ') : `${data.max.res}@${data.max.fps}fps`}`,
-          data.containers && `Containers: ${Array.isArray(data.containers) ? data.containers.join(', ') : data.containers}`,
-          data.notes,
-        ].filter((s) => !!s).map((s) => (
-          <>
-            {s}
+        {datas.map((data) => (
+          <div>
+            ☑&nbsp;
+            <strong>{ms.feature(data.type).name}</strong>
             <br />
-          </>
+            {(
+              data.profiles
+            || data.level
+            || data.max
+            || data.containers
+            || data.notes
+            ) && [
+              data.profiles && `Profiles: ${Array.isArray(data.profiles) ? data.profiles.join(', ') : data.profiles}`,
+              data.level && `Up to level ${data.level}`,
+              data.max && `Up to: ${Array.isArray(data.max) ? data.max.map((m) => `${m.res}@${m.fps}fps`).join(' or ') : `${data.max.res}@${data.max.fps}fps`}`,
+              data.containers && `Containers: ${Array.isArray(data.containers) ? data.containers.join(', ') : data.containers}`,
+              data.notes,
+            ].filter((s) => !!s).map((s) => (
+              <>
+                -&nbsp;
+                {s}
+                <br />
+              </>
+            ))}
+          </div>
         ))}
       </td>
     </>
@@ -63,11 +71,11 @@ export default ({ features }) => {
                   ☑&nbsp;
                   {family}
                 </td>
-                {details(specs[type][family][0].versions, specs[type][family][0].support[0])}
+                {details(specs[type][family][0].versions, specs[type][family][0].support)}
               </tr>
               {specs[type][family].slice(1).map(({ versions, support }) => (
                 <tr>
-                  {details(versions, support[0])}
+                  {details(versions, support)}
                 </tr>
               ))}
             </>

@@ -1,9 +1,8 @@
 ---
+title: Video Streaming, Visually Explained
 description: A visual guide to how modern video streaming works.
 image: /img/video-guides/video-transcoding-multiple-quality.png
 ---
-
-# Video Streaming, Visually Explained
 
 Just upload the MP4 to S3, and we're done, right? We wish it were that easy. On all but the most straightforward use cases, you'll need to consider the user experience across multiple platforms, devices, and network conditions. This is exactly what video streaming technologies set out to achieve.
 
@@ -35,6 +34,12 @@ Another issue with choosing the right quality vs. size for progressive download 
 The first step to fixing the problems with progressive downloads described above is to generate **multiple renderings of the original media**, with different bitrates. This is a process generally called encoding (or transcoding, since an already-encoded input is converted to one or more differently encoded outputs). Depending on the selected codec and configuration, a source file can be converted to a series of individual outputs of different qualities and sizes.
 
 Each rendering might be broken up into same-length pieces called **segments** or **fragments**. This increases efficiency, as it allows players to granularly buffer content relative to the current playhead, rather than downloading an entire file blob. An alternative to segmentation is using [HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests) or a similar mechanism, depending on player and server feature availability. This allows a specific range of a file to be requested and downloaded, making it feasible to have a single, solid file output - however, the file must be encoded in such a way that each individual range allows for standalone rendering.
+
+![The structure of a video stream](/img/video-guides/video-streaming-structure.png)
+
+:::note
+Read our guides on the most popular [streaming formats](/docs/video-guides/video-streaming-formats-device-support), [containers](/docs/video-guides/video-container-types-device-support) and [codecs](/docs/video-guides/video-codec-types-device-support).
+:::
 
 Video processing workflows can be implemented using many different products and solutions, but the easiest way to get started is to make use of a web service for video transcoding and management, like the [Veeplay Video API](https://veeplay.com/video-api-cloud/).
 
