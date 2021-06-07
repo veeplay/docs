@@ -144,7 +144,7 @@ module.exports = {
       'redocusaurus',
       {
         specs: [{
-          spec: './sources/videoapi/spec.yaml',
+          spec: './sources/videoapi/swagger.yaml',
           routePath: '/video-api',
         }],
         theme: {

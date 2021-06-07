@@ -346,6 +346,11 @@ paths:
         "404":
           description: Asset not found
 components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
   schemas:
     Asset:
       required:
@@ -373,7 +378,6 @@ components:
           - COMPLETE
           - ERROR
         order:
-          description: The order options originally used to create the asset.
           $ref: '#/components/schemas/AssetOrder'
         error:
           description: This field is populated with an error description in case the asset status equals `ERROR`.
@@ -413,6 +417,7 @@ components:
           format: date-time
           example: 2021-02-10T07:13:13+02:00
     AssetOrder:
+      description: The order options originally used to create the asset.
       required:
       - input_url
       type: object
@@ -527,4 +532,5 @@ components:
           example: 1000
           default: 0
           description: The overlay fade-out duration in miliseconds.
-
+security:
+  - ApiKeyAuth: []
