@@ -34,6 +34,12 @@ module.exports = {
         },
         {
           position: 'left',
+          label: 'FAQ',
+          type: 'doc',
+          docId: 'faq',
+        },
+        {
+          position: 'left',
           label: 'Video API',
           to: '/video-api/',
         },
