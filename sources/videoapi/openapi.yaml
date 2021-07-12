@@ -62,7 +62,7 @@ info:
     </div>
 
     # Webhooks
-    Use webhooks to have your application notified on events in the video asset lifecycle. We will `POST` a request to an endpoint of your choice, allowing you to track asset ingestion status for every created video asset.
+    Use webhooks to have your application notified on events in the video asset and stream lifecycle. We will `POST` a request to an endpoint of your choice, allowing you to track live stream and asset ingestion status for every created video resource.
 
     To save the endpoint URL, go to your [Veeplay Admin Panel](https://panel.veeplay.com), under "License", then update and save the "Webhook" field under your streaming app, just below your API key.
 
@@ -72,6 +72,8 @@ info:
     </div>
 
     ## Sample webhook body
+
+    ### For transcoding video assets:
 
     ```json
     {
@@ -94,6 +96,26 @@ info:
     <div class="alert alert-warning" role="alert">
       <i class="fa fa-exclamation-triangle"></i>
       For some statuses, expect to receive multiple `asset_updated` events.
+    </div>
+
+    ### For live streams:
+
+    ```json
+    {
+      "event_name": "stream_updated",
+      "status": "RUNNING",
+      "stream_id": "90971b23-08c5-4185-8f8e-4ab79587431e"
+    }
+    ```
+
+    **Structure**
+    - `event_name`: one of `stream_created`, `stream_updated`, or `stream_destroyed`
+    - `status`: one of `PENDING`, `PROVISIONING`, `PROVISIONED`, `RUNNING`, `STOPPED`, `ERROR`
+    - `stream_id`: the id of the referenced live stream
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      Stream details are not included in the webhook body. To retrieve complete asset details, use the <a href="#tag/Live-Streams/paths/~1live~1{streamId}/get">get stream by id endpoint</a>.
     </div>
   contact:
     email: office@veeplay.com
@@ -233,6 +255,119 @@ tags:
       - `metadata`, an object that can be populated with any key-value data attached to the asset.
       - `created_at`, the datetime of asset creation.
       - `updated_at`, the datetime of the asset's last update.
+- name: Live Streams
+  description: |
+    Use these endpoints to setup live streams.
+
+    ## Live Stream Lifecycle
+
+    A live stream begins in the `PENDING` state. This will allow you to grab output HLS URLs (for the live stream as well as for the recorded, video-on-demand version) and configure your video players. No charges are incurred at this stage.
+
+    When ready to start broadcasting, you can move the stream to the `STARTED` state. At this point, you'll receive the input information (server URL and stream key) you need to point your local streaming software to Veeplay.
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      Keep your input information safe, and treat it as you would a password. Anyone with access to input information will be able to broadcast video using your generated stream.
+    </div>
+
+    When ready to stop broadcasting, you can move the stream to the `STOPPED` state. The live stream will be stopped. Users should at this point be redirected to the recorded VOD version for viewing.
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      A stopped stream cannot be restarted. If you need to continue streaming after you have stopped your stream, you'll need to create a new stream and update your players with the new URLs.
+    </div>
+
+    ## RTMP Input
+
+    Every Veeplay live stream accepts a RTMP push input that supports connecting virtually every upstream broadcasting software of your choice, via a server URL and a stream key. A 1080p @ 30fps configuration for the input is recommended, but we support up to 4K @ 60 fps.
+
+    Example stream input parameters:
+    
+    ```json
+    {
+      "stream_id": "e4d2d760-ff8b-4108-b696-a383dd328210",
+      ...
+      "input": {
+        "server_url": "rtmp://54.81.122.10:1935/{APP-ID}",
+        "stream_key": "e4d2d760-ff8b-4108-b696-a383dd328210"
+      }
+    }
+    ```
+
+    ## Live and VOD outputs
+
+    Two adaptive bitrate HLS URLs will be generated for every Veeplay live stream: one for live distribution and one for VOD playback. Provide these URLs to your player to configure and embed the streams in your application.
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle"></i>
+      The bitrate ladder for both outputs includes the following rendition resolutions: <strong>1080p, 720p, 480p, 360p, and 240p</strong>.
+    </div>
+
+    Example stream output:
+    
+    ```json
+    {
+      "stream_id": "e4d2d760-ff8b-4108-b696-a383dd328210",
+      ...
+      "output": {
+          "live": "https://live.veeplay.com/{APP-ID}/e4d2d760-ff8b-4108-b696-a383dd328210/v.m3u8",
+          "vod": "https://streaming.veeplay.com/{APP-ID}/r/e4d2d760-ff8b-4108-b696-a383dd328210/v.m3u8"
+      }
+    }
+    ```
+
+    ## Duration limits
+
+    ### Disconnected input limit
+  
+    A started stream (currently in the `RUNNING` state) will be automatically stopped after 15 minutes of missing or broken input data.
+
+    To override the default 15 minute limit if you anticipate longer input downtime, provide the `max_idle_duration` parameter when creating the stream.
+
+    ### Maximum stream duration
+
+    All streams will be automatically stopped by the system after 24 hours of being in the `RUNNING` state. [Contact us](mailto:office@veeplay.com) if you need to create live streams that last longer than 24 hours.
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      <strong>If using the Trial License</strong>: trial livestreams are limited to 10 minutes of broadcast time, and 5 minutes of idle input time. Aquire a license to lift these limits on the livestreams you create.
+    </div>
+
+    ## Simulcast to 3rd party services
+
+    With Simulcast enabled, you can send your live video stream simultaneously to multiple services that support RTMP or RTMPS input. Also known as restreaming, rebroadcasting, or live syndication.
+    
+    Services that are supported include:
+    - Facebook Live
+    - YouTube Live
+    - Twitch
+    - Vimeo
+    - Periscope
+    - Any with RTMP or RTMPS support
+
+    <div class="alert alert-warning" role="alert">
+      <i class="fa fa-exclamation-triangle"></i>
+      <strong>Instagram</strong> is notably not supported as a Simulcast target, as you can only go live from the app.
+    </div>
+
+    To enable Simulcast, provide a list of credentials when creating a livestream:
+
+    `POST https://panel.veeplay.com/streaming/live`
+
+    ```json
+      {
+          "simulcast": [
+            {
+              "url": "rtmp://c.rtmp.youtube.com/live",
+              "stream_key": "secretkey"
+            },
+            {
+              "url": "rtmp://vie.contribute.live-video.net/app",
+              "stream_key": "secretkey"
+            }
+          ]
+      }
+    ```
 paths:
   /assets:
     get:
@@ -296,7 +431,7 @@ paths:
       - Video Assets
       summary: Update an asset by id
       description: |
-        For now, the only updatable field for an asset is `metadata`.
+        The only updatable field for an asset is `metadata`.
       parameters:
       - name: assetId
         in: path
@@ -345,6 +480,171 @@ paths:
                   status: ok
         "404":
           description: Asset not found
+  /live:
+    get:
+      tags:
+      - Live Streams
+      summary: List streams
+      description: "Lists all available livestreams. \n"
+      operationId: listStreams
+      responses:
+        "200":
+          description: Array of all available streams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Livestream'
+    post:
+      tags:
+      - Live Streams
+      summary: Create a new live stream
+      description: |
+        Create a new live stream, and set it to the `PENDING` state. Output URLs are allocated at this point, but no output is actually produced until the stream is started.
+      operationId: createStream
+      requestBody:
+        description: Stream to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LivestreamOrder'
+      responses:
+        "200":
+          description: The created stream
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livestream'
+        "400":
+          description: Invalid input
+  /live/{streamId}:
+    get:
+      tags:
+      - Live Streams
+      summary: Get a stream by id
+      parameters:
+      - name: streamId
+        in: path
+        description: Id of the stream to get
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The requested stream
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livestream'
+        "404":
+          description: Stream not found
+    put:
+      tags:
+      - Live Streams
+      summary: Update a stream by id
+      description: |
+        The only updatable field for a stream is `metadata`.
+      parameters:
+      - name: streamId
+        in: path
+        description: Id of the stream to update
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Stream details to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LivestreamUpdate'
+      responses:
+        "200":
+          description: The updated stream
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livestream'
+        "404":
+          description: Stream not found
+    delete:
+      tags:
+      - Live Streams
+      summary: Delete a stream by id
+      parameters:
+      - name: streamId
+        in: path
+        description: Id of the stream to delete
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Stream removal confirmation
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+        "404":
+          description: Stream not found
+  /live/{streamId}/start:
+    put:
+      tags:
+      - Live Streams
+      summary: Start a stream
+      parameters:
+      - name: streamId
+        in: path
+        description: Id of the stream to start
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The stream has been successfully started
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+        "404":
+          description: Stream not found
+  /live/{streamId}/stop:
+    put:
+      tags:
+      - Live Streams
+      summary: Stop a stream
+      parameters:
+      - name: streamId
+        in: path
+        description: Id of the stream to stop
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: The stream has been successfully stopped
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ok
+        "404":
+          description: Stream not found
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -532,5 +832,124 @@ components:
           example: 1000
           default: 0
           description: The overlay fade-out duration in miliseconds.
+    Livestream:
+      required:
+      - stream_id
+      - created_at
+      - order
+      - status
+      - updated_at
+      type: object
+      properties:
+        stream_id:
+          type: string
+          description: Use this to generate live and VOD links for playback.
+          format: uuid
+          example: 71c404ad-7333-4527-a228-868e014fad41
+        status:
+          type: string
+          description: The current livestream workflow status.
+          example: RUNNING
+          enum:
+          - PENDING
+          - PROVISIONING
+          - PROVISIONED
+          - RUNNING
+          - STOPPED
+          - ERROR
+        order:
+          $ref: '#/components/schemas/LivestreamOrder'
+        error:
+          description: This field is populated with an error description in case the stream status equals `ERROR`.
+          type: string
+        metadata:
+          type: object
+          description: An object that can be populated with any key-value data attached to the stream.
+          example:
+            title: Cool Movie
+        input:
+          type: object
+          description: Stream RTMP input configuration. Keep this data secret, and use it to configure your streaming software to connect to the Veeplay servers.
+          properties:
+            server_url:
+              type: string
+              description: The Server URL.
+            stream_key:
+              type: string
+              description: The Stream Key.
+        output:
+          type: object
+          description: CDN URLs for live stream outputs.
+          properties:
+            live:
+              type: string
+              description: CDN URL for the HLS live stream.
+            vod:
+              type: string
+              description: CDN URL for the HLS recorded VOD version of the stream. This remains available after the event has ended.
+        created_at:
+          type: string
+          description: The datetime of stream creation. Note that this is corresponds to when the stream was created, not when the stream was started. See the `started_at` property to learn when the stream went live.
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+        updated_at:
+          type: string
+          description: The datetime of the last update made to the stream.
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+        started_at:
+          type: string
+          description: The datetime when the stream went live.
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+        idle_at:
+          type: string
+          description: The datetime when the stream went idle (the input disconnected or became empty).
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+        stopped_at:
+          type: string
+          description: The datetime when the stream stopped.
+          format: date-time
+          example: 2021-02-10T07:13:13+02:00
+        max_live_seconds:
+          type: integer
+          description: The maximum duration of a live stream, in seconds. This applies to streams in the `RUNNING` state.
+        max_idle_seconds:
+          type: integer
+          description: The maximum time a live stream can spend in an idle (disconnected from input) state, in seconds, before being permanently stopped. This applies to streams in the `RUNNING` state.
+    LivestreamOrder:
+      description: The order options originally used to create the live stream.
+      type: object
+      properties:
+        max_idle_seconds:
+          type: integer
+          description: The maximum time a live stream can spend in an idle (disconnected from input) state, in seconds, before being permanently stopped. This applies to streams in the `RUNNING` state. Defaults to 900 (15 minutes).
+        metadata:
+          type: object
+          description: An object that can be populated with any key-value data.
+          example:
+            title: Cool Stream
+        simulcast:
+          type: array
+          description: A list of RTMP credentials for restreaming to 3rd party services.
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                description: Service URL for RTMP input.
+                example: rtmp://a.rtmp.youtube.com/live2
+              stream_key:
+                type: string
+                description: Service stream key for RTMP input.
+                example: acbde
+    LivestreamUpdate:
+      type: object
+      properties:
+        metadata:
+          type: object
+          example:
+            title: Cool Stream
 security:
   - ApiKeyAuth: []
