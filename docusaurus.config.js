@@ -36,7 +36,7 @@ module.exports = {
           position: 'left',
           label: 'FAQ',
           type: 'doc',
-          docId: 'faq',
+          docId: 'faq/transcoding-api',
         },
         {
           position: 'left',

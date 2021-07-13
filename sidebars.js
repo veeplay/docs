@@ -32,4 +32,14 @@ module.exports = {
       ],
     },
   ],
+  faqSidebar: [
+    {
+      type: 'category',
+      label: 'Veeplay FAQ',
+      items: [
+        { type: 'doc', id: 'faq/transcoding-api', label: 'Transcoding API' },
+        { type: 'doc', id: 'faq/video-player', label: 'Video Player' },
+      ],
+    },
+  ],
 };
