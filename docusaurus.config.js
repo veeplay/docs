@@ -18,6 +18,9 @@ module.exports = {
       disableSwitch: true,
       respectPrefersColorScheme: false,
     },
+    prism: {
+      additionalLanguages: ['java', 'swift'],
+    },
     navbar: {
       title: 'Veeplay Docs',
       style: 'dark',
@@ -68,6 +71,10 @@ module.exports = {
             {
               label: 'JSON Configs Reference',
               to: '/json-configuration/',
+            },
+            {
+              label: 'Events Reference',
+              to: '/docs/video-player/events',
             },
           ],
         },
