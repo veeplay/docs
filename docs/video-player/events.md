@@ -46,6 +46,9 @@ The available events are a superset of the official [IAB VAST Tracking Events](h
 | SSAI Ad Ended                            | When a SSAI ad ends.                                                                                |     ☑     |     ☑      |       ☑        |
 | Ad Break Started                         | When an ad break starts processing.                                                                 |            |     ☑      |                 |
 | Ad Requested                             | When a VAST tag is requested from the network.                                                      |            |     ☑      |                 |
+| Ad Request Complete                      | When a VAST tag has finished retrieving from the network.                                           |            |     ☑      |                |
+| Ad Request Error                         | When an error appeared during retrieving a VAST tag from the network.                               |            |     ☑      |                |
+| Ad Break Empty                           | When a retrieved VAST tag did not contain an ad                                                     |            |     ☑      |                |
 | Unit Finished                            | When a media unit finishes processing.                                                              |     ☑     |     ☑      |       ☑        |
 | Invalid License                          | When there is an issue with the player commercial license.                                          |     ☑     |     ☑      |       ☑        |
 | Playback Status Change                   | When the player playback status changes.                                                            |     ☑     |     ☑      |       ☑        |
@@ -309,8 +312,11 @@ APSMediaPlayer.getInstance().removeTrackingEventListener(this);
 | Seeked                                   |                                      |
 | SSAI Ad Started                          | `SSAI_AD_STARTED`                    |
 | SSAI Ad Ended                            | `SSAI_AD_ENDED`                      |
-| Ad Break Started                         |                                      |
-| Ad Requested                             |                                      |
+| Ad Break Started                         | `ADBREAK_TRIGGERED`                  |
+| Ad Requested                             | `AD_REQUESTED`                       |
+| Ad Request Complete                      | `AD_REQUEST_COMPLETE`                |
+| Ad Request Error                         | `AD_REQUEST_ERROR`                   |
+| Ad Break Empty                           | `ADBREAK_EMPTY`                      |
 | Unit Finished                            | `UNIT_FINISHED`, `UNIT_FINISHED_URL` |
 | Invalid License                          | `LICENSE_INVALID`                    |
 | Playback Status Change                   | `PLAYBACK_STATE_CHANGED`             |
