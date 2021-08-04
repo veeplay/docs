@@ -19,7 +19,7 @@ module.exports = {
       respectPrefersColorScheme: false,
     },
     prism: {
-      additionalLanguages: ['java', 'swift'],
+      additionalLanguages: ['swift'],
     },
     navbar: {
       title: 'Veeplay Docs',
