@@ -78,6 +78,16 @@ module.exports = {
             },
           ],
         },
+        {
+          position: 'left',
+          label: 'Examples',
+          items: [
+            {
+              label: 'JavaScript Player Examples',
+              to: '/docs/examples/js/simple-vanilla',
+            },
+          ],
+        },
       ],
     },
     footer: {

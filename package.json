@@ -28,7 +28,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scroll": "^1.8.2",
-    "redocusaurus": "^0.3.4"
+    "redocusaurus": "^0.3.4",
+    "veeplay": "^1.2.5"
   },
   "browserslist": {
     "production": [
