@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
-    
+
   </head>
   <body>
 
@@ -19,11 +19,11 @@
         <a class="header-link" href="index.html">
            Docs
         </a>
-        
+
       </p>
-    
-    
-    
+
+
+
     </header>
 
     <p class="breadcrumbs">
@@ -320,7 +320,7 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            
+
             <h2 id='about' class='heading'>About</h2>
 
 <p><a href="https://veeplay.com"><img src="https://veeplay.com/images/veeplay_logo.svg"></a></p>
@@ -391,13 +391,13 @@
 <p>Set up an account at <a href="https://panel.veeplay.com">https://panel.veeplay.com</a> and add your application&rsquo;s bundle identifier under &ldquo;License Management&rdquo;.</p>
 
 <p>Import the Player’s header file, as well as the VAST/VMAP or other plugins:</p>
-<pre class="highlight plaintext"><code>#import "APSMediaPlayer.h" 
+<pre class="highlight plaintext"><code>#import "APSMediaPlayer.h"
 #import "APSVASTMediaBuilderPlugin.h"
 </code></pre>
 
 <p>Create a new APSMediaBuilder instance and add plugins as required APSMediaUnit : </p>
-<pre class="highlight plaintext"><code>APSMediaBuilder *builder = [[APSMediaBuilder alloc] init]; 
-[builder addPlugin:[[APSVASTMediaBuilderPlugin alloc] init]]; 
+<pre class="highlight plaintext"><code>APSMediaBuilder *builder = [[APSMediaBuilder alloc] init];
+[builder addPlugin:[[APSVASTMediaBuilderPlugin alloc] init]];
 </code></pre>
 
 <p>Optionally, APSMediaUnit set the debugMode flag to YES to enable console logging: </p>
@@ -405,7 +405,7 @@
 </code></pre>
 
 <p>Add the media player to a view: </p>
-<pre class="highlight plaintext"><code>[APSMediaPlayer sharedInstance].view.frame = CGRectMake(5, 5, 310, 450); 
+<pre class="highlight plaintext"><code>[APSMediaPlayer sharedInstance].view.frame = CGRectMake(5, 5, 310, 450);
 [self.view addSubview:[APSMediaPlayer sharedInstance].view];
 </code></pre>
 
@@ -486,7 +486,7 @@
 <h2 id='using-google-ima-sdk' class='heading'>Using Google IMA SDK</h2>
 
 <p>Optionally, Veeplay allows to use Google&rsquo;s IMA SDK instead of the internal VAST ad player. To do this, first add the VeeplayIma integration:</p>
-<pre class="highlight plaintext"><code>pod "VeeplayIma", "~&gt; 1.0"
+<pre class="highlight plaintext"><code>pod "VeeplayIma", "~&gt; 1.1"
 </code></pre>
 
 <p>Then, as soon as possible, enable Veeplay to use Google IMA:</p>
