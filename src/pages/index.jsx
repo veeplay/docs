@@ -78,6 +78,9 @@ export default function Home() {
             Android Player SDK
           </h2>
           <ul>
+            <li><a href="/docs/android-sdk/overview">Introduction</a></li>
+            <li><a href="/docs/android-sdk/quick-start">Quick start</a></li>
+            <li><a href="/docs/android-sdk/ads">Ads</a></li>
             <li><a href="/android-player/">Class reference</a></li>
           </ul>
         </div>

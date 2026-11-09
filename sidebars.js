@@ -1,4 +1,24 @@
 module.exports = {
+  androidSidebar: [
+    {
+      type: 'category',
+      label: 'Android SDK',
+      items: [
+        'android-sdk/overview',
+        'android-sdk/installation',
+        'android-sdk/quick-start',
+        'android-sdk/ads',
+        'android-sdk/google-cast',
+        'android-sdk/fullscreen-and-insets',
+        'android-sdk/licensing-and-network',
+        'android-sdk/privacy',
+        'android-sdk/proguard-r8',
+        'android-sdk/migration-3-2',
+        'android-sdk/changelog',
+        'android-sdk/api-reference',
+      ],
+    },
+  ],
   ssaiSidebar: [
     {
       type: 'category',

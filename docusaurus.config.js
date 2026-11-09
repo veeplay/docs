@@ -1,6 +1,9 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 
 const path = require('path');
+const remarkSdkVersion = require('./plugins/remark-sdk-version');
+
+const androidSdkVersion = '3.2.0-rc1';
 
 module.exports = {
   title: 'Veeplay Documentation',
@@ -9,6 +12,9 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  customFields: {
+    androidSdkVersion,
+  },
   favicon: 'img/favicon.ico',
   organizationName: 'veeplay',
   projectName: 'docs',
@@ -65,8 +71,12 @@ module.exports = {
               to: '/ios-player/readme.html',
             },
             {
+              label: 'Android SDK Guide',
+              to: '/docs/android-sdk/overview',
+            },
+            {
               label: 'Android Reference',
-              to: '/android-player/',
+              to: 'pathname:///android-player/',
             },
             {
               label: 'JSON Configs Reference',
@@ -114,7 +124,7 @@ module.exports = {
             },
             {
               label: 'Android Video Player',
-              to: '/android-player/',
+              to: '/docs/android-sdk/overview',
             },
             {
               label: 'JSON Configuration',
@@ -154,6 +164,9 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [
+            [remarkSdkVersion, { version: androidSdkVersion }],
+          ],
           editUrl: 'https://github.com/veeplay/docs/edit/main/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
