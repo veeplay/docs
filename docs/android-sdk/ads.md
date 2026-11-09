@@ -23,7 +23,7 @@ player.init(this, false);
 player.setPreferGoogleIma(true); // or false for the native engine
 ```
 
-Call `setPreferGoogleIma()` before the ad breaks are triggered, ideally right after `init()` while you configure the player. Set it once, before you build and play the playlist.
+Call `setPreferGoogleIma()` before the ad breaks are triggered, ideally right after `init()` while you configure the player. Set it each time you configure the player, before you play the playlist. `finish()` discards the player and its settings, so apply it again after the next `init()`.
 
 ## Add ads with JSON
 
@@ -40,7 +40,7 @@ Ads sit next to `content` in the [JSON configuration](/json-configuration/). A p
         { "urls": ["https://ads.example.com/preroll.xml"] }
       ],
       "midContent": [
-        { "urls": ["https://ads.example.com/midroll.xml"], "offset": "30" }
+        { "urls": ["https://ads.example.com/midroll.xml"], "offset": "00:00:30" }
       ],
       "postContent": [
         { "urls": ["https://ads.example.com/postroll.xml"] }
@@ -50,7 +50,9 @@ Ads sit next to `content` in the [JSON configuration](/json-configuration/). A p
 }
 ```
 
-A midroll `offset` accepts absolute seconds (`"30"`) or a percentage of the content duration (`"50%"`). To drive all breaks from a VMAP playlist instead, give its URL:
+A midroll `offset` takes a time (`"00:00:30"`), a percentage of the content duration (`"50%"`) or `"#1"` for the first entry of `defaultAdBreakPositions`. An offset in any other form makes the player place the break itself.
+
+To drive all breaks from a VMAP playlist instead, give its URL:
 
 ```json
 {
@@ -88,16 +90,49 @@ units.add(contentUnit); // your APSMediaUnit, see the Quick start
 APSMediaPlayer.getInstance().playMediaUnits(units);
 ```
 
-The other break types are `APSVASTMidContent`, `APSVASTPostContent` and `APSVASTNonLinear`. The setters on `APSVastAdBreak` control the skip button, countdown text and banner appearance. The [API reference](api-reference.md) lists them all.
+A postroll uses `APSVASTPostContent` and is added to the playlist after the content in the same way. Midrolls and non-linear breaks (`APSVASTMidContent`, `APSVASTNonLinear`) belong to the content, so attach them to the content unit, with a start point in seconds or as a percentage:
+
+```java
+APSVastAdBreak midroll = new APSVastAdBreak();
+midroll.type = APSVastAdBreak.APSVASTConfigurationOptions.APSVASTMidContent;
+midroll.addSource("https://ads.example.com/midroll.xml");
+midroll.adOffset = "00:00:30";
+midroll.setStartPoint("30");
+midroll.preloadInterval = 10;
+contentUnit.addEvent(midroll);
+```
+
+The setters on `APSVastAdBreak` control the skip button, countdown text and banner appearance. The [API reference](api-reference.md) lists them all.
 
 ## Ad requests and timing
 
-- The next playlist-level break (a preroll for the next item, or a postroll) is requested about 10 seconds before the current content ends, so it is ready when it is needed.
-- With IMA, a break is prepared before its cue, so the ad starts without a wait. Your ad server sees the request a little earlier than the ad plays.
+- The next playlist-level break (a preroll for the next item, or a postroll) is requested about 10 seconds before the current content ends, so it is ready when it is needed. Breaks that you build in code are requested at the cue unless you set `preloadInterval = 10` on them, as in the midroll example above.
+- With IMA, a break is prepared before its cue, so the ad starts without a wait. Your ad server sees the request a little earlier than the ad plays. A break dropped by a seek, or by leaving inside that window, costs an ad request with no impression.
 - Breaks that share an offset (ad pods in a VMAP) play one after another, with the content paused between them.
 - The screen stays on while an IMA preroll, midroll or postroll is showing.
 
-Listen for the ad lifecycle events (`ADBREAK_LOAD`, `AD_REQUESTED`, `ADBREAK_TRIGGERED` and others) with `addTrackingEventListener()`. They are listed in the [events reference](/docs/video-player/events).
+## Listen for ad events
+
+Implement `APSMediaPlayerTrackingEventListener` and register it to follow the ad lifecycle (`ADBREAK_LOAD`, `AD_REQUESTED`, `ADBREAK_TRIGGERED` and others):
+
+```java
+import android.os.Bundle;
+import com.appscend.media.APSMediaTrackingEvents.MediaEventType;
+import com.appscend.utilities.APSMediaPlayerTrackingEventListener;
+
+public class PlayerActivity extends AppCompatActivity
+        implements APSMediaPlayerTrackingEventListener {
+
+    @Override
+    public void onTrackingEventReceived(MediaEventType type, Bundle additionalInfo) {
+        if (type == MediaEventType.ADBREAK_TRIGGERED) {
+            // an ad break has started
+        }
+    }
+}
+```
+
+Register with `APSMediaPlayer.getInstance().addTrackingEventListener(this)` and remove the listener in `onDestroy()` (see [Quick start](quick-start.md)). The event names are listed in the [events reference](/docs/video-player/events#android-sdk-event-support).
 
 ## Protected video and screenshots
 
@@ -119,4 +154,4 @@ This setting applies to content and to IMA ads together.
 
 ## Permissions added by IMA
 
-The Google IMA SDK adds these permissions to your merged manifest: `AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION`, `ACCESS_ADSERVICES_AD_ID` and `AD_SERVICES_CONFIG`. Apps that already use the Google Mobile Ads SDK declare `AD_ID` themselves. If you would rather not declare them, remove them with `tools:node="remove"` and check your advertising ID declaration in the Play Console. See [Privacy](privacy.md).
+The Google IMA SDK adds these permissions to your merged manifest: `AD_ID`, `ACCESS_ADSERVICES_ATTRIBUTION`, `ACCESS_ADSERVICES_AD_ID` and `AD_SERVICES_CONFIG`. Apps that already use the Google Mobile Ads SDK declare `AD_ID` themselves. If you would rather not declare them, remove them with `tools:node="remove"` and check your advertising ID declaration in the Play Console. Removing `AD_ID` means that on Android 13 and higher the advertising ID reads as zeros, so IMA ad requests carry no ID. See [Privacy](privacy.md).

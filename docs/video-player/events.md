@@ -50,7 +50,7 @@ The available events are a superset of the official [IAB VAST Tracking Events](h
 | Ad Request Error                         | When an error appeared during retrieving a VAST tag from the network.                               |            |     ☑      |                |
 | Ad Break Empty                           | When a retrieved VAST tag did not contain an ad                                                     |            |     ☑      |                |
 | Unit Finished                            | When a media unit finishes processing.                                                              |     ☑     |     ☑      |       ☑        |
-| Invalid License                          | When there is an issue with the player commercial license.                                          |     ☑     |     ☑      |       ☑        |
+| Invalid License                          | When there is an issue with the player commercial license.                                          |     ☑     |     ☑      |                 |
 | Playback Status Change                   | When the player playback status changes.                                                            |     ☑     |     ☑      |       ☑        |
 | Load State Change                        | When a video load state changes.                                                                    |     ☑     |     ☑      |       ☑        |
 | Unit Started                             | When a media unit starts processing.                                                                |            |             |       ☑        |
@@ -249,21 +249,24 @@ Read the `APSMediaPlayer` [class documentation](https://docs.veeplay.com/ios-pla
 
 ### Subscribing to Events
 
-The `APSMediaEvents` class defines the events that the Veeplay player emits. In order to receive events, implement the `APSMediaPlayerTrackingEventListener` interface, and register the listener with the Veeplay Player.
+The `APSMediaTrackingEvents.MediaEventType` enum defines the events that the Veeplay player emits. In order to receive events, implement the `APSMediaPlayerTrackingEventListener` interface, and register the listener with the Veeplay Player.
 
 ```java 
+import android.os.Bundle;
+import com.appscend.media.APSMediaTrackingEvents.MediaEventType;
+import com.appscend.utilities.APSMediaPlayerTrackingEventListener;
+
 public class FullscreenActivity extends FragmentActivity implements APSMediaPlayerTrackingEventListener {
   ...
   @Override
-  public void onTrackingEventReceived(MediaEventType type,
-      ArrayList urls, String description) {           
-    if(type == APSMediaEvents.MediaEventType.FULLSCREEN) 
+  public void onTrackingEventReceived(MediaEventType type, Bundle additionalInfo) {
+    if (type == MediaEventType.FULLSCREEN)
       Toast.makeText(FullscreenActivity.this, "Fullscreen entered", Toast.LENGTH_SHORT).show();
-    else if(type == APSMediaEvents.MediaEventType.EXIT_FULLSCREEN)
+    else if (type == MediaEventType.EXIT_FULLSCREEN)
       Toast.makeText(FullscreenActivity.this, "Fullscreen exited", Toast.LENGTH_SHORT).show();
   }
 }
-```        
+```
 
 When initializing the player (or any time you wish to start receiving events):
 
@@ -313,12 +316,13 @@ APSMediaPlayer.getInstance().removeTrackingEventListener(this);
 | SSAI Ad Started                          | `SSAI_AD_STARTED`                    |
 | SSAI Ad Ended                            | `SSAI_AD_ENDED`                      |
 | Ad Break Started                         | `ADBREAK_TRIGGERED`                  |
+| Ad Break Load                            | `ADBREAK_LOAD`                       |
 | Ad Requested                             | `AD_REQUESTED`                       |
 | Ad Request Complete                      | `AD_REQUEST_COMPLETE`                |
 | Ad Request Error                         | `AD_REQUEST_ERROR`                   |
 | Ad Break Empty                           | `ADBREAK_EMPTY`                      |
 | Unit Finished                            | `UNIT_FINISHED`, `UNIT_FINISHED_URL` |
-| Invalid License                          | `LICENSE_INVALID`                    |
+| Invalid License                          |                                      |
 | Playback Status Change                   | `PLAYBACK_STATE_CHANGED`             |
 | Load State Change                        | `BUFFER_START`, `BUFFER_END`         |
 | Unit Started                             | `START_PROCESSING_NEW_UNIT`          |
@@ -333,3 +337,5 @@ APSMediaPlayer.getInstance().removeTrackingEventListener(this);
 | Duration Available                       |                                      |
 | Volume Changed                           |                                      |
 | Mouse Move                               |                                      |
+
+On Android, an unregistered package name does not emit an Invalid License event: the license server rejects it and the player stops playback and shuts itself down. `LICENSE_INVALID` is declared in `MediaEventType` but is not emitted.

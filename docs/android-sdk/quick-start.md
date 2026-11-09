@@ -19,7 +19,7 @@ The player is a view that you add to a container of your own. The container deci
 
 ## 2. Initialize the player and add its view
 
-Call `init()` with your Activity, size the player and add `viewController()` to the container. `APSMediaPlayer` is a singleton: `getInstance()` returns the same player everywhere in your app.
+Call `init()` with your Activity, size the player and add `viewController()` to the container. `APSMediaPlayer` is a singleton: `getInstance()` returns the same player until you call `finish()` (see [step 4](#4-forward-the-activity-lifecycle)), which discards it.
 
 ```java
 import com.appscend.media.APSMediaPlayer;
@@ -48,7 +48,7 @@ public class PlayerActivity extends AppCompatActivity {
 
 - `init(Activity, boolean)` takes the Activity the player is bound to and whether the height of the system status bar should be taken into account when laying out. Call it as early as you can in the Activity's lifecycle.
 - `setSize(width, height)` sizes the player view inside its container. `MATCH_PARENT` makes it fill the container you defined in your layout.
-- The check for an existing parent matters when an Activity is recreated, for example after a rotation: the player view survives and must be detached before you add it to the new container.
+- The check for an existing parent matters when the player view moves between two Activities that are alive at the same time: a view can have only one parent, so detach it before adding it to the new container. When the system recreates an Activity, `init()` builds a new container for the new Activity, and you add that one.
 
 ## 3. Play a video
 
@@ -80,22 +80,30 @@ APSMediaPlayer.getInstance().playMediaUnits(units);
 If your configuration lives on a server, use the asynchronous `configureFromURL()`. It downloads and parses the JSON on a background thread and calls you back on the main thread:
 
 ```java
-final ExecutorService buildExecutor = Executors.newSingleThreadExecutor();
-final Handler main = new Handler(Looper.getMainLooper());
+private final ExecutorService buildExecutor = Executors.newSingleThreadExecutor();
+private final Handler main = new Handler(Looper.getMainLooper());
 
-final APSMediaBuilder builder = new APSMediaBuilder();
-builder.configureFromURL(new URL("https://example.com/player.json"), ok -> {
-    if (!ok) return;
-    buildExecutor.execute(() -> {
-        ArrayList<APSMediaEvent> units = builder.mediaUnits();
-        main.post(() -> {
-            if (!isFinishing() && !isDestroyed() && APSMediaPlayer.isInitialized()) {
-                APSMediaPlayer.getInstance().playMediaUnits(units);
-            }
+private void loadAndPlay() {
+    final APSMediaBuilder builder = new APSMediaBuilder();
+    try {
+        builder.configureFromURL(new URL("https://example.com/player.json"), ok -> {
+            if (!ok) return;
+            buildExecutor.execute(() -> {
+                ArrayList<APSMediaEvent> units = builder.mediaUnits();
+                main.post(() -> {
+                    if (!isFinishing() && !isDestroyed() && APSMediaPlayer.isInitialized()) {
+                        APSMediaPlayer.getInstance().playMediaUnits(units);
+                    }
+                });
+            });
         });
-    });
-});
+    } catch (MalformedURLException e) {
+        Log.e("Player", "Invalid configuration URL", e);
+    }
+}
 ```
+
+Shut the executor down in `onDestroy()` with `buildExecutor.shutdown()`.
 
 The second step runs on a background thread because `mediaUnits()` can wait for the network: when the configuration has `ads.vmap` it downloads the VMAP, and `mediaUnits(true)` also loads the preroll ads. A configuration without a VMAP does not normally wait for the network there, but the pattern above is safe for every configuration. The check before `playMediaUnits()` drops a result that arrives after the user has left the screen.
 
@@ -151,7 +159,19 @@ private void quitPlayer() {
 - While the Activity is paused, nothing starts. A unit that was due to start begins on `onActivityResumed()`, and only a unit that was playing before the pause is resumed.
 - Calling `resumePlay()` or `play()` while the Activity is paused is safe: the call is deferred until `onActivityResumed()`.
 - `finish()` on the player stops playback, sends the pending tracking events and releases the player's resources. Call it when the user leaves the player for good, for example from your back handler (see [Fullscreen, edge-to-edge and predictive back](fullscreen-and-insets.md)). To use the player again afterwards, call `init()` again.
-- If you added a tracking listener with `addTrackingEventListener()`, remove it in `onDestroy()` with `removeTrackingEventListener()`.
+- `finish()` discards the player. Before the next `init()`, apply your settings again (`setPreferGoogleIma`, `setSecureSurfaceView`, `setGoogleCastEnabled`, `setAdvertisingIdentifier`, `setFullscreenOrientationBehaviour`). `setSessionCookiesEnabled` is static and stays.
+- If you added a tracking listener with `addTrackingEventListener()` (see [Ads](ads.md#listen-for-ad-events)), remove it in `onDestroy()`:
+
+```java
+@Override
+protected void onDestroy() {
+    if (APSMediaPlayer.isInitialized()) {
+        APSMediaPlayer.getInstance().removeTrackingEventListener(this);
+    }
+    buildExecutor.shutdown();
+    super.onDestroy();
+}
+```
 
 ### When the Activity is recreated
 

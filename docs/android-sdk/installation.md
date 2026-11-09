@@ -12,10 +12,11 @@ Adding the SDK takes a repository line, a dependency and a few build settings.
 
 ## 1. Add the Maven repository
 
-The SDK is published to a Maven repository hosted by Veeplay. Add it next to `mavenCentral()`:
+The SDK is published to a Maven repository hosted by Veeplay. Add it next to `google()` and `mavenCentral()`:
 
 ```groovy
 repositories {
+    google()
     mavenCentral()
     maven { url "https://s3-eu-west-1.amazonaws.com/android.veeplay.com/releases" }
 }
@@ -62,15 +63,16 @@ android {
 
 You also need Android Gradle Plugin 8.6.0 or higher, which in turn needs Gradle 8.7 or higher and JDK 17. If your AGP prints a warning that `compileSdk` 36 is newer than it was tested with, update the AGP rather than lowering `compileSdk`.
 
+Two dependency notes for apps that upgrade from 3.1:
+
+- Keep Gson on 2.13.x. A newer Gson makes JSON configuration fail.
+- Remove any `com.google.android.exoplayer` (ExoPlayer 2) dependency. Its resources clash with Media3's.
+
 If your app declares `missingDimensionStrategy 'veeplaySDK', 'general'` in its product flavors, you can remove it. The SDK has no flavors any more.
 
 ## 4. Manifest
 
-The player needs network access, so your app must declare the `INTERNET` permission if it does not already:
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-```
+The player needs network access. You do not need to declare the `INTERNET` permission yourself: it is merged into your manifest from the SDK's dependencies (the Google IMA SDK).
 
 The SDK declares its own activities, including the web browser used for ad clickthroughs, so you do not need to add them.
 

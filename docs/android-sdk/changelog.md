@@ -8,7 +8,7 @@ description: What changed in each release of the Veeplay Android SDK.
 
 Release candidate for 3.2.0. 3.2.0 replaces the ExoPlayer engines with Media3, moves to IMA SDK 3.40, splits Google Cast into an optional artifact and adds Android 15 and 16 support. It also fixes a large set of playback, VAST and IMA bugs.
 
-**Upgrading from 3.1.26.** The public API stays source-compatible, and for most apps the upgrade is a set of build-file changes: compileSdk 36, Android Gradle Plugin 8.6, core library desugaring and minSdk 24 (see Requirements). One release-build detail: 3.1.26's ProGuard rules switched off obfuscation for the whole app, and 3.2.0's rules cover only Veeplay's own classes. To keep a minified release build exactly as it is, add `-dontobfuscate` to your own rules. [migration guide](migration-3-2.md) walks through each step.
+**Upgrading from 3.1.26.** The public API stays source-compatible, and for most apps the upgrade is a set of build-file changes: compileSdk 36, Android Gradle Plugin 8.6, core library desugaring and minSdk 24 (see Requirements). One release-build detail: 3.1.26's ProGuard rules switched off obfuscation for the whole app, and 3.2.0's rules cover only Veeplay's own classes. To keep a minified release build exactly as it is, add `-dontobfuscate` to your own rules. The [migration guide](migration-3-2.md) walks through each step.
 
 ### Requirements
 

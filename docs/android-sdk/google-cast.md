@@ -44,7 +44,7 @@ APSMediaPlayer.getInstance().init(this, false);
 
 Cast starts only after `setGoogleCastEnabled()`. You can call it before or after `init()`: it starts Cast at once if the player already has an Activity, and in `init()` otherwise. Repeated calls do nothing until `finish()`.
 
-When Cast is enabled, the content units show a Cast route button in their controls. When a viewer connects to a Cast device, playback moves to it.
+When Cast is enabled, the content units show a Cast button in their controls when a Cast device is available on the network. When a viewer connects to a Cast device, playback moves to it.
 
 Without the Cast artifact, `setGoogleCastEnabled()` only sets a flag, and no route button appears.
 

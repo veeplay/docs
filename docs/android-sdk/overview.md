@@ -19,7 +19,7 @@ You configure playback with the same [JSON configuration](/json-configuration/) 
 - **Optional Google Cast.** Cast is a separate artifact, so apps that do not cast carry no Cast code. See [Google Cast](google-cast.md).
 - **Android 15 and 16.** Edge-to-edge and immersive fullscreen, predictive back and display cutout handling. See [Fullscreen, edge-to-edge and predictive back](fullscreen-and-insets.md).
 
-The public API stays source-compatible with 3.1.26, so upgrading is mostly a matter of build settings. The [migration guide](migration-3-2.md) walks through it.
+The public API stays source-compatible with 3.1.26, apart from the removed ExoPlayer v1, YouTube and MRAID APIs, so upgrading is mostly a matter of build settings. The [migration guide](migration-3-2.md) walks through it.
 
 ## Requirements
 
@@ -32,6 +32,8 @@ The public API stays source-compatible with 3.1.26, so upgrading is mostly a mat
 | Java | 11 source and target compatibility |
 
 The optional Cast artifact has the same requirements. Kotlin apps that add it need the Kotlin Gradle plugin 2.1 or higher. The core artifact adds no Kotlin requirement.
+
+Keep Gson on 2.13.x: a newer Gson makes JSON configuration fail. If your app still has a `com.google.android.exoplayer` (ExoPlayer 2) dependency, remove it, because its resources clash with Media3's.
 
 These are build-time settings that you change once in your Gradle files. [Installation](installation.md) has the snippets.
 

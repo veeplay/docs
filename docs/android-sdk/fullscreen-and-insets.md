@@ -18,9 +18,9 @@ Viewers enter fullscreen from the player's fullscreen control, and your code can
 
 ### Rotation while in fullscreen
 
-If the Activity that hosts the player is recreated while the fullscreen dialog is showing (for example by a rotation), the next `exitFullscreen()` can throw `IllegalArgumentException` ("View not attached to window manager"). This has been the case since 3.1.26. A `setFullscreenOrientationBehaviour()` that rotates the screen recreates an Activity that does not handle the rotation itself.
+If the player can go fullscreen in an Activity that rotates, add `android:configChanges="orientation|screenSize"` to that Activity. Without it, a rotation during fullscreen can crash the app the next time the player leaves fullscreen, including when the playlist ends or on `finish()` (`IllegalArgumentException`, "View not attached to window manager"; present since 3.1.26). A `setFullscreenOrientationBehaviour()` that rotates the screen causes the same recreation in an Activity that does not handle the rotation itself.
 
-The simple fix is to let your Activity handle the rotation. Declare in your manifest, for the Activity that hosts the player:
+In your manifest, for the Activity that hosts the player:
 
 ```xml
 <activity
@@ -29,6 +29,19 @@ The simple fix is to let your Activity handle the rotation. Declare in your mani
 ```
 
 Add the other configuration changes you expect (for example `screenLayout`, `smallestScreenSize` or `keyboardHidden`). Alternatively, call `exitFullscreen()` before the recreation.
+
+An Activity that handles the rotation itself should forward the change to the player:
+
+```java
+@Override
+public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    APSMediaPlayer player = APSMediaPlayer.getInstance();
+    player.setSize(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+    player.computeSurfaceSize();
+    player.orientationWillChange();
+}
+```
 
 ## Edge-to-edge layouts
 

@@ -8,7 +8,7 @@ The Veeplay SDK checks your license and reports usage in the background. For mos
 
 ## Register your app
 
-Register your app's package name in your Veeplay account at [panel.veeplay.com/licenses](https://panel.veeplay.com/licenses). If a package is not registered, or the license is invalid, playback reports an "Invalid License" error. See the [Video Player FAQ](/docs/faq/video-player).
+Register your app's package name in your Veeplay account at [panel.veeplay.com/licenses](https://panel.veeplay.com/licenses). If the package name is not registered, the license server rejects it and the player stops playback and shuts itself down (logcat: "Stopping player instance due to invalid license"). Registering the package fixes this without an app change. Register the package name of every build variant you ship or test, for example a `.debug` suffix. See the [Video Player FAQ](/docs/faq/video-player).
 
 ## Network destinations
 
@@ -22,5 +22,5 @@ Your video, ad and tracking requests go to the hosts in your own configuration, 
 
 - The license check and the usage tracker run on their own executor, so **playback never waits for them**.
 - An **unreachable license server does not stop playback**.
-- With an invalid license, the server's answer can arrive after a preroll has already started.
+- With an invalid license, the server's rejection can arrive after a preroll has already started. The player then stops, as described above.
 - License and usage requests do not send cookies. See [Privacy](privacy.md).

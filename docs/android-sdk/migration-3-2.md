@@ -69,7 +69,7 @@ missingDimensionStrategy 'veeplaySDK', 'general'
 
 - 3.1.26 bundled ExoPlayer v1 and depended on ExoPlayer 2.14. 3.2.0 uses Media3 1.11.1 (`media3-exoplayer`, `-hls`, `-dash`, `-smoothstreaming`, `-ui`). Media3 is a runtime dependency of the SDK.
 - If your own code used ExoPlayer 2 classes that came in through the SDK, declare the dependency you need yourself. If your code uses Media3, declare Media3 1.11.1 yourself too, because the SDK does not export Media3 to your compile classpath.
-- If another library in your app declares an older Media3 (for example Prebid 3.3.4 declares 1.3.1), Gradle raises it to 1.11.1 at runtime. Your own code still compiles against what you declared. Declare 1.11.1 to avoid surprises.
+- If another library in your app declares an older Media3 (for example an ad SDK built on Media3 1.3.1), Gradle raises it to 1.11.1 at runtime. Your own code still compiles against what you declared. Declare 1.11.1 to avoid surprises.
 - There is one set of `exo_*` resources now: the one from `media3-ui`. Remove `com.google.android.exoplayer:exoplayer-ui` (and any other ExoPlayer 2 artifact) from your app, or the resources and styleables clash. Layouts that inflate `com.google.android.exoplayer2.ui.PlayerView` must use `androidx.media3.ui.PlayerView`.
 - The SDK ships 29 resource names without a `veeplay_` prefix (`back`, `forward`, `play`, `pause`, `loading0` to `loading7`, `webbrowser`, `share`, `isTablet` and others). None of them collides with Media3. If your app defines a resource with one of these names, yours wins.
 
